@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour {
 	private float deathHeight = -15f;  //Y value to determine player fell off map
 	private bool isFacingRight = true; 
 	private bool isJumping = false;
+	private float speed = 9f;  //static for now
+	private float jumpForce = 400f; // static for now
 	private Animator anim;
 
 	// Use this for initialization
@@ -30,7 +32,7 @@ public class PlayerController : MonoBehaviour {
 			anim.SetFloat("HorizontalSpeed", Mathf.Abs(moveHorizontal));
 
 			//change player movement data here
-			rigidbody2D.velocity = new Vector2 (moveHorizontal * 9, rigidbody2D.velocity.y);
+			rigidbody2D.velocity = new Vector2 (moveHorizontal * speed, rigidbody2D.velocity.y);
 
 
 			// first case player moves right, not facing right
@@ -52,7 +54,7 @@ public class PlayerController : MonoBehaviour {
 		//maps to player's controls
 		if (Input.GetButtonDown("Jump") && !isJumping){
 			//add force to jump only in Y axis
-			rigidbody2D.AddForce (new Vector2 (0, 400f));
+			rigidbody2D.AddForce (new Vector2 (0, jumpForce));
 		}
 	}
 
