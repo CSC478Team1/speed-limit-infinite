@@ -1,0 +1,630 @@
+fileFormatVersion: 2
+guid: 955a9b80dba9ad04a9092a2649b6c6a5
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: scifi_platform_backdrop_lightgrey
+    21300002: scifi_platform_backdrop_darkgrey
+    21300004: scifi_platform_backdrop_lightgrey2
+    21300006: scifi_platform_backdrop_darkgreen
+    21300008: scifi_platform_backdrop_lightgrey4
+    21300010: scifi_platform_backdrop_darkgrey3
+    21300012: scifi_platformTiles_32x32_6
+    21300014: scifi_platform_backdrop_darkgreen2
+    21300016: scifi_platform_backdrop_lightgrey1
+    21300018: scifi_platform_backdrop_darkgrey1
+    21300020: scifi_platform_backdrop_lightgrey3
+    21300022: scifi_platform_backdrop_darkgreen1
+    21300024: scifi_platform_backdrop_lightgrey5
+    21300026: scifi_platform_backdrop_darkgrey4
+    21300028: scifi_platform_backdrop_lightgrey8
+    21300030: scifi_platform_backdrop_darkgreen3
+    21300032: scifi_platform_backdrop_darkgrey5
+    21300034: scifi_platformTiles_32x32_17
+    21300036: scifi_platform_darkgrey10
+    21300038: scifi_platformTiles_32x32_19
+    21300040: scifi_platform_backdrop_black
+    21300042: scifi_platform_backdrop_black2
+    21300044: scifi_platform_backdrop_black3
+    21300046: scifi_platformTiles_32x32_23
+    21300048: scifi_platform_backdrop_darkgrey7
+    21300050: scifi_platform_backdrop_black4
+    21300052: scifi_platform_backdrop_darkgrey8
+    21300054: scifi_platform_backdrop_darkgreen4
+    21300056: scifi_platform_backdrop_lightgrey6
+    21300058: scifi_platform_backdrop_lightgrey7
+    21300060: scifi_platform_backdrop_darkgreen5
+    21300062: scifi_platform_backdrop_darkgrey6
+    21300064: scifi_platformTiles_32x32_32
+    21300066: scifi_platform_backdrop_darkgrey_light
+    21300068: scifi_platformTiles_32x32_34
+    21300070: scifi_platformTiles_32x32_35
+    21300072: scifi_platformTiles_32x32_36
+    21300074: scifi_platformTiles_32x32_37
+    21300076: scifi_platformTiles_32x32_38
+    21300078: scifi_platformTiles_32x32_39
+    21300080: scifi_platformTiles_32x32_40
+    21300082: scifi_platformTiles_32x32_41
+    21300084: scifi_platform_Platform_w_ladder
+    21300086: scifi_platform_base_platform
+    21300088: scifi_platform_base_short
+    21300090: scifi_platform_base_medium
+    21300092: scifi_platform_base_long
+    21300094: scifi_platform_backdrop_generic
+    21300096: scifi_platform_black_light
+    21300098: scifi_platform_black_light_set
+    21300100: scifi_platform_black_vent
+    21300102: scifi_platform_lightgrey_ceiling
+    21300104: scifi_platform_darkgrey_celing
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: scifi_platform_backdrop_lightgrey
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 672
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_darkgrey
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 672
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_lightgrey2
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 672
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_darkgreen
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 672
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_lightgrey4
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 672
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_darkgrey3
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 672
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platformTiles_32x32_6
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 672
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_darkgreen2
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 672
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_lightgrey1
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 608
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_darkgrey1
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 608
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_lightgrey3
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 608
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_darkgreen1
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 608
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_lightgrey5
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 640
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_darkgrey4
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 640
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_lightgrey8
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 640
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_darkgreen3
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 640
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_darkgrey5
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 608
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platformTiles_32x32_17
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 608
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_darkgrey10
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 608
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platformTiles_32x32_19
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 608
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_black
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 576
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_black2
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 576
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_black3
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 576
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platformTiles_32x32_23
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 576
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_darkgrey7
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_black4
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_darkgrey8
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 481
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_darkgreen4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_lightgrey6
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_lightgrey7
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_darkgreen5
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_darkgrey6
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platformTiles_32x32_32
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_darkgrey_light
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platformTiles_32x32_34
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platformTiles_32x32_35
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platformTiles_32x32_36
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 544
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platformTiles_32x32_37
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platformTiles_32x32_38
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 608
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platformTiles_32x32_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 545
+        width: 64
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platformTiles_32x32_40
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 576
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platformTiles_32x32_41
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_Platform_w_ladder
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 319
+        height: 223
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_base_platform
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 479
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_base_short
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 192
+        width: 160
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_base_medium
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 96
+        width: 320
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_base_long
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_backdrop_generic
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 33
+        width: 575
+        height: 254
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_black_light
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 64
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_black_light_set
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 0
+        width: 286
+        height: 96
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_black_vent
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 33
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_lightgrey_ceiling
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 320
+        width: 255
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi_platform_darkgrey_celing
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 288
+        width: 256
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

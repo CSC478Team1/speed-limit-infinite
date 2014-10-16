@@ -4,6 +4,14 @@
 TagManager:
   tags:
   - 
+  - Platform
+  - 
+  - Floor
+  - 
+  - Player Object
+  - Box
+  - Enemy
+  - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
   Builtin Layer 2: Ignore Raycast
@@ -12,10 +20,10 @@ TagManager:
   Builtin Layer 5: UI
   Builtin Layer 6: 
   Builtin Layer 7: 
-  User Layer 8: 
-  User Layer 9: 
-  User Layer 10: 
-  User Layer 11: 
+  User Layer 8: Player
+  User Layer 9: Platform
+  User Layer 10: PlayerObject
+  User Layer 11: Enemy
   User Layer 12: 
   User Layer 13: 
   User Layer 14: 
@@ -40,4 +48,20 @@ TagManager:
   - name: Default
     userID: 0
     uniqueID: 0
+    locked: 0
+  - name: Background
+    userID: 1
+    uniqueID: 2282796591
+    locked: 0
+  - name: Midground
+    userID: 2
+    uniqueID: 4262419231
+    locked: 0
+  - name: Foreground
+    userID: 3
+    uniqueID: 3054007951
+    locked: 0
+  - name: Player
+    userID: 4
+    uniqueID: 310777671
     locked: 0
