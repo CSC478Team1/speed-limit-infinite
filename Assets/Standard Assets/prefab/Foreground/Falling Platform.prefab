@@ -26,7 +26,6 @@ GameObject:
   - 212: {fileID: 21200000}
   - 61: {fileID: 6100004}
   - 50: {fileID: 5000000}
-  - 231: {fileID: 23100000}
   - 61: {fileID: 6100002}
   - 114: {fileID: 11400000}
   - 61: {fileID: 6100000}
@@ -44,7 +43,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 13.3173227, y: 2.64235568, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -118,7 +117,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62205b9c294438e44b07f566ce002a38, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a82f500f607c6c448917c1693c3d65a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21200000
@@ -143,20 +142,6 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300102, guid: 955a9b80dba9ad04a9092a2649b6c6a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!231 &23100000
-SpringJoint2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
-  m_Enabled: 0
-  m_CollideConnected: 1
-  m_ConnectedRigidBody: {fileID: 5000000}
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -.0451602936, y: 9.38577461}
-  m_Distance: 5
-  m_DampingRatio: 0
-  m_Frequency: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

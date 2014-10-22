@@ -8,4 +8,5 @@ public class IgnoreJumpCollision : MonoBehaviour {
 	}
 	void OnCollisionStay2D (Collision2D coll) {
 		Physics2D.IgnoreLayerCollision (8, 9, rigidbody2D.velocity.y > 0);
+	}
 }

@@ -11,11 +11,21 @@ public class PlayerController : MonoBehaviour {
 	private float speed;  
 	private float jumpForce = 600f; // static for now
 	private Animator anim;
+	private int ignoreLayerBitmask;
+	private int playerMask;
+	private Transform groundCheck; //below player box collider
+	private Transform headCheck;  //above player box collider
 
 	// Use this for initialization
 	private void Start () {
 		anim = GetComponent<Animator>();
 		speed = initialSpeed;
+
+		//load head, side, and ground transforms and apply bitmask to our ingore layer
+		groundCheck = gameObject.transform.Find ("GroundCheck").transform;  
+		headCheck = gameObject.transform.Find("HeadCheck").transform;
+		playerMask  = LayerMask.NameToLayer("Player");
+		ignoreLayerBitmask = 1 << LayerMask.NameToLayer("Platform");
 	}
 
 	//FixedUpdate can be called variable amount of times per frame
@@ -48,6 +58,26 @@ public class PlayerController : MonoBehaviour {
 
 			//prevent multiple jumps
 			isJumping = (moveVertical != 0) ? true : false;
+
+			//use raycasts to look below player and above.
+			//collider that are triggers are ignored by collisions
+			RaycastHit2D raycastFeet = Physics2D.Raycast (groundCheck.position, -Vector2.up, 1f, ignoreLayerBitmask);
+			if (raycastFeet.transform !=null)
+				raycastFeet.collider.isTrigger = false;
+
+
+			//right now just shifting x position to both sides of player until find a better way. the floor check remains centered
+			RaycastHit2D raycastHeadLeft = Physics2D.Raycast(new Vector2 (headCheck.position.x - .16f, headCheck.position.y)
+			                                                 , Vector2.up, 1f, ignoreLayerBitmask);
+			if (raycastHeadLeft.transform !=null)
+				raycastHeadLeft.collider.isTrigger = true;
+			else{
+				RaycastHit2D raycastHeadRight = Physics2D.Raycast(new Vector2 (headCheck.position.x + .16f, headCheck.position.y)
+			                                                 	, Vector2.up, 1f, ignoreLayerBitmask);
+				if (raycastHeadRight.transform !=null)
+					raycastHeadRight.collider.isTrigger = true;
+			}
+
 		}
 	}
 	

@@ -12,17 +12,23 @@ public class Platform : MonoBehaviour {
 		playerLayer = LayerMask.NameToLayer("Player");
 
 	}
+	/**
 	//testing options between enter and stay	
-	private void OnTriggerEnter2D (Collider2D other){
-		if (other.gameObject.tag == "Player")
-			Physics2D.IgnoreLayerCollision(playerLayer,platformLayer, true);
-	}
-	private void OnTriggerStay2D (Collider2D other){
-		if (other.gameObject.tag == "Player")
-			Physics2D.IgnoreLayerCollision(playerLayer,platformLayer, true);
-	}
-	private void OnTriggerExit2D (Collider2D other){
+	private void OnCollisionEnter2D (Collider2D other) {
 		if (other.gameObject.tag == "Player")
 			Physics2D.IgnoreLayerCollision(playerLayer,platformLayer, false);
 	}
+	private void OnTriggerEnter2D (Collider2D other){
+		if (other.gameObject.tag == "Player")
+			Physics2D.IgnoreLayerCollision(playerLayer,platformLayer, false);
+	} 
+	private void OnTriggerStay2D (Collider2D other){
+		if (other.gameObject.tag == "Player")
+			Physics2D.IgnoreLayerCollision(playerLayer,platformLayer, false);
+	}
+	private void OnTriggerExit2D (Collider2D other){
+		if (other.gameObject.tag == "Player")
+			Physics2D.IgnoreLayerCollision(playerLayer,platformLayer, true);
+	}
+	**/
 }
