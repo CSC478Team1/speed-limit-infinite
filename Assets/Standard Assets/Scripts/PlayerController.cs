@@ -7,9 +7,9 @@ public class PlayerController : MonoBehaviour {
 	private float deathHeight = -15f;  //Y value to determine player fell off map
 	private bool isFacingRight = true; 
 	private bool isJumping = false;
-	private float initialSpeed = 12f;
+	private float initialSpeed = 8f;
 	private float speed;  
-	private float jumpForce = 1000f; // static for now
+	private float jumpForce = 600f; // static for now
 	private Animator anim;
 
 	// Use this for initialization
@@ -56,15 +56,19 @@ public class PlayerController : MonoBehaviour {
 	private void Update () {
 
 		//maps to player's controls
-		if (Input.GetButtonDown("Jump") && !isJumping){
+		if (Input.GetButtonDown("Jump") && !isJumping)
 			//add force to jump only in Y axis
-			rigidbody2D.AddForce (new Vector2 (0, jumpForce));
-			speed = initialSpeed;
-		}
-		else if (Input.GetButton("Horizontal")){
-			speed += .08f;
-		}
-		else
+			if (Input.GetKey(KeyCode.LeftShift))
+				rigidbody2D.AddForce (new Vector2 (0, jumpForce * 1.5f));
+			else
+				rigidbody2D.AddForce (new Vector2 (0, jumpForce));
+
+			//speed = initialSpeed;
+		//}
+		//else if (Input.GetButton("Horizontal")){
+			//speed += .08f;
+		//}
+		//else
 			speed = initialSpeed;
 	}
 
