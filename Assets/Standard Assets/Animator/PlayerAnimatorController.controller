@@ -20,6 +20,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: Jumping
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 3
     m_Name: Base Layer
@@ -48,10 +54,6 @@ Transition:
     m_ConditionEvent: HorizontalSpeed
     m_EventTreshold: .100000001
     m_ExitTime: 1
-  - m_ConditionMode: 4
-    m_ConditionEvent: VerticalSpeed
-    m_EventTreshold: .100000001
-    m_ExitTime: 1
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -72,11 +74,11 @@ Transition:
     m_ConditionEvent: HorizontalSpeed
     m_EventTreshold: .00100000005
     m_ExitTime: 1
-  - m_ConditionMode: 4
-    m_ConditionEvent: VerticalSpeed
-    m_EventTreshold: .100000001
-    m_ExitTime: 1
-  m_Atomic: 1
+  - m_ConditionMode: 5
+    m_ConditionEvent: HorizontalSpeed
+    m_EventTreshold: .00100000005
+    m_ExitTime: .899999976
+  m_Atomic: 0
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
@@ -96,11 +98,11 @@ Transition:
     m_ConditionEvent: HorizontalSpeed
     m_EventTreshold: .100000001
     m_ExitTime: 1
-  - m_ConditionMode: 4
-    m_ConditionEvent: VerticalSpeed
+  - m_ConditionMode: 5
+    m_ConditionEvent: HorizontalSpeed
     m_EventTreshold: .100000001
-    m_ExitTime: 1
-  m_Atomic: 1
+    m_ExitTime: .899999976
+  m_Atomic: 0
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
@@ -116,8 +118,8 @@ Transition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_Conditions:
-  - m_ConditionMode: 3
-    m_ConditionEvent: VerticalSpeed
+  - m_ConditionMode: 1
+    m_ConditionEvent: Jumping
     m_EventTreshold: .100000001
     m_ExitTime: 1
   m_Atomic: 1
@@ -140,10 +142,6 @@ Transition:
     m_ConditionEvent: HorizontalSpeed
     m_EventTreshold: .100000001
     m_ExitTime: 1
-  - m_ConditionMode: 4
-    m_ConditionEvent: VerticalSpeed
-    m_EventTreshold: .100000001
-    m_ExitTime: 1
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -160,8 +158,8 @@ Transition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_Conditions:
-  - m_ConditionMode: 3
-    m_ConditionEvent: VerticalSpeed
+  - m_ConditionMode: 1
+    m_ConditionEvent: Jumping
     m_EventTreshold: .100000001
     m_ExitTime: 1
   m_Atomic: 1
@@ -275,6 +273,12 @@ StateMachine:
       second:
       - {fileID: 110142069}
       - {fileID: 110148081}
+    data:
+      first: {fileID: 110233616}
+      second: []
+    data:
+      first: {fileID: 110206655}
+      second: []
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

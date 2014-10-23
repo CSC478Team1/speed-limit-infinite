@@ -5,7 +5,7 @@ public class Controller : MonoBehaviour {
 	protected int health = 100;
 	protected float deathHeight = -15f;  //Y value to determine if Character fell off map
 	protected bool isFacingRight = true; 
-	protected bool isJumping = false;
+	protected bool canJump = true;
 	protected Animator anim;
 	protected float speed;
 	protected float jumpForce;
@@ -28,7 +28,7 @@ public class Controller : MonoBehaviour {
 		}
 	}
 	//Decrement health return if character is alive or not
-	protected virtual bool Damaged(int damage){
+	protected bool Damaged(int damage){
 		health -= damage;
 		return (health <= 0) ? true: false;
 	}
