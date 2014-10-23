@@ -8,13 +8,15 @@ public class PlayerController : Controller {
 	private int playerMask;
 	private Transform groundCheck; //below player box collider
 	private Transform headCheck;  //above player box collider
+	private float initialJumpforce = 600f;
+
 
 	private LayerMask groundLayerMask = 1 << 8;
 	// Use this for initialization
 	protected override void Start () {
 		base.Start();
 		speed = initialSpeed;
-		jumpForce = 600f;
+		jumpForce = initialJumpforce;
 		groundLayerMask = ~groundLayerMask;
 		try{
 			//load head, side, and ground transforms and apply bitmask to our ingore layer
@@ -75,15 +77,6 @@ public class PlayerController : Controller {
 			Respawn();
 		}
 	}
-	private void Respawn(){
-		try{
-			Transform spawnpoint = GameObject.FindWithTag("SpawnPoint").transform;
-			transform.position = spawnpoint.position;
-			health = 100;
-		} catch (UnityException e){
-			Debug.Log(e.Message);
-		}
-	}
 	
 	// Update is called once per frame
 	// Player Input should always be called within Update
@@ -91,6 +84,10 @@ public class PlayerController : Controller {
 		//base.Update();
 		//maps to player's controls
 		if (Input.GetButtonDown("Jump") && canJump){
+
+			//I'm playing around with upside down jump forces
+			jumpForce = (headCheck.position.y < groundCheck.position.y) ? jumpForce *-1 : initialJumpforce;
+				
 			//add force to jump only in Y axis
 			if (Input.GetKey(KeyCode.LeftShift))
 				rigidbody2D.AddForce (new Vector2 (0, jumpForce * 1.5f));
@@ -107,6 +104,16 @@ public class PlayerController : Controller {
 		//}
 		//else
 			speed = initialSpeed;
+
+	}
+	private void Respawn(){
+		try{
+			Transform spawnpoint = GameObject.FindWithTag("SpawnPoint").transform;
+			transform.position = spawnpoint.position;
+			health = 100;
+		} catch (UnityException e){
+			Debug.Log(e.Message);
+		}
 	}
 	
 }
