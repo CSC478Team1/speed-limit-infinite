@@ -4,20 +4,31 @@ using System.Collections;
 public class PlayerController : Controller {
 	
 	private float initialSpeed = 8f;
-	private int ignoreLayerBitmask;
-	private int playerMask;
+	private int ignoreLayerBitmask;  //ignoring this layer temprorarily for platforms
 	private Transform groundCheck; //below player box collider
 	private Transform headCheck;  //above player box collider
 	private float initialJumpforce = 600f;
+	private LayerMask groundLayerMask;  //ignoring just this layer for jumping
 
 
-	private LayerMask groundLayerMask = 1 << 8;
+	//save powerup information from scene to scene
+	private static bool infiniteSpeed = false;
+	private static bool canShootLaser = false;
+	private static bool canShootDualLaser = false;
+	private static bool hasGravityBoots = false;
+
+	
 	// Use this for initialization
-	protected override void Start () {
+	protected override void Start (){
 		base.Start();
 		speed = initialSpeed;
 		jumpForce = initialJumpforce;
-		groundLayerMask = ~groundLayerMask;
+
+		//Get bitmask of Player Layer and perform NOT on it
+		//Anything that is not Player Layer will allow jumping
+		groundLayerMask = ~(1 << LayerMask.NameToLayer("Player"));
+
+
 		try{
 			//load head, side, and ground transforms and apply bitmask to our ingore layer
 			groundCheck = gameObject.transform.Find ("GroundCheck").transform;  
@@ -89,21 +100,19 @@ public class PlayerController : Controller {
 			jumpForce = (headCheck.position.y < groundCheck.position.y) ? jumpForce *-1 : initialJumpforce;
 				
 			//add force to jump only in Y axis
-			if (Input.GetKey(KeyCode.LeftShift))
+			if (Input.GetButton("Boost"))
 				rigidbody2D.AddForce (new Vector2 (0, jumpForce * 1.5f));
 			else
 				rigidbody2D.AddForce (new Vector2 (0, jumpForce));
 
 			anim.SetTrigger("Jumping");
 			canJump = false;
-		}
-			//speed = initialSpeed;
-		//}
-		//else if (Input.GetButton("Horizontal")){
-			//speed += .08f;
-		//}
-		//else
 			speed = initialSpeed;
+		} else if (Input.GetButton("Horizontal") && infiniteSpeed){
+			speed += .13f;
+		} else 
+			speed = initialSpeed;
+
 
 	}
 	private void Respawn(){
@@ -113,6 +122,25 @@ public class PlayerController : Controller {
 			health = 100;
 		} catch (UnityException e){
 			Debug.Log(e.Message);
+		}
+	}
+
+	public void SetPowerUp(Item.PowerUpType powerUP){
+		switch (powerUP){
+
+		case Item.PowerUpType.DualLaser: 
+			canShootDualLaser = true;
+			break;
+		case Item.PowerUpType.GravityBoots:
+			hasGravityBoots = true;
+			break;
+		case Item.PowerUpType.InfiniteSpeed:
+			infiniteSpeed = true;
+			break;
+		case Item.PowerUpType.Laser:
+			canShootLaser = true;
+			break;
+		
 		}
 	}
 	

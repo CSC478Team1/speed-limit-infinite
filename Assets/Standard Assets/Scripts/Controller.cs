@@ -38,4 +38,6 @@ public class Controller : MonoBehaviour {
 		scale.x *= -1;
 		transform.localScale = scale;
 	}
+	public void DoSomething(){
+	}
 }

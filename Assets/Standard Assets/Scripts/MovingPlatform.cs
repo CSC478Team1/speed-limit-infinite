@@ -5,6 +5,7 @@ public class MovingPlatform : MonoBehaviour {
 
 	public float speed = 2f;
 	private bool isFinished = false;
+	public bool UseOnExit = false;
 	public bool requiresTrigger = false;
 	public string triggerTag = "";
 	private int timer = 0;
@@ -50,12 +51,20 @@ public class MovingPlatform : MonoBehaviour {
 				isFinished = false;
 		}
 	}
+	private void OnTriggerExit2D (Collider2D other){
+		try{
+			if (requiresTrigger && other.tag == triggerTag && UseOnExit){
+				requiresTrigger = false;	
+			}
+		}catch (UnityException e){
+			Debug.Log(e.Message);
+		}
+	}
 
 	private void OnTriggerEnter2D (Collider2D other){
 		try{
-			if (requiresTrigger && other.tag == triggerTag){
+			if (requiresTrigger && other.tag == triggerTag && !UseOnExit){
 				requiresTrigger = false;
-
 			}
 		}catch (UnityException e){
 			Debug.Log(e.Message);

@@ -55,6 +55,7 @@ TextureImporter:
     21300100: scifi_platform_black_vent
     21300102: scifi_platform_lightgrey_ceiling
     21300104: scifi_platform_darkgrey_celing
+    21300106: scifi white midground
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -623,6 +624,16 @@ TextureImporter:
         y: 288
         width: 256
         height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scifi white midground
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 414
+        width: 96
+        height: 92
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
