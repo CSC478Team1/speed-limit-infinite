@@ -71,11 +71,11 @@ public class PlayerController : Controller {
 
 			//use raycasts to look below player and above.
 			//collider that are triggers are ignored by collisions
-			RaycastHit2D raycastFeet = Physics2D.CircleCast (groundCheck.position, .20f,  -Vector2.up, 1f, ignoreLayerBitmask);
+			RaycastHit2D raycastFeet = Physics2D.CircleCast (groundCheck.position, .24f,  -Vector2.up, 1f, ignoreLayerBitmask);
 			if (raycastFeet.transform !=null)
 				raycastFeet.collider.isTrigger = false;
 
-			RaycastHit2D raycastHead = Physics2D.CircleCast (headCheck.position, .20f,  Vector2.up, 1f, ignoreLayerBitmask);
+			RaycastHit2D raycastHead = Physics2D.CircleCast (headCheck.position, .24f,  Vector2.up, 1f, ignoreLayerBitmask);
 			if (raycastHead.transform !=null)
 				raycastHead.collider.isTrigger = true;
 
