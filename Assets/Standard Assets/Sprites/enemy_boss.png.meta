@@ -1,0 +1,861 @@
+fileFormatVersion: 2
+guid: 1c975dc834fcaab4e9c20416d30fa62b
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: enemy_boss_0
+    21300002: enemy_boss_1
+    21300004: enemy_boss_2
+    21300006: enemy_boss_3
+    21300008: enemy_boss_4
+    21300010: enemy_boss_5
+    21300012: enemy_boss_6
+    21300014: enemy_boss_7
+    21300016: enemy_boss_8
+    21300018: enemy_boss_9
+    21300020: enemy_boss_10
+    21300022: enemy_boss_11
+    21300024: enemy_boss_12
+    21300026: enemy_boss_13
+    21300028: enemy_boss_14
+    21300030: enemy_boss_15
+    21300032: enemy_boss_16
+    21300034: enemy_boss_17
+    21300036: enemy_boss_18
+    21300038: enemy_boss_19
+    21300040: enemy_boss_20
+    21300042: enemy_boss_21
+    21300044: enemy_boss_22
+    21300046: enemy_boss_23
+    21300048: enemy_boss_24
+    21300050: enemy_boss_25
+    21300052: enemy_boss_26
+    21300054: enemy_boss_27
+    21300056: enemy_boss_28
+    21300058: enemy_boss_29
+    21300060: enemy_boss_30
+    21300062: enemy_boss_31
+    21300064: enemy_boss_32
+    21300066: enemy_boss_33
+    21300068: enemy_boss_34
+    21300070: enemy_boss_35
+    21300072: enemy_boss_36
+    21300074: enemy_boss_37
+    21300076: enemy_boss_38
+    21300078: enemy_boss_39
+    21300080: enemy_boss_40
+    21300082: enemy_boss_41
+    21300084: enemy_boss_42
+    21300086: enemy_boss_43
+    21300088: enemy_boss_44
+    21300090: enemy_boss_45
+    21300092: enemy_boss_46
+    21300094: enemy_boss_47
+    21300096: enemy_boss_48
+    21300098: enemy_boss_49
+    21300100: enemy_boss_50
+    21300102: enemy_boss_51
+    21300104: enemy_boss_52
+    21300106: enemy_boss_53
+    21300108: enemy_boss_54
+    21300110: enemy_boss_55
+    21300112: enemy_boss_56
+    21300114: enemy_boss_57
+    21300116: enemy_boss_58
+    21300118: enemy_boss_59
+    21300120: enemy_boss_60
+    21300122: enemy_boss_61
+    21300124: enemy_boss_62
+    21300126: enemy_boss_63
+    21300128: enemy_boss_64
+    21300130: enemy_boss_65
+    21300132: enemy_boss_66
+    21300134: enemy_boss_67
+    21300136: enemy_boss_68
+    21300138: enemy_boss_69
+    21300140: enemy_boss_70
+    21300142: enemy_boss_71
+    21300144: enemy_boss_72
+    21300146: enemy_boss_73
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: enemy_boss_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 754
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_1
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 751
+        width: 38
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_2
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 753
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_3
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 755
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_4
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 761
+        width: 42
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_5
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 759
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_6
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 670
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_7
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 670
+        width: 41
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_8
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 670
+        width: 41
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_9
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 673
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_10
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 672
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_11
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 677
+        width: 55
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_12
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 679
+        width: 69
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_13
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 679
+        width: 80
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_14
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 592
+        width: 42
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_15
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 592
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_16
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 592
+        width: 44
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_17
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 591
+        width: 38
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_18
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 591
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_19
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 596
+        width: 53
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_20
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 598
+        width: 65
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_21
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 602
+        width: 76
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_22
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 513
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_23
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 514
+        width: 38
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_24
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 522
+        width: 47
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_25
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 514
+        width: 31
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_26
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 518
+        width: 44
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_27
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 517
+        width: 32
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_28
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 515
+        width: 38
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_29
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 391
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_30
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 395
+        width: 38
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_31
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 394
+        width: 40
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_32
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 397
+        width: 40
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_33
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 399
+        width: 40
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_34
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 386
+        width: 40
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_35
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 386
+        width: 41
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_36
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 399
+        width: 43
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_37
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 275
+        width: 38
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_38
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 274
+        width: 40
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_39
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 281
+        width: 40
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_40
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 287
+        width: 40
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_41
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 289
+        width: 40
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_42
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 282
+        width: 40
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_43
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 272
+        width: 40
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_44
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 273
+        width: 40
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_45
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 179
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_46
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 180
+        width: 48
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_47
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 179
+        width: 55
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_48
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 180
+        width: 51
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_49
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 214
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_50
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 214
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_51
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 214
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_52
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 214
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_53
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 214
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_54
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 174
+        width: 51
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_55
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 96
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_56
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 97
+        width: 48
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_57
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 96
+        width: 56
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_58
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 96
+        width: 56
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_59
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 97
+        width: 56
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_60
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 124
+        width: 33
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_61
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 126
+        width: 33
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_62
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 127
+        width: 33
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_63
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 127
+        width: 33
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_64
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 113
+        width: 35
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_65
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 113
+        width: 34
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_66
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 112
+        width: 32
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_67
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 112
+        width: 32
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_68
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 106
+        width: 33
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_69
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 108
+        width: 33
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_70
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 108
+        width: 33
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_71
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 108
+        width: 33
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_72
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 6
+        width: 39
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_boss_73
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 6
+        width: 56
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

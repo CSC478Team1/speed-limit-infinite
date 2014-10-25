@@ -10,7 +10,7 @@ public class CloneObject : MonoBehaviour {
 		//To clone the player use prefab of the player 1 for cloning
 		//will fix this when we remove the camera as a child of player 1
 		try{
-			if (numberToClone != null && !other.name.Contains("CLONEDOBJECT"))
+			if (numberToClone != null && !other.name.Contains(GameResources.ObjectWasCloned))
 			    if (numberToClone > 0){
 					other.name += GameResources.ObjectWasCloned;
 					for (int i = 0; i < numberToClone; i++){
