@@ -12,6 +12,7 @@ public class CollectibleItem : MonoBehaviour {
 	public Item.ItemType itemType;
 	public Item.PowerUpType powerUpType;
 	private Item item;
+	public bool isHiddenEnemy;
 
 
 	private void Awake(){
@@ -19,7 +20,8 @@ public class CollectibleItem : MonoBehaviour {
 
 	}
 	private void OnTriggerEnter2D (Collider2D other){
-		if (other.tag == "Player" && tag != "Enemy"){
+		//tag can be enemy on fake collectible items
+		if (other.tag == "Player" && !isHiddenEnemy){
 			try{
 				if (powerUpType != Item.PowerUpType.None)
 					GameObject.Find("Player1").GetComponent<PlayerController>().SetPowerUp(powerUpType);
@@ -31,7 +33,7 @@ public class CollectibleItem : MonoBehaviour {
 			} catch (UnityException e){
 				Debug.Log(e.Message);
 			}
-		} else if (tag == "Enemy"){
+		} else if (isHiddenEnemy){
 			try{
 				if (fakeEnemy != null)
 					fakeEnemy = (GameObject)Instantiate(fakeEnemy, this.transform.position, Quaternion.identity);

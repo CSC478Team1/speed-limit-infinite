@@ -27,6 +27,7 @@ public class Item {
 		DualLaser,
 		InfiniteSpeed,
 		GravityBoots,
+		LargeLaser,
 		None
 	}
 }

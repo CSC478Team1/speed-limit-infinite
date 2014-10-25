@@ -16,11 +16,15 @@ public class PlayerController : Controller {
 	private static bool canShootLaser = false;
 	private static bool canShootDualLaser = false;
 	private static bool hasGravityBoots = false;
+	private static bool canShootLargeLaser = false;
 
 	
 	// Use this for initialization
 	protected override void Start (){
 		base.Start();
+
+
+
 		speed = initialSpeed;
 		jumpForce = initialJumpforce;
 
@@ -43,7 +47,7 @@ public class PlayerController : Controller {
 	//Physics is generally suggested here
 	protected override void FixedUpdate(){
 		base.FixedUpdate();
-		if (health > 0){
+		if (!isDead){
 			//determine if player is moving 
 			float moveHorizontal = Input.GetAxis("Horizontal");
 			float moveVertical = rigidbody2D.velocity.y;
@@ -71,11 +75,11 @@ public class PlayerController : Controller {
 
 			//use raycasts to look below player and above.
 			//collider that are triggers are ignored by collisions
-			RaycastHit2D raycastFeet = Physics2D.CircleCast (groundCheck.position, .24f,  -Vector2.up, 1f, ignoreLayerBitmask);
+			RaycastHit2D raycastFeet = Physics2D.CircleCast (groundCheck.position, .28f,  -Vector2.up, 1f, ignoreLayerBitmask);
 			if (raycastFeet.transform !=null)
 				raycastFeet.collider.isTrigger = false;
 
-			RaycastHit2D raycastHead = Physics2D.CircleCast (headCheck.position, .24f,  Vector2.up, 1f, ignoreLayerBitmask);
+			RaycastHit2D raycastHead = Physics2D.CircleCast (headCheck.position, .28f,  Vector2.up, 1f, ignoreLayerBitmask);
 			if (raycastHead.transform !=null)
 				raycastHead.collider.isTrigger = true;
 
@@ -109,17 +113,35 @@ public class PlayerController : Controller {
 			canJump = false;
 			speed = initialSpeed;
 		} else if (Input.GetButton("Horizontal") && infiniteSpeed){
-			speed += .13f;
-		} else 
+			speed += .07f;
+		} else if (Input.GetButtonDown("Fire1")){
+
+			if (canShootLargeLaser){
+				anim.SetTrigger("Shoot Single");
+				FireWeapon(GameResources.GetGameObject(GameResources.KeyBlueLargeLaser), 9f);
+			} else if (canShootDualLaser){
+				anim.SetTrigger("Shoot Dual");
+				FireWeapon(GameResources.GetGameObject(GameResources.KeyBlueDualLaser), 14f);
+			} else if (canShootLaser){
+				anim.SetTrigger("Shoot Single");
+				FireWeapon(GameResources.GetGameObject(GameResources.KeyBlueSingleLaser), 14f);
+			}
+		} else
 			speed = initialSpeed;
 
 
 	}
 	private void Respawn(){
 		try{
-			Transform spawnpoint = GameObject.FindWithTag("SpawnPoint").transform;
-			transform.position = spawnpoint.position;
-			health = 100;
+			//prevent clones from respawning with player
+			if(gameObject.name.Contains(GameResources.ObjectClone))
+				Destroy(gameObject);
+			else{
+				Transform spawnpoint = GameObject.FindWithTag("SpawnPoint").transform;
+				transform.position = spawnpoint.position;
+				health = 100;
+				isDead = false;
+			}
 		} catch (UnityException e){
 			Debug.Log(e.Message);
 		}
@@ -139,6 +161,9 @@ public class PlayerController : Controller {
 			break;
 		case Item.PowerUpType.Laser:
 			canShootLaser = true;
+			break;
+		case Item.PowerUpType.LargeLaser:
+			canShootLargeLaser = true;
 			break;
 		
 		}

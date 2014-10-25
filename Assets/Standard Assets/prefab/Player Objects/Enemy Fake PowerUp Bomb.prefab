@@ -28,7 +28,7 @@ GameObject:
   - 114: {fileID: 11400000}
   m_Layer: 10
   m_Name: Enemy Fake PowerUp Bomb
-  m_TagString: Enemy
+  m_TagString: Player Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,6 +115,7 @@ MonoBehaviour:
   textureIcon: {fileID: 0}
   itemType: 0
   powerUpType: 4
+  isHiddenEnemy: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
