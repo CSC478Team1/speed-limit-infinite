@@ -8,9 +8,12 @@ public class TriggerEvent : MonoBehaviour {
 		if (other.gameObject.tag == "Box")
 			Destroy (other.gameObject); // change this for pushable scripting
 
-		if (gameObject.tag=="Player Object")
+		if (gameObject.tag == "Player Object")
 			if (requiresItemID != null)
 				if (ItemDatabase.HasItem(requiresItemID))
 					Destroy(gameObject); // destroy the door for now
+				else{
+					//display message to user asking to obtain requiresItemID
+				}
 	}
 }

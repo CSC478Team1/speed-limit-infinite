@@ -11,15 +11,17 @@ public class Laser : MonoBehaviour {
 	}
 	
 	private void OnTriggerEnter2D (Collider2D other){
+		//dual laser shots can trigger events close to one another
+		//check if gameObject is null if second laser hits before item is destroyed
 		if ((other.tag == "Enemy" || other.tag == "Player") && gameObject != null )
 		{ 
 			try{
 				if (gameObject.tag.Replace("Projectile", "") != other.tag){
-					other.GetComponent<Controller>().DecreaseHealth(damageValue);
 					//play sound and do damage!
-					Destroy(gameObject);
-				} else
-					Destroy(gameObject);
+					other.GetComponent<Controller>().DecreaseHealth(damageValue);
+				}
+
+				Destroy(gameObject);
 			}catch (UnityException e){
 				Debug.Log(e.Message);
 			}

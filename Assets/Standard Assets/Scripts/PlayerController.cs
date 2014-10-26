@@ -9,9 +9,10 @@ public class PlayerController : Controller {
 	private Transform headCheck;  //above player box collider
 	private float initialJumpforce = 600f;
 	private LayerMask groundLayerMask;  //ignoring just this layer for jumping
-
+	private Transform spawnpoint;
 
 	//save powerup information from scene to scene
+	//declare static to retain data between scenes
 	private static bool infiniteSpeed = false;
 	private static bool canShootLaser = false;
 	private static bool canShootDualLaser = false;
@@ -23,8 +24,6 @@ public class PlayerController : Controller {
 	protected override void Start (){
 		base.Start();
 
-
-
 		speed = initialSpeed;
 		jumpForce = initialJumpforce;
 
@@ -32,12 +31,18 @@ public class PlayerController : Controller {
 		//Anything that is not Player Layer will allow jumping
 		groundLayerMask = ~(1 << LayerMask.NameToLayer("Player"));
 
-
 		try{
-			//load head, side, and ground transforms and apply bitmask to our ingore layer
+			//load head and ground transforms and apply bitmask to our ingore layer
 			groundCheck = gameObject.transform.Find ("GroundCheck").transform;  
 			headCheck = gameObject.transform.Find("HeadCheck").transform;
 			ignoreLayerBitmask = 1 << LayerMask.NameToLayer("Platform");
+
+
+			//load spawnpoint if it exists
+			GameObject tempGameObject = GameObject.FindWithTag("SpawnPoint");
+			if (tempGameObject != null)
+				spawnpoint = tempGameObject.transform;
+
 		}catch (UnityException e){
 			Debug.Log(e.Message);
 		}
@@ -70,16 +75,14 @@ public class PlayerController : Controller {
 			//prevent multiple jumps
 			//movevertical doesn't work on moving platforms
 			//isJumping = (moveVertical != 0) ? true : false;  
-			canJump = Physics2D.Linecast(transform.position, groundCheck.position ,groundLayerMask) ? true: false;
+			canJump = Physics2D.Linecast(transform.position, groundCheck.position ,groundLayerMask) ? true : false;
 
-
-			//use raycasts to look below player and above.
-			//collider that are triggers are ignored by collisions
-			RaycastHit2D raycastFeet = Physics2D.CircleCast (groundCheck.position, .28f,  -Vector2.up, 1f, ignoreLayerBitmask);
+			float circleCastRadius = .28f;
+			RaycastHit2D raycastFeet = Physics2D.CircleCast (groundCheck.position, circleCastRadius,  -Vector2.up, 1f, ignoreLayerBitmask);
 			if (raycastFeet.transform !=null)
 				raycastFeet.collider.isTrigger = false;
 
-			RaycastHit2D raycastHead = Physics2D.CircleCast (headCheck.position, .28f,  Vector2.up, 1f, ignoreLayerBitmask);
+			RaycastHit2D raycastHead = Physics2D.CircleCast (headCheck.position, circleCastRadius,  Vector2.up, 1f, ignoreLayerBitmask);
 			if (raycastHead.transform !=null)
 				raycastHead.collider.isTrigger = true;
 
@@ -87,7 +90,7 @@ public class PlayerController : Controller {
 			RaycastHit2D raycastStuckInPlatformCheck = Physics2D.CircleCast (headCheck.position, .12f, -Vector2.up, .32f, ignoreLayerBitmask);
 			if (raycastStuckInPlatformCheck.transform !=null)
 				raycastStuckInPlatformCheck.collider.isTrigger = true;
-		
+				
 		}else {
 			Respawn();
 		}
@@ -137,8 +140,9 @@ public class PlayerController : Controller {
 			if(gameObject.name.Contains(GameResources.ObjectClone))
 				Destroy(gameObject);
 			else{
-				Transform spawnpoint = GameObject.FindWithTag("SpawnPoint").transform;
-				transform.position = spawnpoint.position;
+				if (spawnpoint != null)
+					transform.position = spawnpoint.position;
+
 				health = 100;
 				isDead = false;
 			}
@@ -167,6 +171,9 @@ public class PlayerController : Controller {
 			break;
 		
 		}
+	}
+	public void SetCheckpoint(Transform checkpointTransform){
+		spawnpoint = checkpointTransform;
 	}
 	
 }

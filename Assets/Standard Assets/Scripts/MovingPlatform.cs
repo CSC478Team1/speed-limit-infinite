@@ -31,18 +31,14 @@ public class MovingPlatform : MonoBehaviour {
 			//playerCheck = gameObject.transform.Find ("PlayerCheck").transform;
 			if (isHorizontal){
 				velocity = new Vector2 (speed, 0);
-				rigidbody2D.velocity = velocity;
+				//rigidbody2D.velocity = velocity;
+				rigidbody2D.MovePosition(rigidbody2D.position + velocity * Time.deltaTime);
 			}
 			else{
 				velocity = new Vector2 (0, speed);
 				rigidbody2D.velocity = velocity;
 			}
-			//RaycastHit2D checkForPlayer =  Physics2D.CircleCast (gameObject.transform.position, .15f,  Vector2.up, .15f, playerLayer);
-			//if (checkForPlayer.transform !=null)
-				//player.transform.parent = transform.parent;
-			//else
-				//player.transform.parent = null;
-	            
+			          
 			timer++;
 			if (timer >= maxTimer){
 				timer = 0;
@@ -51,6 +47,9 @@ public class MovingPlatform : MonoBehaviour {
 				isFinished = false;
 		}
 	}
+
+	//trigger events don't happen on the platform
+	//use objects to activate platforms
 	private void OnTriggerExit2D (Collider2D other){
 		try{
 			if (requiresTrigger && other.tag == triggerTag && UseOnExit){

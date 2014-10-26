@@ -28,11 +28,8 @@ public class Controller : MonoBehaviour {
 				Destroy(gameObject);  // add death call later
 			}
 		}
-
-		if (isDead){
-		}
 	}
-	//Decrement health return if character is alive or not
+	//Decrement health if character is dead change bool
 	public void DecreaseHealth(int damage){
 		health -= damage;
 		isDead = (health <= 0) ? true: false;

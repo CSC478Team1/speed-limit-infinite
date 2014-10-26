@@ -14,13 +14,13 @@ public class CollectibleItem : MonoBehaviour {
 	private Item item;
 	public bool isHiddenEnemy;
 
-
+	//initialize item to be collected
 	private void Awake(){
-		item = new Item(itemName, itemID, textureIcon, itemType, powerUpType);
-
+		if(!isHiddenEnemy)
+			item = new Item(itemName, itemID, textureIcon, itemType, powerUpType);
 	}
 	private void OnTriggerEnter2D (Collider2D other){
-		//tag can be enemy on fake collectible items
+		//tag can be enemy on fake collectible items, but switch it to Player Objects
 		if (other.tag == "Player" && !isHiddenEnemy){
 			try{
 				if (powerUpType != Item.PowerUpType.None)
