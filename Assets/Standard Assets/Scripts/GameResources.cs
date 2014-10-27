@@ -9,6 +9,7 @@ public static class GameResources  {
 	public const string KeyBlueDualLaser = "BlueDualLaser";
 	public const string KeyBlueLargeLaser = "BlueLargeLaser";
 	public const string KeyGreenSmallLaser ="GreenSmallLaser";
+	public const string KeyGreenSingleLaser = "GreenSingleLaser";
 
 	public const string ObjectClone = "CLONEDOBJECTCHILD";
 	public const string ObjectWasCloned = "CLONEDOBJECT";
@@ -20,6 +21,7 @@ public static class GameResources  {
 		gameObjects.Add(KeyBlueDualLaser, Resources.Load<GameObject>(KeyBlueDualLaser));
 		gameObjects.Add(KeyBlueLargeLaser, Resources.Load<GameObject>(KeyBlueLargeLaser));
 		gameObjects.Add(KeyGreenSmallLaser, Resources.Load<GameObject>(KeyGreenSmallLaser));
+		gameObjects.Add(KeyGreenSingleLaser, Resources.Load<GameObject>(KeyGreenSingleLaser));
 	}
 
 	public static GameObject GetGameObject(string key){

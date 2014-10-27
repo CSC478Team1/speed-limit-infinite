@@ -75,14 +75,15 @@ public class PlayerController : Controller {
 			//prevent multiple jumps
 			//movevertical doesn't work on moving platforms
 			//isJumping = (moveVertical != 0) ? true : false;  
-			canJump = Physics2D.Linecast(transform.position, groundCheck.position ,groundLayerMask) ? true : false;
+			float circleRadius = .28f;
+			//canJump = Physics2D.Linecast(transform.position, groundCheck.position ,groundLayerMask) ? true : false;
+			canJump = Physics2D.OverlapCircle(groundCheck.position, circleRadius ,groundLayerMask) ? true : false;
 
-			float circleCastRadius = .28f;
-			RaycastHit2D raycastFeet = Physics2D.CircleCast (groundCheck.position, circleCastRadius,  -Vector2.up, 1f, ignoreLayerBitmask);
+			RaycastHit2D raycastFeet = Physics2D.CircleCast (groundCheck.position, circleRadius,  -Vector2.up, 1f, ignoreLayerBitmask);
 			if (raycastFeet.transform !=null)
 				raycastFeet.collider.isTrigger = false;
 
-			RaycastHit2D raycastHead = Physics2D.CircleCast (headCheck.position, circleCastRadius,  Vector2.up, 1f, ignoreLayerBitmask);
+			RaycastHit2D raycastHead = Physics2D.CircleCast (headCheck.position, circleRadius,  Vector2.up, 1f, ignoreLayerBitmask);
 			if (raycastHead.transform !=null)
 				raycastHead.collider.isTrigger = true;
 
