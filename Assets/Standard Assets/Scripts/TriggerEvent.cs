@@ -3,6 +3,7 @@ using System.Collections;
 
 public class TriggerEvent : MonoBehaviour {
 	public int requiresItemID;
+	public bool removeItemAfterUse = false;
 
 	private void OnTriggerEnter2D (Collider2D other){
 		if (other.gameObject.tag == "Box")
@@ -10,9 +11,11 @@ public class TriggerEvent : MonoBehaviour {
 
 		if (gameObject.tag == "Player Object")
 			if (requiresItemID != null)
-				if (ItemDatabase.HasItem(requiresItemID))
+				if (ItemDatabase.HasItem(requiresItemID)){
+					if (removeItemAfterUse)
+						ItemDatabase.RemoveItem(ItemDatabase.GetItem(requiresItemID));
 					Destroy(gameObject); // destroy the door for now
-				else{
+				}else{
 					//display message to user asking to obtain requiresItemID
 				}
 	}

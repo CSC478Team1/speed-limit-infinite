@@ -109,11 +109,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ab0caf937713e419125b74fa8e9816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fakeEnemy: {fileID: 0}
   itemName: InfiteSpeed
   itemID: 3
-  textureIcon: {fileID: 0}
+  textureIcon: {fileID: 2800000, guid: 17958541d7aa90e4ab432a2cb3bcb016, type: 3}
   itemType: 0
   powerUpType: 2
+  isHiddenEnemy: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

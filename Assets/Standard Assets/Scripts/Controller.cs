@@ -2,7 +2,12 @@
 using System.Collections;
 
 public class Controller : MonoBehaviour {
+
+	public delegate void HealthStatus(int currentHealth, int maximumHealth);
+	public static event HealthStatus updateHealth;
+
 	protected int health = 100;
+	private int maxHealth;
 	protected float deathHeight = -15f;  //Y value to determine if Character fell off map
 	protected bool isFacingRight = true; 
 	protected bool canJump = true;
@@ -14,7 +19,7 @@ public class Controller : MonoBehaviour {
 	// Use this for initialization
 	protected virtual void Start () {
 		anim = GetComponent<Animator>();
-	
+		maxHealth = health;
 	}
 
 	protected virtual void FixedUpdate(){
@@ -33,6 +38,18 @@ public class Controller : MonoBehaviour {
 	public void DecreaseHealth(int damage){
 		health -= damage;
 		isDead = (health <= 0) ? true: false;
+		if (gameObject.tag == "Player")
+			HealthHasChanged();
+	}
+	public void IncreaseHealth(int restoreValue){
+		health = ((health + restoreValue) > maxHealth) ? maxHealth : health + restoreValue;
+		if (gameObject.tag == "Player")
+			HealthHasChanged();
+	}
+	protected void SetHealth(int healthValue){
+		health = healthValue;
+		if (gameObject.tag == "Player")
+			HealthHasChanged();
 	}
 	protected void MirrorSprite(){
 		isFacingRight = !isFacingRight;
@@ -55,4 +72,10 @@ public class Controller : MonoBehaviour {
 		}
 
 	}
+
+	private void HealthHasChanged(){
+		if (!gameObject.name.Contains(GameResources.ObjectClone) && updateHealth != null)
+			updateHealth(health, maxHealth);
+	}
+
 }

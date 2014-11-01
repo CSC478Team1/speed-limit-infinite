@@ -109,11 +109,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ab0caf937713e419125b74fa8e9816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fakeEnemy: {fileID: 0}
   itemName: AntiGravityBoot
   itemID: 1
-  textureIcon: {fileID: 0}
+  textureIcon: {fileID: 2800000, guid: 6b3a45d82a9017b44bce58c83dbca59b, type: 3}
   itemType: 0
   powerUpType: 3
+  isHiddenEnemy: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

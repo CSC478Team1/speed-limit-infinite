@@ -32,7 +32,7 @@ public class PlayerController : Controller {
 		groundLayerMask = ~(1 << LayerMask.NameToLayer("Player"));
 
 		try{
-			//load head and ground transforms and apply bitmask to our ingore layer
+			//load head and ground transforms and apply bitmask to our ignore layer
 			groundCheck = gameObject.transform.Find ("GroundCheck").transform;  
 			headCheck = gameObject.transform.Find("HeadCheck").transform;
 			ignoreLayerBitmask = 1 << LayerMask.NameToLayer("Platform");
@@ -77,7 +77,7 @@ public class PlayerController : Controller {
 			//isJumping = (moveVertical != 0) ? true : false;  
 			float circleRadius = .28f;
 			//canJump = Physics2D.Linecast(transform.position, groundCheck.position ,groundLayerMask) ? true : false;
-			canJump = Physics2D.OverlapCircle(groundCheck.position, circleRadius ,groundLayerMask) ? true : false;
+			canJump = Physics2D.OverlapCircle(groundCheck.position, .20f ,groundLayerMask) ? true : false;
 
 			RaycastHit2D raycastFeet = Physics2D.CircleCast (groundCheck.position, circleRadius,  -Vector2.up, 1f, ignoreLayerBitmask);
 			if (raycastFeet.transform !=null)
@@ -144,7 +144,7 @@ public class PlayerController : Controller {
 				if (spawnpoint != null)
 					transform.position = spawnpoint.position;
 
-				health = 100;
+				SetHealth(100);
 				isDead = false;
 			}
 		} catch (UnityException e){

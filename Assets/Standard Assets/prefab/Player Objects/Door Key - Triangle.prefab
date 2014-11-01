@@ -55,7 +55,7 @@ MonoBehaviour:
   fakeEnemy: {fileID: 0}
   itemName: Level3DoorKey
   itemID: 10
-  textureIcon: {fileID: 0}
+  textureIcon: {fileID: 2800000, guid: 015bbbf41154ed345b68ff8ae4d2f2fa, type: 3}
   itemType: 2
   powerUpType: 5
   isHiddenEnemy: 0
