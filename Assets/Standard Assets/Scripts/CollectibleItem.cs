@@ -27,7 +27,6 @@ public class CollectibleItem : MonoBehaviour {
 					GameObject.Find("Player1").GetComponent<PlayerController>().SetPowerUp(powerUpType);
 
 				ItemDatabase.AddItem(item);
-
 				//play sound or something and disappear
 				Destroy(gameObject);
 			} catch (UnityException e){

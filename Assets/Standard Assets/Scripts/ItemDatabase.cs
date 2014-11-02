@@ -12,7 +12,7 @@ public static class ItemDatabase {
 
 	public static void RemoveItem(Item item){
 		try{
-			itemsList.Remove(itemsList.Find(itemToRemove => itemToRemove.ItemID == item.ItemID));
+			itemsList.Remove(item);
 			if (itemStatusChanged != null)
 				itemStatusChanged(item, true);
 		}catch (Exception e){

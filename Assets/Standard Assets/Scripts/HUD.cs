@@ -6,8 +6,7 @@ public class HUD : MonoBehaviour {
 
 	private static int health = 100;
 	private static int maxHealth = 100;
-
-
+	
 	private static float left;
 	private static float top;
 	private static float healthBarBackgroundWidth;
@@ -68,13 +67,17 @@ public class HUD : MonoBehaviour {
 
 		float position = left;
 		foreach (Texture t in powerUpTextures){
-			GUI.DrawTexture(new Rect(position,bottom,t.width/2,t.height/2), t, ScaleMode.ScaleToFit, true, 1.0f);
-			position += t.width + .5f;
+			if (t != null){
+				GUI.DrawTexture(new Rect(position,bottom,t.width,t.height), t, ScaleMode.ScaleAndCrop, true, 1.0f);
+				position += t.width + .5f;
+			}
 		}
 		position = left;
 		foreach (Texture t in levelItemTextures){
-			GUI.DrawTexture(new Rect(position,levelItemTop,t.width,t.height), t, ScaleMode.ScaleAndCrop, true, 1.0f);
-			position += t.width + .5f;
+			if (t != null){
+				GUI.DrawTexture(new Rect(position,levelItemTop,t.width,t.height), t, ScaleMode.ScaleAndCrop, true, 1.0f);
+				position += t.width + .5f;
+			}
 		}
 
 	}

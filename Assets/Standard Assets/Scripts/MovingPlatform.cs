@@ -31,8 +31,8 @@ public class MovingPlatform : MonoBehaviour {
 			//playerCheck = gameObject.transform.Find ("PlayerCheck").transform;
 			if (isHorizontal){
 				velocity = new Vector2 (speed, 0);
-				//rigidbody2D.velocity = velocity;
-				rigidbody2D.MovePosition(rigidbody2D.position + velocity * Time.deltaTime);
+				rigidbody2D.velocity = velocity;
+				//rigidbody2D.MovePosition(rigidbody2D.position + velocity * Time.deltaTime);
 			}
 			else{
 				velocity = new Vector2 (0, speed);
