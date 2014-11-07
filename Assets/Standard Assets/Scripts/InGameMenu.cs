@@ -15,18 +15,19 @@ public class InGameMenu : MonoBehaviour {
 	private float buttonLeft;
 	private float buttonTop;
 
-	//private GUIStyle style;
+	public GUIStyle style;
 
 	private void Start(){
-		top = Screen.height / 8f;
-		left = Screen.width / 4f;
-		height = Screen.height / 1.25f;
-		width =  Screen.width / 2f;
 
-		buttonHeight = height / 16f;
-		buttonStart = top + (buttonHeight * 3);
+		height = Screen.height / 1.92f;
+		width =  Screen.width / 4f;
+		left = (Screen.width - width) / 2f;
+		top = (Screen.height - height) / 2f;
+
+		buttonHeight = height / 8f;
+		buttonStart = top + (buttonHeight * 1.5f);
 		buttonWidth = width - (Screen.width / 16f);
-		buttonLeft = left + (left - buttonWidth/2);
+		buttonLeft = left + ((width - buttonWidth)/ 2f);
 
 		//style = new GUIStyle(GUI.skin.box);
 	}
@@ -35,45 +36,46 @@ public class InGameMenu : MonoBehaviour {
 	private void Update () {
 		if (Input.GetButtonDown("Menu")){
 			//pause the game and unpause if user hits menu key again
-			Time.timeScale = menuCalled ? 1 : 0;
+			GameManager.PauseGameToggle();
 			menuCalled = !menuCalled;
 		}
 	}
 
 	private void OnGUI(){
 		if (menuCalled){
-			GUI.color = Color.cyan;
-			GUI.backgroundColor = Color.black;
+			GUI.skin.box = style;
+			GUI.skin.button.normal.textColor = Color.cyan;
+			GUI.skin.button.hover.textColor = Color.white;
 
 			buttonTop = buttonStart;
 			GUI.Box(new Rect(left,top,width,height), "Game Paused");
 
 			if (GUI.Button(new Rect(buttonLeft,buttonTop,buttonWidth,buttonHeight), "Continue Game")){
-				Time.timeScale = 1;
 				menuCalled = false;
 			}
 			buttonTop += buttonHeight * 1.5f;
 
 			if (GUI.Button(new Rect(buttonLeft,buttonTop,buttonWidth,buttonHeight), "Restart Level")){
-				Time.timeScale = 1;
 				menuCalled = false;
-				Application.LoadLevel(Application.loadedLevel);
+				GameManager.RestartLevel();
 			}
 			buttonTop += buttonHeight * 1.5f;
 
 			if (GUI.Button(new Rect(buttonLeft,buttonTop,buttonWidth,buttonHeight), "Main Menu")){
-				Time.timeScale = 1;
 				menuCalled = false;
-				//still need a main menu
+				GameManager.LoadMainMenu();
 			}
 			buttonTop += buttonHeight * 1.5f;
 
 			if (GUI.Button(new Rect(buttonLeft,buttonTop,buttonWidth,buttonHeight), "Quit Game")){
-				Time.timeScale = 1;
 				menuCalled = false;
-				Application.Quit();
+				GameManager.QuitGame();
 			}
 
+			//unpause game if menu item was selected
+			if (!menuCalled)
+				GameManager.PauseGameToggle();
+		
 
 		}
 	}

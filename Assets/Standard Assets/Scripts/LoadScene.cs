@@ -14,6 +14,6 @@ public class LoadScene : MonoBehaviour
 	{
 		//make sure other objects aren't triggering this
 		if (other.gameObject.tag == "Player") 
-			Application.LoadLevel(sceneName);
+			GameManager.LoadNextLevel(sceneName);
 	}
 }

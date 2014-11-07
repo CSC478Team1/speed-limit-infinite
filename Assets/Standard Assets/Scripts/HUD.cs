@@ -23,13 +23,13 @@ public class HUD : MonoBehaviour {
 
 	private void Start(){
 		left = (Screen.width / 1.3f) ;
-		top = 30f;
+		top = Screen.height / 48f;
 		healthBarBackgroundWidth = left /4f;
 		healthBar = GameResources.GetGameObject(GameResources.KeyHealthBar).guiTexture.texture;
 		healthBarBackground = GameResources.GetGameObject(GameResources.KeyHealthBarBackground).guiTexture.texture;
-		healthBarHeight  = 15f;
-		bottom = Screen.height - 40f;
-		levelItemTop = top + healthBarHeight + 10f;
+		healthBarHeight  = Screen.height / 48f;
+		bottom = Screen.height - (Screen.height / 36f);
+		levelItemTop = top + healthBarHeight + Screen.height / 144f;
 	}
 
 	private void OnEnable(){
@@ -47,9 +47,12 @@ public class HUD : MonoBehaviour {
 	}
 	private void ItemStatusChanged(Item item, bool isRemoved){
 		//we shouldn't need to remove power ups right now
-		if (item.ItemObjectType == Item.ItemType.PowerUp && item.ItemPowerUpType != Item.PowerUpType.None)
-			powerUpTextures.Add(item.ItemIcon);
-		else if (item.ItemObjectType == Item.ItemType.LevelItem){
+		if (item.ItemObjectType == Item.ItemType.PowerUp && item.ItemPowerUpType != Item.PowerUpType.None){
+			if (isRemoved)
+				powerUpTextures.Remove(item.ItemIcon);
+			else
+				powerUpTextures.Add(item.ItemIcon);
+		} else if (item.ItemObjectType == Item.ItemType.LevelItem){
 			if (isRemoved){
 				levelItemTextures.Remove(item.ItemIcon);
 			} else

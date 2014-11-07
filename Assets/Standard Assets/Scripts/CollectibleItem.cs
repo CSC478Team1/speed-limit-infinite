@@ -24,7 +24,7 @@ public class CollectibleItem : MonoBehaviour {
 		if (other.tag == "Player" && !isHiddenEnemy){
 			try{
 				if (powerUpType != Item.PowerUpType.None)
-					GameObject.Find("Player1").GetComponent<PlayerController>().SetPowerUp(powerUpType);
+					GameManager.AddPowerUpToPlayer(powerUpType);
 
 				ItemDatabase.AddItem(item);
 				//play sound or something and disappear

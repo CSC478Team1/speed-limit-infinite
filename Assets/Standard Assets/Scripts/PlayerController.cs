@@ -10,6 +10,7 @@ public class PlayerController : Controller {
 	private float initialJumpforce = 600f;
 	private LayerMask groundLayerMask;  //ignoring just this layer for jumping
 	private Transform spawnpoint;
+	private int startingHealth = 100;
 
 	//save powerup information from scene to scene
 	//declare static to retain data between scenes
@@ -144,37 +145,45 @@ public class PlayerController : Controller {
 				if (spawnpoint != null)
 					transform.position = spawnpoint.position;
 
-				SetHealth(100);
+				ResetHealth();
 				isDead = false;
 			}
 		} catch (UnityException e){
 			Debug.Log(e.Message);
 		}
 	}
-
-	public void SetPowerUp(Item.PowerUpType powerUP){
+	public void AddPowerUp(Item.PowerUpType powerUP){
+		SetPowerUp(powerUP, true);
+	}
+	public void RemovePowerUp(Item.PowerUpType powerUP){
+		SetPowerUp(powerUP, false);
+	}
+	private void SetPowerUp (Item.PowerUpType powerUP, bool value){
 		switch (powerUP){
 
 		case Item.PowerUpType.DualLaser: 
-			canShootDualLaser = true;
+			canShootDualLaser = value;
 			break;
 		case Item.PowerUpType.GravityBoots:
-			hasGravityBoots = true;
+			hasGravityBoots = value;
 			break;
 		case Item.PowerUpType.InfiniteSpeed:
-			infiniteSpeed = true;
+			infiniteSpeed = value;
 			break;
 		case Item.PowerUpType.Laser:
-			canShootLaser = true;
+			canShootLaser = value;
 			break;
 		case Item.PowerUpType.LargeLaser:
-			canShootLargeLaser = true;
+			canShootLargeLaser = value;
 			break;
 		
 		}
 	}
 	public void SetCheckpoint(Transform checkpointTransform){
 		spawnpoint = checkpointTransform;
+	}
+	public void ResetHealth(){
+		SetHealth(startingHealth);
 	}
 	
 }
