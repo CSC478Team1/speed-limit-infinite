@@ -5,7 +5,8 @@ public class CameraBackgroundScroller : MonoBehaviour {
 	private GameObject player;
 	private float quadWidth;
 	private float quadHeight;
-	private float scale = .001f;
+	private float horizontalScrollSpeed = .001f;
+	private float verticalScrollSpeed = 0.003f;
 
 	private void Start(){
 		player = GameObject.Find("Player1");
@@ -20,7 +21,7 @@ public class CameraBackgroundScroller : MonoBehaviour {
 	}
 	// Update is called once per frame
 	private void Update () {
-		renderer.material.mainTextureOffset = new Vector2((player.transform.position.x * scale) % quadWidth, ((player.transform.position.y + 15) * scale) % quadHeight);
+		renderer.material.mainTextureOffset = new Vector2((player.transform.position.x * horizontalScrollSpeed) % quadWidth, ((player.transform.position.y + 15) * verticalScrollSpeed) % quadHeight);
 	
 	}
 }

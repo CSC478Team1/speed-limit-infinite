@@ -10,7 +10,7 @@ public class TriggerEvent : MonoBehaviour {
 			Destroy (other.gameObject); // change this for pushable scripting
 
 		if (gameObject.tag == "Player Object")
-			if (requiresItemID != null)
+			if (requiresItemID != null && other.tag == "Player")
 				if (ItemDatabase.HasItem(requiresItemID)){
 					if (removeItemAfterUse)
 						ItemDatabase.RemoveItem(ItemDatabase.GetItem(requiresItemID));

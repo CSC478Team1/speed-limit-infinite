@@ -42,7 +42,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_SleepingMode: 1
@@ -67,7 +67,7 @@ Animator:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 90fded6e22f5f0643b0cb725a043d5c7, type: 2}
+  m_Controller: {fileID: 9100000, guid: b71e6945c41f74145990c3ba456c7823, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

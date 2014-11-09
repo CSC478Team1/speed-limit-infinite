@@ -8,5 +8,5 @@ public class BombEnemyController : EnemyController {
 		base.Start();
 	
 	}
-
+	
 }
