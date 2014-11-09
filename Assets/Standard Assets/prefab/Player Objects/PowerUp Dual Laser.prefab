@@ -139,12 +139,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fakeEnemy: {fileID: 0}
-  itemName: DualLaser
+  itemName: Dual Lasers
   itemID: 2
-  textureIcon: {fileID: 0}
+  textureIcon: {fileID: 2800000, guid: 42f0df29c3a077f48b18de6245053fb1, type: 3}
   itemType: 0
   powerUpType: 1
   isHiddenEnemy: 0
+  value: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

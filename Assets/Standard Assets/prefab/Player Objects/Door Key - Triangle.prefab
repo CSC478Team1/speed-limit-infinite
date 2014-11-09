@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.105249405, y: 37.7309151, z: 0}
+  m_LocalPosition: {x: -11.0247126, y: 1.35278881, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -53,12 +53,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fakeEnemy: {fileID: 0}
-  itemName: Level3DoorKey
+  itemName: Door Key
   itemID: 10
   textureIcon: {fileID: 2800000, guid: 015bbbf41154ed345b68ff8ae4d2f2fa, type: 3}
   itemType: 2
   powerUpType: 5
   isHiddenEnemy: 0
+  value: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

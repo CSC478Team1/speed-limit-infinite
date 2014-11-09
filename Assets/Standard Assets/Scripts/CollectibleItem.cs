@@ -13,6 +13,7 @@ public class CollectibleItem : MonoBehaviour {
 	public Item.PowerUpType powerUpType;
 	private Item item;
 	public bool isHiddenEnemy;
+	public int value = 1; // use this for health or item counts
 
 	//initialize item to be collected
 	private void Awake(){
@@ -26,7 +27,13 @@ public class CollectibleItem : MonoBehaviour {
 				if (powerUpType != Item.PowerUpType.None)
 					GameManager.AddPowerUpToPlayer(powerUpType);
 
-				ItemDatabase.AddItem(item);
+				if (itemType != Item.ItemType.Consumable){
+					GameManager.DisplayMessage("You've just obtained: " + itemName);
+					ItemDatabase.AddItem(item);
+				}
+				else if (itemName == "Health")
+					GameManager.AddHealthToPlayer(value);
+
 				//play sound or something and disappear
 				Destroy(gameObject);
 			} catch (UnityException e){

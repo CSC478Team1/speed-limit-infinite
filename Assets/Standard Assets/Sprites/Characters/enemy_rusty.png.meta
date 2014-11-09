@@ -1,0 +1,861 @@
+fileFormatVersion: 2
+guid: 6f4da6df836f0e3458ff48b749950e61
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: enemy_rusty_0
+    21300002: enemy_rusty_1
+    21300004: enemy_rusty_2
+    21300006: enemy_rusty_3
+    21300008: enemy_rusty_4
+    21300010: enemy_rusty_5
+    21300012: enemy_rusty_6
+    21300014: enemy_rusty_7
+    21300016: enemy_rusty_8
+    21300018: enemy_rusty_9
+    21300020: enemy_rusty_10
+    21300022: enemy_rusty_11
+    21300024: enemy_rusty_12
+    21300026: enemy_rusty_13
+    21300028: enemy_rusty_14
+    21300030: enemy_rusty_15
+    21300032: enemy_rusty_16
+    21300034: enemy_rusty_17
+    21300036: enemy_rusty_18
+    21300038: enemy_rusty_19
+    21300040: enemy_rusty_20
+    21300042: enemy_rusty_21
+    21300044: enemy_rusty_22
+    21300046: enemy_rusty_23
+    21300048: enemy_rusty_24
+    21300050: enemy_rusty_25
+    21300052: enemy_rusty_26
+    21300054: enemy_rusty_27
+    21300056: enemy_rusty_28
+    21300058: enemy_rusty_29
+    21300060: enemy_rusty_30
+    21300062: enemy_rusty_31
+    21300064: enemy_rusty_32
+    21300066: enemy_rusty_33
+    21300068: enemy_rusty_34
+    21300070: enemy_rusty_35
+    21300072: enemy_rusty_36
+    21300074: enemy_rusty_37
+    21300076: enemy_rusty_38
+    21300078: enemy_rusty_39
+    21300080: enemy_rusty_40
+    21300082: enemy_rusty_41
+    21300084: enemy_rusty_42
+    21300086: enemy_rusty_43
+    21300088: enemy_rusty_44
+    21300090: enemy_rusty_45
+    21300092: enemy_rusty_46
+    21300094: enemy_rusty_47
+    21300096: enemy_rusty_48
+    21300098: enemy_rusty_49
+    21300100: enemy_rusty_50
+    21300102: enemy_rusty_51
+    21300104: enemy_rusty_52
+    21300106: enemy_rusty_53
+    21300108: enemy_rusty_54
+    21300110: enemy_rusty_55
+    21300112: enemy_rusty_56
+    21300114: enemy_rusty_57
+    21300116: enemy_rusty_58
+    21300118: enemy_rusty_59
+    21300120: enemy_rusty_60
+    21300122: enemy_rusty_61
+    21300124: enemy_rusty_62
+    21300126: enemy_rusty_63
+    21300128: enemy_rusty_64
+    21300130: enemy_rusty_65
+    21300132: enemy_rusty_66
+    21300134: enemy_rusty_67
+    21300136: enemy_rusty_68
+    21300138: enemy_rusty_69
+    21300140: enemy_rusty_70
+    21300142: enemy_rusty_71
+    21300144: enemy_rusty_72
+    21300146: enemy_rusty_head
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: enemy_rusty_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1017
+        width: 37
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_1
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 1017
+        width: 37
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_2
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 1017
+        width: 38
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_3
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 1016
+        width: 52
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_4
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 1017
+        width: 45
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 918
+        width: 51
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_6
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 920
+        width: 36
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_7
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 918
+        width: 38
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_8
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 917
+        width: 52
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_9
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 918
+        width: 34
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_10
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 919
+        width: 41
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_11
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 917
+        width: 52
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_12
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 815
+        width: 38
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_13
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 815
+        width: 38
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_14
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 815
+        width: 36
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_15
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 814
+        width: 39
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_16
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 814
+        width: 40
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_17
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 812
+        width: 41
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_18
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 812
+        width: 43
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_19
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 813
+        width: 37
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_20
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 723
+        width: 37
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_21
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 724
+        width: 44
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_22
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 728
+        width: 46
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_23
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 727
+        width: 53
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_24
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 726
+        width: 62
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_25
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 729
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_26
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 633
+        width: 37
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_27
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 637
+        width: 49
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_28
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 634
+        width: 51
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_29
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 637
+        width: 43
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_30
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 634
+        width: 43
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_31
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 637
+        width: 47
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_32
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 545
+        width: 37
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_33
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 545
+        width: 52
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_34
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 543
+        width: 67
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_35
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 545
+        width: 74
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_36
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 545
+        width: 79
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_37
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 453
+        width: 39
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_38
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 454
+        width: 47
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_39
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 454
+        width: 37
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_40
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 456
+        width: 66
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_41
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 454
+        width: 53
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_42
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 355
+        width: 37
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_43
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 356
+        width: 46
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_44
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 356
+        width: 38
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_45
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 358
+        width: 74
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_46
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 358
+        width: 38
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_47
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 358
+        width: 40
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_48
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 253
+        width: 39
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_49
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 253
+        width: 38
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_50
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 254
+        width: 36
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_51
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 253
+        width: 39
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_52
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 253
+        width: 43
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_53
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 255
+        width: 45
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_54
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 254
+        width: 43
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_55
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 257
+        width: 39
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_56
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 256
+        width: 37
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_57
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 138
+        width: 37
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_58
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 138
+        width: 38
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_59
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 138
+        width: 37
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_60
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 136
+        width: 51
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_61
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 130
+        width: 57
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_62
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 138
+        width: 46
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_63
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 138
+        width: 50
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_64
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 138
+        width: 51
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_65
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 140
+        width: 37
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_66
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 12
+        width: 37
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_67
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 15
+        width: 37
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_68
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 10
+        width: 51
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_69
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 8
+        width: 48
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_70
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 12
+        width: 48
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_71
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 9
+        width: 51
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_72
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 12
+        width: 38
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_rusty_head
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 1078
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

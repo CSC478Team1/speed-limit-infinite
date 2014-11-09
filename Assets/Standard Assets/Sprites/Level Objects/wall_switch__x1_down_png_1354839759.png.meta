@@ -1,0 +1,124 @@
+fileFormatVersion: 2
+guid: e94d003d51b2daf438b40391e8e5a497
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: wall_switch__x1_down_png_1354839759_0
+    21300002: wall_switch__x1_down_png_1354839759_1
+    21300004: wall_switch__x1_down_png_1354839759_2
+    21300006: wall_switch__x1_down_png_1354839759_3
+    21300008: wall_switch__x1_down_png_1354839759_4
+    21300010: wall_switch__x1_down_png_1354839759_5
+    21300012: wall_switch__x1_down_png_1354839759_6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 256
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: wall_switch__x1_down_png_1354839759_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 11
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: wall_switch__x1_down_png_1354839759_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 11
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: wall_switch__x1_down_png_1354839759_2
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 11
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: wall_switch__x1_down_png_1354839759_3
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 8
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: wall_switch__x1_down_png_1354839759_4
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 2
+        width: 31
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: wall_switch__x1_down_png_1354839759_5
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 0
+        width: 31
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: wall_switch__x1_down_png_1354839759_6
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 8
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

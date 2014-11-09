@@ -109,11 +109,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ab0caf937713e419125b74fa8e9816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: SingleLaser
+  fakeEnemy: {fileID: 0}
+  itemName: Single Laser
   itemID: 3
-  textureIcon: {fileID: 0}
+  textureIcon: {fileID: 2800000, guid: d065cb0ce6d4aaf47a025878a3513544, type: 3}
   itemType: 0
   powerUpType: 0
+  isHiddenEnemy: 0
+  value: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

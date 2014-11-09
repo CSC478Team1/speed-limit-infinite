@@ -110,12 +110,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fakeEnemy: {fileID: 0}
-  itemName: LargeLaser
+  itemName: Large Laser
   itemID: 3
-  textureIcon: {fileID: 0}
+  textureIcon: {fileID: 2800000, guid: 9449cffd72fdd8c49a89490e1e0b0a0f, type: 3}
   itemType: 0
   powerUpType: 4
   isHiddenEnemy: 0
+  value: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

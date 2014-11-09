@@ -17,6 +17,13 @@ public static class GameManager {
 	public static void PauseGameToggle(){
 		Time.timeScale = (Time.timeScale != 0f) ? 0f : 1f;
 	}
+	public static void AddHealthToPlayer(int value){
+		try{
+			GameObject.Find("Player1").GetComponent<PlayerController>().IncreaseHealth(value);
+		}catch (Exception e){
+			Debug.Log(e.Message);
+		}
+	}
 	public static void AddPowerUpToPlayer(Item.PowerUpType powerUp){
 		try{
 			GameObject.Find("Player1").GetComponent<PlayerController>().AddPowerUp(powerUp);
@@ -38,6 +45,14 @@ public static class GameManager {
 			Debug.Log(e.Message);
 		}
 		Application.LoadLevel("MainMenu");
+	}
+
+	public static void DisplayMessage(string message){
+		try{
+			GameObject.Find("Main Camera").GetComponent<UIText>().DisplayMessage(message, 3f);
+		} catch(Exception e){
+			Debug.Log(e.Message);
+		}
 	}
 	private static void RemoveItemsFromPlayer(List<Item> list){
 		List<Item> removeFromPlayer = new List<Item>(list);

@@ -12,6 +12,9 @@ public static class GameResources  {
 	public const string KeyGreenSingleLaser = "GreenSingleLaser";
 	public const string KeyHealthBar = "HealthBar";
 	public const string KeyHealthBarBackground = "HealthbarBackground";
+	public const string KeyHUDHealthText = "HealthText";
+	public const string KeyHUDPowerUpText = "PowerUpText";
+	public const string KeyHUDPowerUpBackground = "PowerUpBackground";
 
 	public const string ObjectClone = "CLONEDOBJECTCHILD";
 	public const string ObjectWasCloned = "CLONEDOBJECT";
@@ -26,6 +29,9 @@ public static class GameResources  {
 		gameObjects.Add(KeyGreenSingleLaser, Resources.Load<GameObject>(KeyGreenSingleLaser));
 		gameObjects.Add(KeyHealthBar, Resources.Load<GameObject>(KeyHealthBar));
 		gameObjects.Add(KeyHealthBarBackground, Resources.Load<GameObject>(KeyHealthBarBackground));
+		gameObjects.Add(KeyHUDHealthText, Resources.Load<GameObject>(KeyHUDHealthText));
+		gameObjects.Add(KeyHUDPowerUpText, Resources.Load<GameObject>(KeyHUDPowerUpText));
+		gameObjects.Add(KeyHUDPowerUpBackground, Resources.Load<GameObject>(KeyHUDPowerUpBackground));
 	}
 
 	public static GameObject GetGameObject(string key){

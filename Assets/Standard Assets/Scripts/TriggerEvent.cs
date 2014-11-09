@@ -4,6 +4,7 @@ using System.Collections;
 public class TriggerEvent : MonoBehaviour {
 	public int requiresItemID;
 	public bool removeItemAfterUse = false;
+	public string requiredItemName;
 
 	private void OnTriggerEnter2D (Collider2D other){
 		if (other.gameObject.tag == "Box")
@@ -16,7 +17,7 @@ public class TriggerEvent : MonoBehaviour {
 						ItemDatabase.RemoveItem(ItemDatabase.GetItem(requiresItemID));
 					Destroy(gameObject); // destroy the door for now
 				}else{
-					//display message to user asking to obtain requiresItemID
+					GameManager.DisplayMessage("You need " + requiredItemName + " to proceed");
 				}
 	}
 }
