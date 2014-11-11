@@ -15,6 +15,7 @@ public static class GameResources  {
 	public const string KeyHUDHealthText = "HealthText";
 	public const string KeyHUDPowerUpText = "PowerUpText";
 	public const string KeyHUDPowerUpBackground = "PowerUpBackground";
+	public const string KeySmallExplosion = "SmallExplosion";
 
 	public const string ObjectClone = "CLONEDOBJECTCHILD";
 	public const string ObjectWasCloned = "CLONEDOBJECT";
@@ -32,6 +33,7 @@ public static class GameResources  {
 		gameObjects.Add(KeyHUDHealthText, Resources.Load<GameObject>(KeyHUDHealthText));
 		gameObjects.Add(KeyHUDPowerUpText, Resources.Load<GameObject>(KeyHUDPowerUpText));
 		gameObjects.Add(KeyHUDPowerUpBackground, Resources.Load<GameObject>(KeyHUDPowerUpBackground));
+		gameObjects.Add(KeySmallExplosion, Resources.Load<GameObject>(KeySmallExplosion));
 	}
 
 	public static GameObject GetGameObject(string key){
