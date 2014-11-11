@@ -5,6 +5,7 @@ public class Laser : MonoBehaviour {
 
 	public int damageValue;
 
+	
 	//Left screen so destroy it
 	private void OnBecameInvisible() {
 		Destroy (gameObject);

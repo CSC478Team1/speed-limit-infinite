@@ -12,7 +12,9 @@ public class CloneObject : MonoBehaviour {
 			    if (numberToClone > 0){
 					other.name += GameResources.ObjectWasCloned;
 					for (int i = 0; i < numberToClone; i++){
-						GameObject temp = (GameObject)Instantiate(other.gameObject, other.transform.position, Quaternion.identity);
+						
+						GameObject temp = (GameObject)Instantiate(other.gameObject, new Vector3 (other.transform.position.x + (i *.6f), 
+					                                                                         other.transform.position.y, other.transform.position.z), Quaternion.identity);
 						temp.name = GameResources.ObjectClone;
 					}
 			}

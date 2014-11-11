@@ -120,16 +120,12 @@ public class PlayerController : Controller {
 		} else if (Input.GetButton("Horizontal") && infiniteSpeed){
 			speed += .07f;
 		} else if (Input.GetButtonDown("Fire1")){
-
 			if (canShootLargeLaser){
 				anim.SetTrigger("Shoot Single");
-				FireWeapon(GameResources.GetGameObject(GameResources.KeyBlueLargeLaser), 9f);
 			} else if (canShootDualLaser){
 				anim.SetTrigger("Shoot Dual");
-				FireWeapon(GameResources.GetGameObject(GameResources.KeyBlueDualLaser), 14f);
 			} else if (canShootLaser){
 				anim.SetTrigger("Shoot Single");
-				FireWeapon(GameResources.GetGameObject(GameResources.KeyBlueSingleLaser), 14f);
 			}
 		} else
 			speed = initialSpeed;
@@ -151,6 +147,14 @@ public class PlayerController : Controller {
 		} catch (UnityException e){
 			Debug.Log(e.Message);
 		}
+	}
+	private void ShootLaser(){
+		if (canShootLargeLaser)
+			FireWeapon(GameResources.GetGameObject(GameResources.KeyBlueLargeLaser), 9f);
+		else if (canShootDualLaser)
+			FireWeapon(GameResources.GetGameObject(GameResources.KeyBlueDualLaser), 14f);
+		else if (canShootLaser)
+			FireWeapon(GameResources.GetGameObject(GameResources.KeyBlueSingleLaser), 14f);
 	}
 	public void AddPowerUp(Item.PowerUpType powerUP){
 		SetPowerUp(powerUP, true);
