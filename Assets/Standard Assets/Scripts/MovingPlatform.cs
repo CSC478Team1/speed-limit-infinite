@@ -15,15 +15,15 @@ public class MovingPlatform : MonoBehaviour {
 	private Transform stop;
 	private Transform nextStop;
 
-	private GameObject player;
+//	private GameObject player;
 
 	private bool isStartingPoint = true;
-	private bool playerIsOnPlatform = false;
+//	private bool playerIsOnPlatform = false;
 
 	private void Awake(){
 		start = gameObject.transform.root.FindChild("Start").transform;  
 		stop = gameObject.transform.root.FindChild("Stop").transform; 
-		player = GameObject.Find("Player1");
+	//	player = GameObject.Find("Player1");
 		nextStop = stop;
 	}
 	/**

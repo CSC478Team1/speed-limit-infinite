@@ -28,6 +28,15 @@ public static class GameManager {
 			Debug.Log(e.Message);
 		}
 	}
+	public static void RemoveHealthFromPlayer(int value){
+		try{
+			GameObject player = GetPlayerObject();
+			if (player!= null)
+				player.GetComponent<PlayerController>().DecreaseHealth(value);
+		}catch (Exception e){
+			Debug.Log(e.Message);
+		}
+	}
 	public static void AddPowerUpToPlayer(Item.PowerUpType powerUp){
 		try{
 			GameObject player = GetPlayerObject();

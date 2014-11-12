@@ -16,6 +16,10 @@ public class MainMenu : MonoBehaviour {
 
 	public Texture guitexture;
 
+	new private Light light;
+	private float delay = 3f;
+	private float startDelay = 3f;
+
 	// Use this for initialization
 	private void Start () {
 		buttonTop = Screen.height / 1.52f;
@@ -29,6 +33,7 @@ public class MainMenu : MonoBehaviour {
 		logoWidth = guitexture.width / 1.524f;
 		logoHeight = guitexture.height / 1.524f;
 		left = (buttonLeft + buttonWidth /2f ) - (logoWidth/2f);
+		light = GetComponentInChildren<Light>();
 	
 	}
 	
@@ -46,5 +51,10 @@ public class MainMenu : MonoBehaviour {
 			GameManager.QuitGame();
 		}
 		buttonTop = buttonStart;
+		if((delay -= Time.deltaTime) <= 0){
+			Color random = new Color(Random.value, Random.value, Random.value);
+			light.color = random;
+			delay = startDelay; 
+		}
 	}
 }

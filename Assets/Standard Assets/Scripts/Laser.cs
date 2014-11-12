@@ -19,6 +19,7 @@ public class Laser : MonoBehaviour {
 			try{
 				if (gameObject.tag.Replace("Projectile", "") != other.tag){
 					//play sound and do damage!
+					//leaving this 
 					other.GetComponent<Controller>().DecreaseHealth(damageValue);
 				}
 

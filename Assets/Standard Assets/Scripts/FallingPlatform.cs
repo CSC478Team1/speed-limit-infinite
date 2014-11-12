@@ -5,7 +5,7 @@ public class FallingPlatform : MonoBehaviour {
 
 	private bool isUp = true;
 	private Animator anim;
-	private Transform startingLocation;
+//	private Transform startingLocation;
 	private GameObject wallSwitch;
 	private GameObject fallingPlatform;
 
@@ -13,7 +13,7 @@ public class FallingPlatform : MonoBehaviour {
 		wallSwitch = GameObject.Find("Switch") as GameObject;
 		fallingPlatform = GameObject.Find("FPlatform") as GameObject;
 		anim = wallSwitch.GetComponent<Animator>();
-		startingLocation = fallingPlatform.transform;
+		//startingLocation = fallingPlatform.transform;
 	}
 
 	private void Start(){

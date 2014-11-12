@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class TriggerEvent : MonoBehaviour {
-	public int requiresItemID;
+	public int requiresItemID = int.MinValue;
 	public bool removeItemAfterUse = false;
 	public string requiredItemName;
 
@@ -11,7 +11,7 @@ public class TriggerEvent : MonoBehaviour {
 			Destroy (other.gameObject); // change this for pushable scripting
 
 		if (gameObject.tag == "Player Object")
-			if (requiresItemID != null && other.tag == "Player")
+			if (requiresItemID != int.MinValue && other.tag == "Player")
 				if (ItemDatabase.HasItem(requiresItemID)){
 					if (removeItemAfterUse)
 						ItemDatabase.RemoveItem(ItemDatabase.GetItem(requiresItemID));
