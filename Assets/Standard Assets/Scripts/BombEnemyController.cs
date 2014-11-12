@@ -20,9 +20,7 @@ public class BombEnemyController : EnemyController {
 						| (1 << LayerMask.NameToLayer("IgnorePlayer"));
 
 		speed = 3f;
-
 		appearTime = GameResources.GetAnimationClip(GameResources.KeyBombBotAppearAnimation).length;
-		Debug.Log(appearTime.ToString());
 
 	}
 
