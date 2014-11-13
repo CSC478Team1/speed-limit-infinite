@@ -78,7 +78,7 @@ public class PlayerController : Controller {
 			//isJumping = (moveVertical != 0) ? true : false;  
 			float circleRadius = .28f;
 			//canJump = Physics2D.Linecast(transform.position, groundCheck.position ,groundLayerMask) ? true : false;
-			canJump = Physics2D.OverlapCircle(groundCheck.position, .20f ,groundLayerMask) ? true : false;
+			canJump = Physics2D.OverlapCircle(groundCheck.position, .20f ,groundLayerMask);
 
 			RaycastHit2D raycastFeet = Physics2D.CircleCast (groundCheck.position, circleRadius,  -Vector2.up, 1f, ignoreLayerBitmask);
 			if (raycastFeet.transform !=null)
@@ -117,9 +117,14 @@ public class PlayerController : Controller {
 			anim.SetTrigger("Jumping");
 			canJump = false;
 			speed = initialSpeed;
-		} else if (Input.GetButton("Horizontal") && infiniteSpeed){
+		} 
+
+		if (Input.GetButton("Horizontal") && infiniteSpeed){
 			speed += .07f;
-		} else if (Input.GetButtonDown("Fire1")){
+		} else 
+			speed = initialSpeed;
+
+		if (Input.GetButtonDown("Fire1")){
 			if (canShootLargeLaser){
 				anim.SetTrigger("Shoot Single");
 			} else if (canShootDualLaser){
@@ -127,8 +132,7 @@ public class PlayerController : Controller {
 			} else if (canShootLaser){
 				anim.SetTrigger("Shoot Single");
 			}
-		} else
-			speed = initialSpeed;
+		}
 
 
 	}
