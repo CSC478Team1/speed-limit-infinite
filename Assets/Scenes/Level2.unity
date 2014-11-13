@@ -687,12 +687,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fakeEnemy: {fileID: 0}
-  itemName: Level3DoorKey
+  itemName: Door Key
   itemID: 200
   textureIcon: {fileID: 2800000, guid: 015bbbf41154ed345b68ff8ae4d2f2fa, type: 3}
   itemType: 2
   powerUpType: 5
   isHiddenEnemy: 0
+  value: 1
 --- !u!61 &61857684
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6501,6 +6502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiresItemID: 200
   removeItemAfterUse: 1
+  requiredItemName: 
 --- !u!61 &631556997
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8150,7 +8152,6 @@ GameObject:
   - 114: {fileID: 736732776}
   - 95: {fileID: 736732775}
   - 61: {fileID: 736732774}
-  - 108: {fileID: 736732782}
   m_Layer: 8
   m_Name: Player1
   m_TagString: Player
@@ -8298,42 +8299,6 @@ Transform:
   - {fileID: 1448841658}
   m_Father: {fileID: 0}
   m_RootOrder: 6
---- !u!108 &736732782
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 10800000, guid: 0c1bfacd49b176e418adcf7eee27f03c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1999899752}
-  m_GameObject: {fileID: 736732773}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Type: 2
-  m_Color: {r: 1, g: 1, b: 1, a: .501960814}
-  m_Intensity: .400000006
-  m_Range: 5
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_Strength: 1
-    m_Bias: .0500000007
-    m_Softness: 4
-    m_SoftnessFade: 1
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 1
-  m_ActuallyLightmapped: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 1
-  m_ShadowSamples: 1
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
-  m_IndirectIntensity: 1
-  m_AreaSize: {x: 1, y: 1}
 --- !u!1 &737628246
 GameObject:
   m_ObjectHideFlags: 0
@@ -8960,6 +8925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiresItemID: 250
   removeItemAfterUse: 1
+  requiredItemName: 
 --- !u!61 &783904011
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9709,12 +9675,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fakeEnemy: {fileID: 0}
-  itemName: Level3DoorKey
+  itemName: Door Key
   itemID: 250
   textureIcon: {fileID: 2800000, guid: 015bbbf41154ed345b68ff8ae4d2f2fa, type: 3}
   itemType: 2
   powerUpType: 5
   isHiddenEnemy: 0
+  value: 1
 --- !u!61 &858183164
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10875,6 +10842,7 @@ GameObject:
   - 114: {fileID: 970498582}
   - 114: {fileID: 970498581}
   - 114: {fileID: 970498580}
+  - 114: {fileID: 970498588}
   m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -11046,6 +11014,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &970498588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: 5e7aa3ef3334ff84c9f59d6f48bdd8b1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1997244963}
+  m_GameObject: {fileID: 970498579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65f759070cb534458e38c01ce22afb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &974134660
 Prefab:
   m_ObjectHideFlags: 0
@@ -20597,12 +20577,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fakeEnemy: {fileID: 0}
-  itemName: DualLaser
+  itemName: Dual Lasers
   itemID: 2
-  textureIcon: {fileID: 0}
+  textureIcon: {fileID: 2800000, guid: 42f0df29c3a077f48b18de6245053fb1, type: 3}
   itemType: 0
   powerUpType: 1
   isHiddenEnemy: 0
+  value: 1
 --- !u!61 &1748739337
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25375,6 +25356,7 @@ GameObject:
   - 64: {fileID: 2145384123}
   - 23: {fileID: 2145384122}
   - 114: {fileID: 2145384121}
+  - 108: {fileID: 2145384125}
   m_Layer: 0
   m_Name: BackgroundQuad
   m_TagString: Untagged
@@ -25449,6 +25431,42 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1202202737}
   m_GameObject: {fileID: 2145384119}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!108 &2145384125
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 10800000, guid: d523849ae6fef564faf121d4b07257d8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1202202737}
+  m_GameObject: {fileID: 2145384119}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Type: 1
+  m_Color: {r: .944827557, g: 1, b: 0, a: 1}
+  m_Intensity: .0500000007
+  m_Range: 5000
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_Strength: 1
+    m_Bias: .0500000007
+    m_Softness: 4
+    m_SoftnessFade: 1
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_ActuallyLightmapped: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 1
+  m_ShadowSamples: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_IndirectIntensity: 1
+  m_AreaSize: {x: 1, y: 1}
 --- !u!1 &2145961165
 GameObject:
   m_ObjectHideFlags: 0
