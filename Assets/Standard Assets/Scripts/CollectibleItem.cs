@@ -31,8 +31,10 @@ public class CollectibleItem : MonoBehaviour {
 					GameManager.DisplayMessage("You've just obtained: " + itemName);
 					ItemDatabase.AddItem(item);
 				}
-				else if (itemName == "Health")
+				else if (itemType == Item.ItemType.Consumable){
+					GameManager.DisplayMessage(itemName);
 					GameManager.AddHealthToPlayer(value);
+				}
 
 				//play sound or something and disappear
 				Destroy(gameObject);

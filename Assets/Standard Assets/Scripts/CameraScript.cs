@@ -15,11 +15,11 @@ public class CameraScript : MonoBehaviour {
 		Vector3 position = new Vector3(player.position.x, player.position.y, transform.position.z);
 		gameObject.transform.position = position;
 
-		if (Input.GetButtonDown("Camera Zoom In"))
+		if (Input.GetButtonDown("Camera Zoom Out"))
 			if (gameObject.camera.fieldOfView < 100)
 				gameObject.camera.fieldOfView += 5;
 
-		if (Input.GetButtonDown("Camera Zoom Out"))
+		if (Input.GetButtonDown("Camera Zoom In"))
 			if (gameObject.camera.fieldOfView > 20)
 				gameObject.camera.fieldOfView -=5;
 	}

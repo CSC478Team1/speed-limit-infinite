@@ -19,7 +19,8 @@ public class AIDetection {
 		this.sightDistance = sightDistance;
 		this.jumpDistance = jumpDistance;
 		playerLayerMask = 1 << LayerMask.NameToLayer("Player");
-		boundaryLayerMask = (1 << LayerMask.NameToLayer("Platform")) | (1 << LayerMask.NameToLayer("Default")) | (1 << LayerMask.NameToLayer("IgnorePlayer"));
+		boundaryLayerMask = (1 << LayerMask.NameToLayer("Platform")) | (1 << LayerMask.NameToLayer("Default")) | (1 << LayerMask.NameToLayer("IgnorePlayer"))
+							| (1 << LayerMask.NameToLayer("PlayerObject")) ;
 	}
 	public bool CanSeeEnemyInFront(Vector3 transform, Vector2 directionFacing){
 		return (CanSeeEnemy(transform, directionFacing));
@@ -82,7 +83,11 @@ public class AIDetection {
 		bool canHit = false;
 		onHead = false;
 		Vector3 angleNinety = Quaternion.AngleAxis(90f, Vector3.forward) * basicVector;
-		canHit = Physics2D.Raycast(new Vector2(transform.x,transform.y),directionFacing, .3f, playerLayerMask);
+
+		RaycastHit2D ray = Physics2D.Raycast(new Vector2(transform.x,transform.y),directionFacing, .3f, playerLayerMask | boundaryLayerMask);
+		if (ray.collider != null)
+			if (ray.collider.tag == "Player")
+				canHit = true;
 
 		if(!canHit){
 			bool enemyDetected = GenerateRaycast(transform, angleNinety);
