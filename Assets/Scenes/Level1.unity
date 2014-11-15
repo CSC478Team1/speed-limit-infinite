@@ -6711,6 +6711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f65f759070cb534458e38c01ce22afb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tex: {fileID: 2800000, guid: 47434c241e3de0948923dc5e0e8944fa, type: 3}
 --- !u!1 &1483053884
 GameObject:
   m_ObjectHideFlags: 0
@@ -7605,6 +7606,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: 5e7aa3ef3334ff84c9f59d6f48bdd8b1, type: 2}
+      propertyPath: tex
+      value: 
+      objectReference: {fileID: 2800000, guid: 47434c241e3de0948923dc5e0e8944fa, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e7aa3ef3334ff84c9f59d6f48bdd8b1, type: 2}
   m_RootGameObject: {fileID: 1472500437}

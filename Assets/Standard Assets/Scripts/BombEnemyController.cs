@@ -26,15 +26,11 @@ public class BombEnemyController : EnemyController {
 
 	protected override void Update(){
 		base.Update();
-
-		if (playerDetected){
-			RaycastHit2D playerDetection = Physics2D.Raycast (transform.position, directionFacing, sightDistance, playerLayerMask);
-			if (playerDetection.collider != null && appearTime <=0)
-				targetDistance = playerDetection.distance;
-		}
+		
 		//should be facing player if it is detected
 		if (playerDetected && appearTime <= 0 && !isLocked && !isDead){
-			if (targetDistance <= attackDistance){
+			//if player is in attack radius blow up!
+			if (Mathf.Abs(transform.position.x - targetPosition.x) < attackDistance && Mathf.Abs(transform.position.y - targetPosition.y) < attackDistance){
 				isLocked = true;
 				Detonate();
 			} else{

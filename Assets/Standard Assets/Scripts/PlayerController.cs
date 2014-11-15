@@ -30,7 +30,7 @@ public class PlayerController : Controller {
 
 		//Get bitmask of Player Layer and perform NOT on it
 		//Anything that is not Player Layer will allow jumping
-		groundLayerMask = ~(1 << LayerMask.NameToLayer("Player"));
+		groundLayerMask = ~((1 << LayerMask.NameToLayer("Player")) | (1 << LayerMask.NameToLayer("Enemy")));
 
 		try{
 			//load head and ground transforms and apply bitmask to our ignore layer
@@ -73,12 +73,9 @@ public class PlayerController : Controller {
 			else if (moveHorizontal < 0 && isFacingRight)
 				MirrorSprite();
 
-			//prevent multiple jumps
-			//movevertical doesn't work on moving platforms
-			//isJumping = (moveVertical != 0) ? true : false;  
+
+
 			float circleRadius = .28f;
-			//canJump = Physics2D.Linecast(transform.position, groundCheck.position ,groundLayerMask) ? true : false;
-			canJump = Physics2D.OverlapCircle(groundCheck.position, .20f ,groundLayerMask);
 
 			RaycastHit2D raycastFeet = Physics2D.CircleCast (groundCheck.position, circleRadius,  -Vector2.up, 1f, ignoreLayerBitmask);
 			if (raycastFeet.transform !=null)
@@ -92,6 +89,9 @@ public class PlayerController : Controller {
 			RaycastHit2D raycastStuckInPlatformCheck = Physics2D.CircleCast (headCheck.position, .12f, -Vector2.up, .32f, ignoreLayerBitmask);
 			if (raycastStuckInPlatformCheck.transform !=null)
 				raycastStuckInPlatformCheck.collider.isTrigger = true;
+
+			//prevent multiple jumps & power jumps
+			canJump = Physics2D.OverlapCircle(groundCheck.position, .05f ,groundLayerMask);
 				
 		}else {
 			Respawn();

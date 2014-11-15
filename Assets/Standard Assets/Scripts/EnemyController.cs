@@ -6,16 +6,19 @@ public class EnemyController : Controller {
 	protected int playerLayerMask;
 	protected bool playerDetected = false;
 	protected Vector2 directionFacing;
-	protected float sightDistance = 10f;
+	protected float sightDistance = 15f;
 	private bool locked = false;
-	protected float targetDistance = 100f;
-
+	protected Vector2 targetPosition;
+	protected float jumpDistance = 5f;
 	private float deathAnimationTime = 0;
+	protected AIDetection aiDetection;
+	protected int groundLayerMask;
 	
 	// Use this for initialization
 	protected override void Start () {
 		base.Start();	
 		playerLayerMask = (1 << LayerMask.NameToLayer("Player")) | (1 << LayerMask.NameToLayer("Default"));
+		groundLayerMask = (1 << LayerMask.NameToLayer("Default")) | (1 << LayerMask.NameToLayer("Platform")) | (1 << LayerMask.NameToLayer("IgnorePlayer"));
 
 		deathAnimationTime = GameResources.GetAnimationClip(GameResources.KeySmallExplosionAnimation).length;
 
@@ -23,22 +26,23 @@ public class EnemyController : Controller {
 			directionFacing = new Vector2(1,0);
 		else
 			directionFacing = new Vector2(-1,0);
+
+		aiDetection = new AIDetection(playerLayerMask, sightDistance, transform, jumpDistance);
 	}
 
 	protected virtual void Update(){
 		// move enemy here
-
-		RaycastHit2D playerDetection = Physics2D.Raycast (transform.position, directionFacing, sightDistance, playerLayerMask);
-		playerDetected = (playerDetection.collider != null && playerDetection.collider.tag == "Player") ? true: false;
+		playerDetected = aiDetection.CanSeeEnemyInFront(transform.position, directionFacing);
 		if (!playerDetected){
-			playerDetection = Physics2D.Raycast (transform.position, -directionFacing, sightDistance, playerLayerMask);
-			playerDetected =  (playerDetection.collider != null && playerDetection.collider.tag == "Player")? true : false;
+			playerDetected = aiDetection.CanSeeEnemyInBack(transform.position, directionFacing);
 			if (playerDetected){
+				targetPosition = aiDetection.EnemyPosition();
 				MirrorSprite();
 				directionFacing = -directionFacing;
-				targetDistance = playerDetection.distance;
 			}
-		}
+		} else
+			targetPosition = aiDetection.EnemyPosition();
+
 	}
 				
 	// Update is called once per frame
@@ -49,8 +53,12 @@ public class EnemyController : Controller {
 			sightDistance = 0f;
 			GameObject explosion = Instantiate(GameResources.GetGameObject(GameResources.KeySmallExplosion), transform.position, Quaternion.identity) as GameObject;
 			if (explosion != null){
+				//bind position of gameobject to explosion
+				explosion.transform.parent = gameObject.transform;
 				Animator tempAnimator = explosion.GetComponent<Animator>();
 				tempAnimator.SetTrigger("Explode");
+				//gameObject.rigidbody2D.isKinematic = true;
+				//gameObject.renderer.renderer.collider2D.isTrigger = true;
 				StartCoroutine(Pause(deathAnimationTime, true, explosion, this.gameObject));
 			} else
 				Destroy(gameObject);

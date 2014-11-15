@@ -20,6 +20,7 @@ public static class GameResources  {
 	public const string KeySmallExplosionAnimation = "smallexplosion";
 	public const string KeyLargeExplosionAnimation = "largeexplosion";
 	public const string KeyBombBotAppearAnimation = "appear";
+	public const string KeyUITextBackground = "UITextBackground";
 
 	public const string ObjectClone = "CLONEDOBJECTCHILD";
 	public const string ObjectWasCloned = "CLONEDOBJECT";
@@ -42,6 +43,7 @@ public static class GameResources  {
 		gameObjects.Add(KeyHUDPowerUpBackground, Resources.Load<GameObject>(@"prefab/UI/" + KeyHUDPowerUpBackground));
 		gameObjects.Add(KeySmallExplosion, Resources.Load<GameObject>(@"prefab/Projectiles/" + KeySmallExplosion));
 		gameObjects.Add(KeyLargeExplosion, Resources.Load<GameObject>(@"prefab/Projectiles/" + KeyLargeExplosion));
+		gameObjects.Add(KeyUITextBackground, Resources.Load<GameObject>(@"prefab/UI/" + KeyUITextBackground));
 
 		animationClips.Add(KeySmallExplosionAnimation, Resources.Load<AnimationClip>(@"Animations/Effects/" + KeySmallExplosionAnimation));
 		animationClips.Add(KeyLargeExplosionAnimation, Resources.Load<AnimationClip>(@"Animations/Effects/" + KeyLargeExplosionAnimation));
