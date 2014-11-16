@@ -27,19 +27,16 @@ public class AIDetection {
 	}
 	public bool CanSeeEnemyInBack(Vector3 transform, Vector2 directionFacing){
 		return (CanSeeEnemy(transform, -directionFacing));
-
 	}
 	public Vector2 EnemyPosition(){
 		return enemyPosition;
 	}
 	private bool GenerateRaycast(Vector3 transform,  Vector3 angle){
-		RaycastHit2D playerDetection = Physics2D.CircleCast(transform, .35f , angle, sightDistance ,playerLayerMask);
-		//RaycastHit2D playerDetection = Physics2D.Raycast(transform, angle, sightDistance, layerMaskDetection);
+		RaycastHit2D playerDetection = Physics2D.CircleCast(transform, .25f , angle, sightDistance ,playerLayerMask);
 		if (playerDetection.collider != null && playerDetection.collider.tag == "Player") {
 			enemyPosition = playerDetection.transform.position;
 			return true;
 		} else{
-			//enemyPosition = new Vector2(float.MaxValue, float.MaxValue);
 			return false;
 		}
 	}
@@ -48,27 +45,34 @@ public class AIDetection {
 		shouldJump = false;
 
 
-		Vector3 angleUp = Quaternion.AngleAxis(20f, Vector3.forward) * directionFacing;
-		Vector3 angleUp2 = Quaternion.AngleAxis(40f, Vector3.forward)* directionFacing;
-		Vector3 angleUp3 = Quaternion.AngleAxis(60f, Vector3.forward) * directionFacing;
-		Vector3 angleUp4 = Quaternion.AngleAxis(80f, Vector3.forward) * directionFacing;
-		Vector3 angleDown = Quaternion.AngleAxis(-20f, Vector3.forward)* directionFacing;
-		Vector3 angleDown2 = Quaternion.AngleAxis(-40f, Vector3.forward) * directionFacing;
-		Vector3 angleDown3 = Quaternion.AngleAxis(-60f, Vector3.forward) * directionFacing;
-		Vector3 angleDown4 = Quaternion.AngleAxis(-80f, Vector3.forward) * directionFacing;
-		Vector3 angleZero = Quaternion.AngleAxis(0f, Vector3.forward) * directionFacing;;
+		Vector3 angleUp = Quaternion.AngleAxis(15f, Vector3.forward) * directionFacing;
+		Vector3 angleUp2 = Quaternion.AngleAxis(30f, Vector3.forward)* directionFacing;
+		Vector3 angleUp3 = Quaternion.AngleAxis(45f, Vector3.forward) * directionFacing;
+		Vector3 angleUp4 = Quaternion.AngleAxis(60f, Vector3.forward) * directionFacing;
+		Vector3 angleUp5 = Quaternion.AngleAxis(75f, Vector3.forward) * directionFacing;
+		Vector3 angleDown = Quaternion.AngleAxis(-15f, Vector3.forward)* directionFacing;
+		Vector3 angleDown2 = Quaternion.AngleAxis(-30f, Vector3.forward) * directionFacing;
+		Vector3 angleDown3 = Quaternion.AngleAxis(-45f, Vector3.forward) * directionFacing;
+		Vector3 angleDown4 = Quaternion.AngleAxis(-60f, Vector3.forward) * directionFacing;
+		Vector3 angleDown5 = Quaternion.AngleAxis(-75f, Vector3.forward) * directionFacing;
+		Vector3 angleZero = Quaternion.AngleAxis(0f, Vector3.forward) * directionFacing;
+		Vector3 angleUpNinety = Quaternion.AngleAxis(90f, Vector3.forward) * directionFacing;
+		Vector3 angleDownNinety = Quaternion.AngleAxis(-90f, Vector3.forward) * directionFacing;
 
 
 		enemyDetected = GenerateRaycast(transform, angleZero);
 
-		if (!enemyDetected){
-			enemyDetected = GenerateRaycast(transform, angleUp) || GenerateRaycast(transform, angleUp2) || GenerateRaycast(transform, angleUp3) || GenerateRaycast(transform, angleUp4);
+		if(!enemyDetected){
+			enemyDetected = GenerateRaycast(transform, angleUpNinety) || GenerateRaycast(transform, angleDownNinety);
 			if (!enemyDetected){
-				enemyDetected = GenerateRaycast(transform, angleDown) || GenerateRaycast(transform, angleDown2) || GenerateRaycast(transform, angleDown3) || GenerateRaycast(transform, angleDown4);
+				enemyDetected = GenerateRaycast(transform, angleUp) || GenerateRaycast(transform, angleUp2) || GenerateRaycast(transform, angleUp3) || GenerateRaycast(transform, angleUp4) || GenerateRaycast(transform, angleUp5);
+				if (!enemyDetected){
+					enemyDetected = GenerateRaycast(transform, angleDown) || GenerateRaycast(transform, angleDown2) || GenerateRaycast(transform, angleDown3) || GenerateRaycast(transform, angleDown4) || GenerateRaycast(transform, angleDown5);
+				}
 			}
 		}
 			
-		if (!ShouldFire(transform) && enemyPosition.y > transform.y){
+		if (enemyDetected && !ShouldFire(transform) && enemyPosition.y > transform.y){
 			RaycastHit2D detectPlatforms = Physics2D.Raycast(transform, Vector2.up, jumpDistance, boundaryLayerMask);
 			if (detectPlatforms.collider != null){
 				if (detectPlatforms.collider.transform.position.y > enemyPosition.y){
@@ -84,7 +88,7 @@ public class AIDetection {
 		onHead = false;
 		Vector3 angleNinety = Quaternion.AngleAxis(90f, Vector3.forward) * basicVector;
 
-		RaycastHit2D ray = Physics2D.Raycast(new Vector2(transform.x,transform.y),directionFacing, .3f, playerLayerMask | boundaryLayerMask);
+		RaycastHit2D ray = Physics2D.Raycast(new Vector2(transform.x,transform.y),directionFacing, .35f, playerLayerMask | boundaryLayerMask);
 		if (ray.collider != null)
 			if (ray.collider.tag == "Player")
 				canHit = true;

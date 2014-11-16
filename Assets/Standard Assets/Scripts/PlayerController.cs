@@ -74,7 +74,6 @@ public class PlayerController : Controller {
 				MirrorSprite();
 
 
-
 			float circleRadius = .28f;
 
 			RaycastHit2D raycastFeet = Physics2D.CircleCast (groundCheck.position, circleRadius,  -Vector2.up, 1f, ignoreLayerBitmask);

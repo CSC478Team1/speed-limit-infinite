@@ -7,17 +7,32 @@ public class ShootingEnemyController : EnemyController {
 	private float nextTimeToFire;
 	private float nextTimeToHandAttack;
 	private float handAttackRate = .1f;
+	private float nextTimetoMove = .15f;
 	private float gravity;
 	private float spriteHeight;
 	private float maxJumpHeight = 8f;
 	private bool isAttackingWithHands = false;
+	private AIBasicPathfinding pathfinder;
 
 	protected override void Start(){
 		base.Start();
 		gravity = -Physics2D.gravity.y;
 		spriteHeight = gameObject.renderer.bounds.size.y;
+		speed = 3f;
+		pathfinder = new AIBasicPathfinding(this.gameObject, 3f, groundLayerMask, speed, sightDistance);
 	}
+	protected override void FixedUpdate(){
+		base.FixedUpdate();
+		if ((nextTimetoMove -= Time.deltaTime) <=0){
+			Vector2 move = pathfinder.Move(new Vector2(transform.position.x, transform.position.y), aiDetection.EnemyPosition());
+			if (move.x != 0)
+				gameObject.rigidbody2D.velocity = move;
+		} else if (nextTimetoMove < float.MinValue + 100)
+			nextTimetoMove = 0;
+		
+		anim.SetFloat("HorizontalSpeed", Mathf.Abs(rigidbody2D.velocity.x));
 
+	}
 	protected override void Update(){
 		base.Update();
 		isAttackingWithHands = false;
@@ -37,7 +52,7 @@ public class ShootingEnemyController : EnemyController {
 				FireTimedWeapon();
 			else if (playerDetected){
 				float distanceToJump = aiDetection.JumpDistance(transform.position);
-				if (distanceToJump > 0 && distanceToJump != float.MinValue &&  CanJump() && !aiDetection.OnHead()){
+				if (distanceToJump > 0 &&  CanJump() && !aiDetection.OnHead()){
 					//make enemy jump here animation
 					if (distanceToJump < maxJumpHeight){
 						jumpForce = Mathf.Sqrt(2 *(gravity * (distanceToJump + spriteHeight /2)));
@@ -53,7 +68,6 @@ public class ShootingEnemyController : EnemyController {
 			} else if (nextTimeToFire < float.MinValue + 100)
 				nextTimeToFire = 0;
 		}
-
 	}
 	private void Kick(){
 		anim.SetTrigger("Kick");
@@ -81,7 +95,7 @@ public class ShootingEnemyController : EnemyController {
 
 	}
 	private bool CanJump(){
-		return (Physics2D.OverlapCircle(transform.position, .41f ,groundLayerMask));
+		return (Physics2D.OverlapCircle(transform.position, .4f ,groundLayerMask) && rigidbody2D.velocity.y == 0);
 	}
 	private void OnCollisionStay2D(Collision2D other){
 		if (other.gameObject.tag == "Player" && isAttackingWithHands){

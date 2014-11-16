@@ -12,7 +12,7 @@ public class Controller : MonoBehaviour {
 	protected bool isFacingRight = true; 
 	protected bool canJump = true;
 	protected Animator anim;
-	protected float speed;
+	protected float speed = 3f;
 	protected float jumpForce;
 	protected bool isDead = false;
 
