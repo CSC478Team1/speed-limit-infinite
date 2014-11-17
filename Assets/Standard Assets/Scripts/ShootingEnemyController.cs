@@ -7,30 +7,64 @@ public class ShootingEnemyController : EnemyController {
 	private float nextTimeToFire;
 	private float nextTimeToHandAttack;
 	private float handAttackRate = .1f;
-	private float nextTimetoMove = .15f;
+	private float moveRate = .1f;
 	private float gravity;
 	private float spriteHeight;
 	private float maxJumpHeight = 8f;
 	private bool isAttackingWithHands = false;
-	private AIBasicPathfinding pathfinder;
+	private bool isLocked = false;
+	private Vector3 move;
+	//private AIBasicPathfinding pathfinder;
+	private AIWaypointPathfinding waypointPathfinder;
 
 	protected override void Start(){
 		base.Start();
 		gravity = -Physics2D.gravity.y;
 		spriteHeight = gameObject.renderer.bounds.size.y;
-		speed = 3f;
-		pathfinder = new AIBasicPathfinding(this.gameObject, 3f, groundLayerMask, speed, sightDistance);
+		speed = 2f;
+		//pathfinder = new AIBasicPathfinding(this.gameObject, 3f, groundLayerMask, speed, sightDistance);
+		waypointPathfinder = new AIWaypointPathfinding(this.gameObject);
+		move = transform.position;
 	}
 	protected override void FixedUpdate(){
 		base.FixedUpdate();
-		if ((nextTimetoMove -= Time.deltaTime) <=0){
-			Vector2 move = pathfinder.Move(new Vector2(transform.position.x, transform.position.y), aiDetection.EnemyPosition());
-			if (move.x != 0)
-				gameObject.rigidbody2D.velocity = move;
-		} else if (nextTimetoMove < float.MinValue + 100)
-			nextTimetoMove = 0;
-		
+		Vector3 moveDirection = Vector3.zero;
+
+		if ((moveRate -= Time.deltaTime) <= 0){
+			bool hasMoved = waypointPathfinder.Move(new Vector2 (gameObject.transform.position.x, gameObject.transform.position.y), aiDetection.EnemyPosition(), playerDetected);
+			if (hasMoved){
+				move = waypointPathfinder.GetNewMoveValue();
+				//transform.position = Vector3.MoveTowards(transform.position, move, Time.deltaTime * speed);
+				//rigidbody2D.velocity = (move - transform.position) * speed;
+				//move.y = Mathf.Abs(transform.position.y - move.y) > .1f ? move.y : transform.position.y;
+				//Vector2 direction = (move-transform.position).normalized;
+				//rigidbody2D.velocity = direction * speed;
+				//rigidbody2D.AddForce(rigidbody2D.velocity);
+				//gameObject.transform.position = move;
+				//gameObject.transform.position = Vector3.MoveTowards(transform.position, move, speed * Time.deltaTime);
+				//anim.SetFloat("HorizontalSpeed", Mathf.Abs(rigidbody2D.velocity.x));
+				//transform.position = move;
+				moveRate = .1f;
+
+			}
+			isLocked = false;
+		} 
+
+
+			//gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, move, speed * Time.deltaTime);
+
+		moveDirection = (move - transform.position) * speed;
+		moveDirection = transform.TransformDirection(moveDirection);
+		if (waypointPathfinder.ShouldJump()){
+			//need to do actual physics here just a temp value
+			moveDirection.y = jumpForce * .5f;
+		}
+
+		transform.Translate (moveDirection * Time.deltaTime);
+	    //transform.position = new Vector3(move.x + speed, move.y);
 		anim.SetFloat("HorizontalSpeed", Mathf.Abs(rigidbody2D.velocity.x));
+		//transform.position = Vector3.Lerp(transform.position, move, Time.deltaTime  );
+
 
 	}
 	protected override void Update(){
@@ -68,6 +102,10 @@ public class ShootingEnemyController : EnemyController {
 			} else if (nextTimeToFire < float.MinValue + 100)
 				nextTimeToFire = 0;
 		}
+
+		
+
+
 	}
 	private void Kick(){
 		anim.SetTrigger("Kick");
@@ -95,7 +133,7 @@ public class ShootingEnemyController : EnemyController {
 
 	}
 	private bool CanJump(){
-		return (Physics2D.OverlapCircle(transform.position, .4f ,groundLayerMask) && rigidbody2D.velocity.y == 0);
+		return (Physics2D.OverlapCircle(transform.position, .5f ,groundLayerMask) && rigidbody2D.velocity.y == 0);
 	}
 	private void OnCollisionStay2D(Collision2D other){
 		if (other.gameObject.tag == "Player" && isAttackingWithHands){
@@ -104,6 +142,7 @@ public class ShootingEnemyController : EnemyController {
 			isAttackingWithHands = false;
 		}
 	}
+
 
 	
 }

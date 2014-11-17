@@ -15,6 +15,7 @@ TagManager:
   - CheckPoint
   - EnemyProjectile
   - PlayerProjectile
+  - Waypoint
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -30,7 +31,7 @@ TagManager:
   User Layer 11: Enemy
   User Layer 12: IgnorePlayer
   User Layer 13: IgnoreEnemy
-  User Layer 14: 
+  User Layer 14: Waypoint
   User Layer 15: 
   User Layer 16: 
   User Layer 17: 

@@ -20,6 +20,7 @@ public class AIBasicPathfinding  {
 	private float sightDistance;
 	private int pathCollisionLayerMask;
 
+
 	private struct Paths{
 		public Vector2 position { get; set;}
 		public int cost { get; set;}
@@ -35,6 +36,7 @@ public class AIBasicPathfinding  {
 		gravity = -Physics2D.gravity.y;
 		spriteHeight = gameObject.renderer.bounds.size.y;
 		spriteWidth = gameObject.renderer.bounds.size.x;
+
 	}
 
 	public Vector2 Move(Vector2 position, Vector2 enemyPosition){
@@ -50,10 +52,10 @@ public class AIBasicPathfinding  {
 				MoveLeft();
 			}
 			if (distanceXToPlayer < 0 && (distanceYToPlayer < -.5f)){
-				//MoveUp(true);
+				MoveUp(true);
 			}
 			if (distanceXToPlayer > 0 && (distanceYToPlayer < -.5f)){
-				//MoveUp(false);
+				MoveUp(false);
 			}
 			if (distanceXToPlayer < 0 && (distanceYToPlayer > .2f)){
 				MoveDown(true);
@@ -144,27 +146,35 @@ public class AIBasicPathfinding  {
 		bool canMove = MoveXAxis(moveRight);
 		if (!canMove && CanMove()){
 			int direction = moveRight ? 1: -1;
-			int current = 0, end = 3;
+			int current = 0, end = 3, loop =1;;
 			while (++current < end){
 				Vector2 nextLocation = new Vector2(position.x + (spriteWidth * direction * current), position.y);
 				RaycastHit2D canJump = Physics2D.Raycast(nextLocation, Vector2.up, 10f, groundCollisionLayerMask);
 				RaycastHit2D canStand = Physics2D.Raycast(nextLocation, -Vector2.up, .9f, groundCollisionLayerMask);
-				RaycastHit2D canJumpOnPlatformLeft = Physics2D.Raycast(new Vector2(nextLocation.x - spriteWidth , nextLocation.y), -Vector2.up, enemyPosition.y - position.y + spriteHeight, groundCollisionLayerMask);
+				//RaycastHit2D canJumpOnPlatformLeft = Physics2D.Raycast(new Vector2(nextLocation.x - spriteWidth , nextLocation.y), -Vector2.up, enemyPosition.y - position.y + spriteHeight, groundCollisionLayerMask);
 				RaycastHit2D canJumpOnPlatformRight = Physics2D.Raycast(new Vector2(nextLocation.x + spriteWidth , nextLocation.y), -Vector2.up, enemyPosition.y - position.y + spriteHeight, groundCollisionLayerMask);
-				if (canJump.collider == null ||canJump.distance < (Mathf.Abs(enemyPosition.y - position.y)) && canStand.collider != null){
+				if (canJump.collider == null){
 					path.cost = current;
+				}
 				if (canStand.collider == null)
 						path.cost = 1000;
 
-				if (canJumpOnPlatformLeft.collider != null)
-						path.cost = 1;
-				else if (canJumpOnPlatformRight.collider !=null)
-						path.cost = 1 ;
+				//if (canJumpOnPlatformLeft.collider != null)
+			//			path.cost = 1;
+			//	else if (canJumpOnPlatformRight.collider !=null)
+			//			path.cost = 1 ;
 				path.position = nextLocation;
 				move.Add(path);
 				canMove = true;
 
 					nextLocation.x += spriteWidth * direction * current;
+
+				if (current +1 == end && loop > 0){
+					loop --;
+					direction *= -1;
+					current = 0;
+				}
+
 				}
 
 			}
@@ -172,7 +182,6 @@ public class AIBasicPathfinding  {
 			//move.Sort((Paths x, Paths y)=>x.cost.CompareTo(y.cost));
 			//gameObject.transform.Translate( new Vector3 ( (move[0].position.x - position.x) * speed, (move[0].position.y - position.x) * speed, gameObject.transform.position.z));
 
-		}
 		
 		return canMove;
 	}
