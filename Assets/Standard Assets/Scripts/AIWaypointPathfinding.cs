@@ -11,7 +11,7 @@ public class AIWaypointPathfinding {
 	private float spriteHeight;
 	private float spriteWidth;
 	private GameObject gameObject;
-	private float waypointRadiusoffset = .51f;
+	private float waypointRadiusoffset = .85f; // made it a little bigger than actual radius
 	private Vector3 oldMoveValue;
 	private Vector3 newMoveValue;
 	private bool shouldJump = false;
@@ -19,7 +19,7 @@ public class AIWaypointPathfinding {
 
 	public AIWaypointPathfinding(GameObject gameObject){
 		this.groundCollisionLayerMask = groundCollisionLayerMask;
-		waypointMask = 1 << LayerMask.NameToLayer("Waypoint");
+		waypointMask = 1 << LayerMask.NameToLayer("Waypoint") | (1 << LayerMask.NameToLayer("WaypointEdge"));
 		this.gameObject = gameObject;
 		spriteHeight = gameObject.renderer.bounds.size.y;
 		spriteWidth = gameObject.renderer.bounds.size.x;
@@ -35,16 +35,16 @@ public class AIWaypointPathfinding {
 			float distanceYToPlayer = position.y - enemyPosition.y;
 
 			if (distanceXToPlayer < 0 && (distanceYToPlayer < .15f && distanceYToPlayer > -.15f)){
-				move = MoveXAxis(true);
+				move = MoveXAxis(position, true);
 			}
 			else if (distanceXToPlayer > 0 && (distanceYToPlayer < .15f && distanceYToPlayer > -.15f)){
-				move = MoveXAxis(false);
+				move = MoveXAxis(position, false);
 			}
 			else if (distanceXToPlayer < 0 && (distanceYToPlayer < -.15f || distanceYToPlayer > .15f)){
-				move = MoveYAxis(true);
+				move = MoveYAxis(position, true);
 			}
 			else if (distanceXToPlayer > 0 && (distanceYToPlayer < -.15f || distanceYToPlayer > .15f)){
-				move = MoveYAxis(false);
+				move = MoveYAxis(position, false);
 			}
 		} else { // patrol!
 		}
@@ -54,43 +54,49 @@ public class AIWaypointPathfinding {
 		return (move != Vector3.zero);
 	}
 
-	private Vector3 MoveXAxis(bool lookRight){
+	private Vector3 MoveXAxis(Vector3 start, bool lookRight){
 		Vector3 move = newMoveValue;
 		if (CanMove()){
 			float direction = lookRight ? 1f : -1f;
-			Vector2 nextLocation = new Vector2(position.x + ((waypointRadiusoffset + spriteWidth)*direction), position.y);
+			Vector2 nextLocation = new Vector2(start.x + ((waypointRadiusoffset)*direction), start.y);
 			RaycastHit2D waypointDetection = Physics2D.Raycast(nextLocation, new Vector2(direction, 0), 10f, waypointMask);
 			if (waypointDetection.collider != null){
-			//	RaycastHit2D pathDetection = Physics2D.Raycast(nextLocation, new Vector2(Vector2.right.x * direction, 0), waypointDetection.distance, groundCollisionLayerMask);
-		//		if (pathDetection.collider == null){
-					move = waypointDetection.collider.gameObject.transform.position;
+				RaycastHit2D pathDetection = Physics2D.Raycast(nextLocation, new Vector2(Vector2.right.x * direction, 0), waypointDetection.distance, groundCollisionLayerMask);
+				if (pathDetection.collider == null){
+					move = waypointDetection.collider.transform.gameObject.transform.position;
 					CheckForJump(position, move);
-				//}
+				}
 			}
  
 		}
 		return move;
 	}
-	private Vector3 MoveYAxis (bool lookRight){
-		Vector3 move = MoveXAxis(lookRight);
+	private Vector3 MoveYAxis (Vector3 start, bool lookRight){
+		Vector3 move = MoveXAxis(start, lookRight);
+		//move = DeterminePath(move, MoveXAxis(!lookRight);
 		Vector3 temp = move;
 		if (CanMove()){
 			List<Vector3> nextNodes = new List<Vector3>();
 
-			float direction = enemyPosition.y > position.y ? 1f : -1f;
-			Vector2 nextLocation = new Vector2 (position.x , position.y + ((waypointRadiusoffset + spriteHeight) * direction));
+			float direction = enemyPosition.y > start.y ? 1f : -1f;
+			Vector2 nextLocation = new Vector2 (start.x , start.y + ((waypointRadiusoffset) * direction));
+			Vector3 nextLocationX = nextLocation;
 			bool waypointLoop = true;
-			int counter = -5;
+			int counter = -6;
 			while (waypointLoop){
 				RaycastHit2D waypointDetection = Physics2D.Raycast(nextLocation, new Vector2(0f, direction), 10f, waypointMask);
 				if (waypointDetection.collider != null){
-				//	RaycastHit2D pathDetection = Physics2D.Raycast(nextLocation, new Vector2(0f, direction), waypointDetection.distance, groundCollisionLayerMask);
-					//if (pathDetection.collider == null){
-					nextNodes.Add(waypointDetection.collider.gameObject.transform.position);
-					//}
-				}else
-					nextLocation.x += direction * spriteWidth * counter;
-				if (++counter > 5)
+					RaycastHit2D pathDetection = Physics2D.Raycast(nextLocation, new Vector2(0f, direction), waypointDetection.distance, groundCollisionLayerMask);
+					if (pathDetection.collider == null){
+						nextNodes.Add(waypointDetection.collider.transform.gameObject.transform.position);
+					}
+				}
+
+				//nextNodes.Add(MoveXAxis(nextLocationX, lookRight));
+				nextLocation.x += direction * (spriteWidth * 3) * counter;
+				//nextLocationX.y += direction * (spriteHeight) * counter;
+				//Debug.Log(nextLocationX.ToString());
+				if (++counter > 6)
 					waypointLoop = false;
 			}
 			if (nextNodes.Count > 0){
@@ -148,6 +154,7 @@ public class AIWaypointPathfinding {
 		return shouldJump;
 	}
 	public Vector3 GetNewMoveValue(){
+		//Debug.Log(newMoveValue.ToString());
 		return newMoveValue;
 	}
 	private bool CanMove(){

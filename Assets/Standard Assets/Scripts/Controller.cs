@@ -30,6 +30,8 @@ public class Controller : MonoBehaviour {
 				//fix this later if we implement lives
 			}
 			else if (gameObject.tag == "Enemy"){
+				rigidbody2D.isKinematic = true;
+				rigidbody2D.collider2D.enabled = false;
 				Destroy(gameObject);  // add death call later
 			}
 		}

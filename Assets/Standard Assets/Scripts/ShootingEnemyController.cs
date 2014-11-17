@@ -7,71 +7,96 @@ public class ShootingEnemyController : EnemyController {
 	private float nextTimeToFire;
 	private float nextTimeToHandAttack;
 	private float handAttackRate = .1f;
-	private float moveRate = .1f;
+	private float moveRate = .05f;
 	private float gravity;
 	private float spriteHeight;
-	private float maxJumpHeight = 8f;
+	private float spriteWidth;
+	private float maxJumpHeight = 55f;
 	private bool isAttackingWithHands = false;
-	private bool isLocked = false;
-	private Vector3 move;
 	//private AIBasicPathfinding pathfinder;
 	private AIWaypointPathfinding waypointPathfinder;
+	private Vector3 waypoint;
+	private Vector3 velocity;
+	private Vector3 startPoint;
+	private float lastSquareMagnitude;
+	private bool isMoving = false;
 
 	protected override void Start(){
 		base.Start();
 		gravity = -Physics2D.gravity.y;
 		spriteHeight = gameObject.renderer.bounds.size.y;
-		speed = 2f;
+		spriteWidth = gameObject.renderer.bounds.size.x;
+		speed = 3f;
 		//pathfinder = new AIBasicPathfinding(this.gameObject, 3f, groundLayerMask, speed, sightDistance);
 		waypointPathfinder = new AIWaypointPathfinding(this.gameObject);
-		move = transform.position;
+		waypoint = startPoint = transform.position;
+		lastSquareMagnitude = Mathf.Infinity;
+		jumpForce = 0;
 	}
 	protected override void FixedUpdate(){
 		base.FixedUpdate();
-		Vector3 moveDirection = Vector3.zero;
+
+
+        
+    }
+    protected override void Update(){
+		base.Update();
+		isAttackingWithHands = false;
+		float squareMagnitude =  (waypoint - transform.position).sqrMagnitude;
 
 		if ((moveRate -= Time.deltaTime) <= 0){
 			bool hasMoved = waypointPathfinder.Move(new Vector2 (gameObject.transform.position.x, gameObject.transform.position.y), aiDetection.EnemyPosition(), playerDetected);
 			if (hasMoved){
-				move = waypointPathfinder.GetNewMoveValue();
-				//transform.position = Vector3.MoveTowards(transform.position, move, Time.deltaTime * speed);
-				//rigidbody2D.velocity = (move - transform.position) * speed;
-				//move.y = Mathf.Abs(transform.position.y - move.y) > .1f ? move.y : transform.position.y;
-				//Vector2 direction = (move-transform.position).normalized;
-				//rigidbody2D.velocity = direction * speed;
-				//rigidbody2D.AddForce(rigidbody2D.velocity);
-				//gameObject.transform.position = move;
-				//gameObject.transform.position = Vector3.MoveTowards(transform.position, move, speed * Time.deltaTime);
-				//anim.SetFloat("HorizontalSpeed", Mathf.Abs(rigidbody2D.velocity.x));
-				//transform.position = move;
-				moveRate = .1f;
+				startPoint = waypoint;
+				waypoint = waypointPathfinder.GetNewMoveValue();
 
-			}
-			isLocked = false;
-		} 
+				anim.SetFloat("HorizontalSpeed", 1f);
 
+				//velocity = (waypoint - transform.position).normalized * speed; 
 
-			//gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, move, speed * Time.deltaTime);
+				if (waypointPathfinder.ShouldJump() || Mathf.Abs(waypoint.y - transform.position.y) > spriteHeight){
+					if (Mathf.Abs(waypoint.y - transform.position.y) > spriteHeight){
+						float distanceToJump = (waypoint.y - transform.position.y);
+						jumpForce = Mathf.Sqrt(2 * gravity * (distanceToJump + spriteHeight /2));
+						if (float.IsInfinity(jumpForce) || float.IsNaN(jumpForce)){
+							jumpForce = 0;
+                        }
 
-		moveDirection = (move - transform.position) * speed;
-		moveDirection = transform.TransformDirection(moveDirection);
-		if (waypointPathfinder.ShouldJump()){
-			//need to do actual physics here just a temp value
-			moveDirection.y = jumpForce * .5f;
+					} else{
+						float distanceToJump = (waypoint.x - transform.position.x);
+						jumpForce = Mathf.Sqrt(2 * gravity * (distanceToJump + spriteWidth  /2));
+						if (float.IsInfinity(jumpForce) || float.IsNaN(jumpForce)){
+							jumpForce = 0;
+                        }         
+					}
+
+				}else
+				//velocity.y = 0f;
+				isMoving = true;
+				moveRate = .05f;
+				
+			} 
+        } 
+		if (isMoving){
+
+			if (jumpForce != 0){
+				//Debug.Log("jump! " + jumpForce.ToString());
+				if(!float.IsNaN(jumpForce))
+					rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+				jumpForce = 0;
+			}else
+		
+			if (CanJump())
+				transform.position = Vector3.MoveTowards(transform.position, waypoint, speed * Time.deltaTime);
 		}
 
-		transform.Translate (moveDirection * Time.deltaTime);
-	    //transform.position = new Vector3(move.x + speed, move.y);
-		anim.SetFloat("HorizontalSpeed", Mathf.Abs(rigidbody2D.velocity.x));
-		//transform.position = Vector3.Lerp(transform.position, move, Time.deltaTime  );
-
-
-	}
-	protected override void Update(){
-		base.Update();
-		isAttackingWithHands = false;
-
-		if ((nextTimeToHandAttack -= Time.deltaTime) <= 0 && playerDetected){
+		if (squareMagnitude > lastSquareMagnitude || transform.position == waypoint){
+			isMoving = false;
+			anim.SetFloat("HorizontalSpeed", 0f);
+		}
+		lastSquareMagnitude = squareMagnitude;
+        
+        if ((nextTimeToHandAttack -= Time.deltaTime) <= 0 && playerDetected){
 			bool canHit = aiDetection.HandToHandCombat(transform.position, directionFacing);
 			if (canHit && CanJump()&& aiDetection.OnHead()){
 				PunchAbove();
@@ -103,9 +128,6 @@ public class ShootingEnemyController : EnemyController {
 				nextTimeToFire = 0;
 		}
 
-		
-
-
 	}
 	private void Kick(){
 		anim.SetTrigger("Kick");
@@ -133,9 +155,19 @@ public class ShootingEnemyController : EnemyController {
 
 	}
 	private bool CanJump(){
-		return (Physics2D.OverlapCircle(transform.position, .5f ,groundLayerMask) && rigidbody2D.velocity.y == 0);
+		return (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - (spriteHeight/2)), .3f ,groundLayerMask) && rigidbody2D.velocity.y == 0);
 	}
-	private void OnCollisionStay2D(Collision2D other){
+	private void OnTriggerEnter2D(Collider2D other){
+		if (other.gameObject.tag == "WaypointEdge"){
+			transform.position = Vector3.Lerp(transform.position,other.transform.position, speed * 14*  Time.deltaTime);
+		}
+	}
+	private void OnTriggerStay2D(Collider2D other){
+		if (other.gameObject.tag == "Waypoint"){
+			anim.SetFloat("HorizontalSpeed", 0);   
+        }
+    }
+    private void OnCollisionStay2D(Collision2D other){
 		if (other.gameObject.tag == "Player" && isAttackingWithHands){
 			other.rigidbody.AddRelativeForce(new Vector2 (1000 * directionFacing.x, .5f));
 			other.gameObject.GetComponent<Controller>().DecreaseHealth(1);

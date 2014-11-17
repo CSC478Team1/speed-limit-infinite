@@ -32,6 +32,8 @@ public class BombEnemyController : EnemyController {
 			//if player is in attack radius blow up!
 			if (Mathf.Abs(transform.position.x - targetPosition.x) < attackDistance && Mathf.Abs(transform.position.y - targetPosition.y) < attackDistance){
 				isLocked = true;
+				rigidbody2D.isKinematic = true;
+				rigidbody2D.collider2D.enabled = false;
 				Detonate();
 			} else{
 				Vector2 nextLocation = new Vector2(transform.position.x + (enemyWidth*directionFacing.x), transform.position.y);

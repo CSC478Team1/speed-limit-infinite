@@ -16,6 +16,7 @@ TagManager:
   - EnemyProjectile
   - PlayerProjectile
   - Waypoint
+  - WaypointEdge
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   User Layer 12: IgnorePlayer
   User Layer 13: IgnoreEnemy
   User Layer 14: Waypoint
-  User Layer 15: 
+  User Layer 15: WaypointEdge
   User Layer 16: 
   User Layer 17: 
   User Layer 18: 
