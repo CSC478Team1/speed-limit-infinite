@@ -82,21 +82,21 @@ public class AIWaypointPathfinding {
 			Vector2 nextLocation = new Vector2 (start.x , start.y + ((waypointRadiusoffset) * direction));
 			Vector3 nextLocationX = nextLocation;
 			bool waypointLoop = true;
-			int counter = -6;
+			int counter = -4;
 			while (waypointLoop){
 				RaycastHit2D waypointDetection = Physics2D.Raycast(nextLocation, new Vector2(0f, direction), 10f, waypointMask);
 				if (waypointDetection.collider != null){
-					RaycastHit2D pathDetection = Physics2D.Raycast(nextLocation, new Vector2(0f, direction), waypointDetection.distance, groundCollisionLayerMask);
-					if (pathDetection.collider == null){
+				//	RaycastHit2D pathDetection = Physics2D.Raycast(nextLocation, new Vector2(0f, direction), waypointDetection.distance, groundCollisionLayerMask);
+					//if (pathDetection.collider == null){
 						nextNodes.Add(waypointDetection.collider.transform.gameObject.transform.position);
-					}
+				//	}
 				}
 
 				//nextNodes.Add(MoveXAxis(nextLocationX, lookRight));
-				nextLocation.x += direction * (spriteWidth * 3) * counter;
+				nextLocation.x += direction * (spriteWidth) * counter;
 				//nextLocationX.y += direction * (spriteHeight) * counter;
 				//Debug.Log(nextLocationX.ToString());
-				if (++counter > 6)
+				if (++counter > 4)
 					waypointLoop = false;
 			}
 			if (nextNodes.Count > 0){
@@ -129,7 +129,6 @@ public class AIWaypointPathfinding {
 	}
  	private Vector3 DeterminePath(Vector3 pathOne, Vector3 pathTwo){
 		Vector3 move;
-
 		float pathOnePoints = 0;
 		float pathTwoPoints = 0;
 		float pathOneYPos = Mathf.Abs(Mathf.Abs(pathOne.y) - Mathf.Abs(enemyPosition.y));
@@ -137,11 +136,17 @@ public class AIWaypointPathfinding {
 		float pathOneXPos = Mathf.Abs(Mathf.Abs(pathOne.x) - Mathf.Abs(enemyPosition.x));
 		float pathTwoXPos = Mathf.Abs(Mathf.Abs(pathTwo.x) - Mathf.Abs(enemyPosition.x));
 
-		pathOnePoints = pathOneYPos + pathOneXPos + CheckForCeiling(pathOne);
-		pathTwoPoints = pathTwoYPos + pathTwoXPos + CheckForCeiling(pathTwo);
+		float characterCostOneY = Mathf.Abs(Mathf.Abs(pathOne.y - Mathf.Abs(position.y)));
+		float characterCostOneX = Mathf.Abs(Mathf.Abs(pathOne.x - Mathf.Abs(position.x)));
+		float characterCostTwoY = Mathf.Abs(Mathf.Abs(pathTwo.y - Mathf.Abs(position.y)));
+		float characterCostTwoX = Mathf.Abs(Mathf.Abs(pathTwo.x - Mathf.Abs(position.x)));
+
+		pathOnePoints = pathOneYPos + pathOneXPos + characterCostOneX + characterCostOneY +  CheckForCeiling(pathOne);
+		pathTwoPoints = pathTwoYPos + pathTwoXPos + characterCostTwoX + characterCostTwoY +  CheckForCeiling(pathTwo);
 		
-		//Debug.Log(enemyPosition.ToString() +   "enemy - " + pathTwoPoints.ToString() + " move " + pathTwo.ToString() +  "  temp " + pathOnePoints.ToString() + "   " + pathOne.ToString());
+		//Debug.Log(enemyPosition.ToString() +   "enemy - " + pathTwoPoints.ToString() + " path 2 " + pathTwo.ToString() +  "  path 1 " + pathOnePoints.ToString() + "   " + pathOne.ToString());
 		move = pathOnePoints < pathTwoPoints ? pathOne : pathTwo;
+		//Debug.Log(move.ToString());
         return move;
 	}
 	private void CheckForJump(Vector3 pointA, Vector3 pointB){

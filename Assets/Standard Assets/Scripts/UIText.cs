@@ -20,7 +20,7 @@ public class UIText : MonoBehaviour {
 			style.alignment = TextAnchor.LowerCenter;
 			style.fontSize = 22;
 			style.normal.background = tex;
-			style.normal.background.alphaIsTransparency = true;
+//			style.normal.background.alphaIsTransparency = true;
 			Vector2 textSize = GUI.skin.label.CalcSize(new GUIContent(message));
 			GUI.Label(new Rect((Screen.width/2) -(textSize.x /2), Screen.height / 4 * 3, textSize.x , textSize.y), message, style);
 			//GUI.Label(new Rect(0, 0, 100, 20), message, style);

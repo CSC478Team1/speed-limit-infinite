@@ -6,7 +6,8 @@ public class EnemyController : Controller {
 	protected int playerLayerMask;
 	protected bool playerDetected = false;
 	protected Vector2 directionFacing;
-	protected float sightDistance = 15f;
+	protected float sightDistance = 8f;
+	private float timeToWaitForDetection = .05f;
 	private bool locked = false;
 	protected Vector2 targetPosition;
 	protected float jumpDistance = 5f;
@@ -33,17 +34,22 @@ public class EnemyController : Controller {
 
 	protected virtual void Update(){
 		// move enemy here
-		playerDetected = aiDetection.CanSeeEnemyInFront(transform.position, directionFacing);
-		if (!playerDetected){
-			playerDetected = aiDetection.CanSeeEnemyInBack(transform.position, directionFacing);
+		if ((timeToWaitForDetection -= Time.deltaTime)<=0){
+			playerDetected = aiDetection.EnemyIsNear(transform.position);
 			if (playerDetected){
-				targetPosition = aiDetection.EnemyPosition();
-				MirrorSprite();
-				directionFacing = -directionFacing;
+				playerDetected = aiDetection.CanSeeEnemyInFront(transform.position, directionFacing);
+				if (!playerDetected){
+					playerDetected = aiDetection.CanSeeEnemyInBack(transform.position, directionFacing);
+					if (playerDetected){
+						targetPosition = aiDetection.EnemyPosition();
+						MirrorSprite();
+						directionFacing = -directionFacing;
+					}
+				} else
+					targetPosition = aiDetection.EnemyPosition();
 			}
-		} else
-			targetPosition = aiDetection.EnemyPosition();
-
+			timeToWaitForDetection = .05f;
+		}
 	}
 				
 	// Update is called once per frame

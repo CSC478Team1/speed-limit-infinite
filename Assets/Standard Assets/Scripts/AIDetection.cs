@@ -28,11 +28,14 @@ public class AIDetection {
 	public bool CanSeeEnemyInBack(Vector3 transform, Vector2 directionFacing){
 		return (CanSeeEnemy(transform, -directionFacing));
 	}
+	public bool EnemyIsNear(Vector3 transform){
+		return (Physics2D.OverlapCircle(transform, 10f, playerLayerMask));
+	}
 	public Vector2 EnemyPosition(){
 		return enemyPosition;
 	}
 	private bool GenerateRaycast(Vector3 transform,  Vector3 angle){
-		RaycastHit2D playerDetection = Physics2D.CircleCast(transform, .25f , angle, sightDistance ,playerLayerMask);
+		RaycastHit2D playerDetection = Physics2D.CircleCast(transform, .15f , angle, sightDistance ,playerLayerMask);
 		if (playerDetection.collider != null && playerDetection.collider.tag == "Player") {
 			enemyPosition = playerDetection.transform.position;
 			return true;
@@ -73,9 +76,9 @@ public class AIDetection {
 		}
 			
 		if (enemyDetected && !ShouldFire(transform) && enemyPosition.y > transform.y){
-			RaycastHit2D detectPlatforms = Physics2D.Raycast(transform, Vector2.up, jumpDistance, boundaryLayerMask);
+			RaycastHit2D detectPlatforms = Physics2D.Raycast(transform, Vector2.up, 10f, boundaryLayerMask);
 			if (detectPlatforms.collider != null){
-				if (detectPlatforms.collider.transform.position.y > enemyPosition.y){
+				if (detectPlatforms.transform.position.y > enemyPosition.y){
 					shouldJump = true;
 				}
 			} else
