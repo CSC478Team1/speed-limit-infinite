@@ -14,6 +14,7 @@ public class EnemyController : Controller {
 	private float deathAnimationTime = 0;
 	protected AIDetection aiDetection;
 	protected int groundLayerMask;
+	private GameObject player;
 	
 	// Use this for initialization
 	protected override void Start () {
@@ -22,6 +23,7 @@ public class EnemyController : Controller {
 		groundLayerMask = (1 << LayerMask.NameToLayer("Default")) | (1 << LayerMask.NameToLayer("Platform")) | (1 << LayerMask.NameToLayer("IgnorePlayer")) 
 						| (1 << LayerMask.NameToLayer("PlayerObject")) ;
 
+		player = GameObject.Find("Player1");
 		deathAnimationTime = GameResources.GetAnimationClip(GameResources.KeySmallExplosionAnimation).length;
 
 		if (isFacingRight)
@@ -35,19 +37,14 @@ public class EnemyController : Controller {
 	protected virtual void Update(){
 		// move enemy here
 		if ((timeToWaitForDetection -= Time.deltaTime)<=0){
-			playerDetected = aiDetection.EnemyIsNear(transform.position);
-			if (playerDetected){
-				playerDetected = aiDetection.CanSeeEnemyInFront(transform.position, directionFacing);
-				if (!playerDetected){
-					playerDetected = aiDetection.CanSeeEnemyInBack(transform.position, directionFacing);
-					if (playerDetected){
-						targetPosition = aiDetection.EnemyPosition();
-						MirrorSprite();
-						directionFacing = -directionFacing;
-					}
-				} else
-					targetPosition = aiDetection.EnemyPosition();
-			}
+			playerDetected = aiDetection.EnemyIsNear(transform.position,player.transform.position);
+			float distance = player.transform.position.x - transform.position.x;
+			float xDirection = distance >= 0 ? 1f : -1f;
+			if (xDirection != directionFacing.x && Mathf.Abs(distance) > .3f ){
+					MirrorSprite();
+					directionFacing = -directionFacing;
+				}
+			targetPosition = aiDetection.EnemyPosition();
 			timeToWaitForDetection = .05f;
 		}
 	}

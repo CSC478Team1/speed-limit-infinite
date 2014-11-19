@@ -7,12 +7,12 @@ public class ShootingEnemyController : EnemyController {
 	private float nextTimeToFire;
 	private float nextTimeToHandAttack;
 	private float handAttackRate = .1f;
-	private float moveRate = .125f;
+	private float moveRate = .055f;
 	private float jumpRate = .125f;
 	private float gravity;
 	private float spriteHeight;
 	private float spriteWidth;
-	private float maxJumpHeight = 55f;
+	private float maxJumpHeight = 8f;
 	private bool isAttackingWithHands = false;
 	//private AIBasicPathfinding pathfinder;
 	private AIWaypointPathfinding waypointPathfinder;
@@ -42,15 +42,16 @@ public class ShootingEnemyController : EnemyController {
 		if (CanJump() && (jumpRate -= Time.fixedDeltaTime) <=0){
 
 			if (jumpForce != float.MaxValue){
-				if(!float.IsNaN(jumpForce))
+				if(!float.IsNaN(jumpForce)){
 					rigidbody2D.velocity = new Vector2(0, jumpForce);
-				//rigidbody2D.velocity = new Vector2((waypoint.x - transform.position.x) * speed, rigidbody2D.velocity.y);
+				}
+
 				jumpForce = float.MaxValue;
             }
 			jumpRate = .125f;
         }
 		rigidbody2D.velocity = new Vector2((waypoint.x - transform.position.x) * speed, rigidbody2D.velocity.y);
-        
+
         anim.SetFloat("HorizontalSpeed", Mathf.Abs(rigidbody2D.velocity.x));
         
     }
@@ -65,13 +66,14 @@ public class ShootingEnemyController : EnemyController {
 				startPoint = waypoint;
 				waypoint = waypointPathfinder.GetNewMoveValue();
 
+				//waypointPathfinder.Test(transform, directionFacing);
 				//anim.SetFloat("HorizontalSpeed", 1f);
-
 				if (waypointPathfinder.ShouldJump() || Mathf.Abs(waypoint.y - transform.position.y) > spriteHeight*3){
 					if (Mathf.Abs(waypoint.y - transform.position.y) > spriteHeight){
 						float distanceToJump = (waypoint.y - transform.position.y);
-						if (distanceToJump > 0)
+						if (distanceToJump > 0 && distanceToJump < maxJumpHeight)
 							jumpForce = Mathf.Sqrt(2 * (gravity * (distanceToJump + spriteHeight /2)));
+
 
 					} else{
 						float distanceToJump = Mathf.Abs(waypoint.x - transform.position.x);
@@ -94,13 +96,14 @@ public class ShootingEnemyController : EnemyController {
         
         if ((nextTimeToHandAttack -= Time.deltaTime) <= 0 && playerDetected){
 			bool canHit = aiDetection.HandToHandCombat(transform.position, directionFacing);
+
 			if (canHit && CanJump()&& aiDetection.OnHead()){
 				PunchAbove();
 			} else if (canHit && CanJump()){
 				Kick();
 			}
-		} else if (nextTimeToHandAttack < float.MinValue + 100)
-			nextTimeToHandAttack = 0;
+			nextTimeToHandAttack = handAttackRate;
+		} 
 
 		if ((nextTimeToFire -= Time.deltaTime) <= 0){
 			if(playerDetected && aiDetection.ShouldFire(transform.position))
@@ -108,7 +111,6 @@ public class ShootingEnemyController : EnemyController {
 			else if (playerDetected){
 				float distanceToJump = aiDetection.JumpDistance(transform.position);
 				if (distanceToJump > 0 &&  CanJump() && !aiDetection.OnHead()){
-					//make enemy jump here animation
 					if (distanceToJump < maxJumpHeight){
 						jumpForce = Mathf.Sqrt(2 *(gravity * (distanceToJump + spriteHeight /2)));
 						if (!float.IsInfinity(jumpForce) &&  !float.IsNaN(jumpForce)){
@@ -126,7 +128,6 @@ public class ShootingEnemyController : EnemyController {
 	}
 	private void Kick(){
 		anim.SetTrigger("Kick");
-		nextTimeToHandAttack = handAttackRate;
 		isAttackingWithHands = true;
 	}
 	private void PunchAbove(){
@@ -138,7 +139,6 @@ public class ShootingEnemyController : EnemyController {
 				anim.SetTrigger("Punch");
 			}
 			isAttackingWithHands = true;
-			nextTimeToHandAttack = handAttackRate;
 		}
 	}
 	private void FireTimedWeapon(){
@@ -171,6 +171,4 @@ public class ShootingEnemyController : EnemyController {
 		}
 	}
 
-
-	
 }

@@ -16,12 +16,9 @@ public class CameraBackgroundScroller : MonoBehaviour {
 		quadWidth = quadHeight * Screen.width/Screen.height;
 		Vector3 quadScale =  new Vector3(quadWidth, quadHeight, 1f);
 		camQuad.transform.localScale = quadScale;
-
-
 	}
 	// Update is called once per frame
 	private void Update () {
 		renderer.material.mainTextureOffset = new Vector2((player.transform.position.x * horizontalScrollSpeed) % quadWidth, ((player.transform.position.y + 15) * verticalScrollSpeed) % quadHeight);
-	
 	}
 }

@@ -17,11 +17,13 @@ public class MovingPlatform : MonoBehaviour {
 	private bool playerIsOn = false;
 
 
+
 	private void Awake(){
 		start = gameObject.transform.root.FindChild("Start").transform;  
 		stop = gameObject.transform.root.FindChild("Stop").transform; 
 		player = GameObject.Find("Player1");
 		nextStop = stop;
+
 		/**
 		if (isHorizontal)
 			start.position.y = stop.position.y;
@@ -30,16 +32,11 @@ public class MovingPlatform : MonoBehaviour {
 			**/
 	}
 
-	private void FixedUpdate () {
+	private void Update () {
 		if (!requiresTrigger){
 
-			if (isHorizontal){
-				gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, nextStop.position, speed * Time.deltaTime);
-			}
-			else{
-				gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, nextStop.position, speed * Time.deltaTime);
+			gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, nextStop.position, speed * Time.deltaTime);
 
-			}
 
 			if (isStartingPoint){
 				if (!isHorizontal)
@@ -71,7 +68,7 @@ public class MovingPlatform : MonoBehaviour {
 			}
 
 			if (playerIsOn){
-				if(Mathf.Abs(player.transform.position.y - gameObject.transform.position.y) >  .66f){
+				if(Mathf.Abs(player.transform.position.y - gameObject.transform.position.y) >  .86f){
 					ReleaseChildOfPlatform();
 				}
 			}
@@ -113,6 +110,7 @@ public class MovingPlatform : MonoBehaviour {
 		if (other.gameObject.tag == "Player")
 			ReleaseChildOfPlatform();
 	}
+
 	private void MakeChildOfPlatform(){
 		if (gameObject.rigidbody2D != null)
 			Destroy(gameObject.rigidbody2D);
@@ -130,6 +128,12 @@ public class MovingPlatform : MonoBehaviour {
 	private void ReleaseChildOfPlatform(){
 		playerIsOn = false;
 		player.transform.parent = null;
+	}
+	public void PlayerTriggeredParentEvent(){
+		MakeChildOfPlatform();
+	}
+	public void PlayerTriggeredDetachParentEvent(){
+		ReleaseChildOfPlatform();
 	}
 
 }

@@ -8,6 +8,8 @@ public class FallingPlatform : MonoBehaviour {
 //	private Transform startingLocation;
 	private GameObject wallSwitch;
 	private GameObject fallingPlatform;
+	private bool fell = false;
+	private bool disabled = false;
 
 	private void Awake(){
 		wallSwitch = GameObject.Find("Switch") as GameObject;
@@ -27,20 +29,23 @@ public class FallingPlatform : MonoBehaviour {
 					fallingPlatform.rigidbody2D.isKinematic = false;
 					fallingPlatform.rigidbody2D.gravityScale = 10f;
 					anim.SetBool("IsUp", !isUp);
-				} /**else{
-
-					fallingPlatform.rigidbody2D.gravityScale = 0f;
-					fallingPlatform.transform.position = transform.position;
-					Debug.Log(startingLocation.position.y.ToString());
-					fallingPlatform.rigidbody2D.isKinematic = true;
-				}
-				isUp = !isUp;
-				**/
-
+					isUp = false;
+				} 
 			}
 
 		}
-		else if(other.gameObject.tag == "Enemy" && gameObject.tag == "Platform")
+
+		if(other.gameObject.tag == "Enemy" && gameObject.tag == "Platform" && !fell)
 			Destroy(other.gameObject); // enemy was smashed change to death sequence
+
+		if (!isUp && fallingPlatform.rigidbody2D.velocity.y == 0 && !disabled){
+			gameObject.tag="Untagged";
+			if (other.tag == "Enemy")
+				Destroy(other.gameObject);
+			disabled = true;
+			//fallingPlatform.tag ="Untagged";
+			//fallingPlatform.collider2D.isTrigger = false;
+		}
+
 	}
 }

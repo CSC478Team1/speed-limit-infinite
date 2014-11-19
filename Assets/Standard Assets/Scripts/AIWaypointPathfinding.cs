@@ -86,15 +86,15 @@ public class AIWaypointPathfinding {
 			while (waypointLoop){
 				RaycastHit2D waypointDetection = Physics2D.Raycast(nextLocation, new Vector2(0f, direction), 10f, waypointMask);
 				if (waypointDetection.collider != null){
-				//	RaycastHit2D pathDetection = Physics2D.Raycast(nextLocation, new Vector2(0f, direction), waypointDetection.distance, groundCollisionLayerMask);
-					//if (pathDetection.collider == null){
+					RaycastHit2D pathDetection = Physics2D.Raycast(nextLocation, new Vector2(0f, direction), waypointDetection.distance, groundCollisionLayerMask);
+					if (pathDetection.collider == null){
 						nextNodes.Add(waypointDetection.collider.transform.gameObject.transform.position);
-				//	}
+					}
 				}
 
-				//nextNodes.Add(MoveXAxis(nextLocationX, lookRight));
+				nextNodes.Add(MoveXAxis(nextLocationX, lookRight));
 				nextLocation.x += direction * (spriteWidth) * counter;
-				//nextLocationX.y += direction * (spriteHeight) * counter;
+				nextLocationX.y += direction * (spriteHeight) * counter;
 				//Debug.Log(nextLocationX.ToString());
 				if (++counter > 4)
 					waypointLoop = false;
@@ -164,5 +164,17 @@ public class AIWaypointPathfinding {
 	}
 	private bool CanMove(){
 		return (Physics2D.OverlapCircle(position, .5f, groundCollisionLayerMask ));
+	}
+
+	public void Test(Transform transform, Vector2 directionFacing){
+		RaycastHit2D [] hits;
+		Vector3 path = transform.position;
+		hits = Physics2D.RaycastAll(transform.position, directionFacing, 12f);
+		foreach (RaycastHit2D hit in hits){
+			if (hit.collider != null){
+				path = DeterminePath(hit.collider.transform.position, path);
+			}
+		}
+		Debug.Log("my path " +  path.ToString());
 	}
 }
