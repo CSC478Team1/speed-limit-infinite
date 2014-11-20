@@ -1298,7 +1298,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 35979913}
   - 61: {fileID: 35979914}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Long Box Collision
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -2078,7 +2078,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 59498496}
   - 212: {fileID: 59498497}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: scifi_platform_base_long
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -3445,7 +3445,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 100728309}
   - 61: {fileID: 100728310}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Long Box Collision
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -16093,6 +16093,30 @@ Prefab:
       propertyPath: m_RootOrder
       value: 85
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: f8fe7d270b375754890eb70090fbe002, type: 2}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f8fe7d270b375754890eb70090fbe002, type: 2}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: f8fe7d270b375754890eb70090fbe002, type: 2}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: f8fe7d270b375754890eb70090fbe002, type: 2}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: f8fe7d270b375754890eb70090fbe002, type: 2}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: f8fe7d270b375754890eb70090fbe002, type: 2}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f8fe7d270b375754890eb70090fbe002, type: 2}
   m_RootGameObject: {fileID: 495488655}
@@ -18876,7 +18900,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 484851608}
   - 212: {fileID: 484851609}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: scifi_platform_base_long
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -19139,7 +19163,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 495488656}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Long Floor
   m_TagString: Floor
   m_Icon: {fileID: 0}
@@ -23367,7 +23391,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 621308521}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Long Floor
   m_TagString: Floor
   m_Icon: {fileID: 0}
@@ -26390,7 +26414,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 727403359}
   - 212: {fileID: 727403360}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: scifi_platform_base_long
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -51764,7 +51788,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1537851117}
   - 212: {fileID: 1537851118}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: scifi_platform_base_long
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -53689,6 +53713,30 @@ Prefab:
     - target: {fileID: 400010, guid: f8fe7d270b375754890eb70090fbe002, type: 2}
       propertyPath: m_RootOrder
       value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f8fe7d270b375754890eb70090fbe002, type: 2}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: f8fe7d270b375754890eb70090fbe002, type: 2}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: f8fe7d270b375754890eb70090fbe002, type: 2}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: f8fe7d270b375754890eb70090fbe002, type: 2}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: f8fe7d270b375754890eb70090fbe002, type: 2}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: f8fe7d270b375754890eb70090fbe002, type: 2}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f8fe7d270b375754890eb70090fbe002, type: 2}
@@ -56665,7 +56713,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1679327050}
   - 212: {fileID: 1679327051}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: scifi_platform_base_long
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -57005,7 +57053,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1695538168}
   - 212: {fileID: 1695538167}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: scifi_platform_base_long
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -57976,7 +58024,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1730168451}
   - 212: {fileID: 1730168452}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: scifi_platform_base_long
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -58157,7 +58205,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1733574681}
   - 212: {fileID: 1733574682}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: scifi_platform_base_long
   m_TagString: Platform
   m_Icon: {fileID: 0}

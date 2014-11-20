@@ -119,8 +119,8 @@ public class MovingPlatform : MonoBehaviour {
 }
 
 	private void MakeChildOfPlatform(){
-		if (gameObject.rigidbody2D != null)
-			Destroy(gameObject.rigidbody2D);
+		//if (gameObject.rigidbody2D != null)
+			//Destroy(gameObject.rigidbody2D);
 		Transform[] allChildren = GetComponentsInChildren<Transform>();
 		foreach (Transform child in allChildren) {
 			if (child.name == "Platform"){
@@ -143,10 +143,6 @@ public class MovingPlatform : MonoBehaviour {
 	}
 	public void PlayerTriggeredDetachParentEvent(){
 		ReleaseChildOfPlatform();
-	}
-	protected IEnumerator Pause(float time){
-		yield return new WaitForSeconds(time);
-
 	}
 
 

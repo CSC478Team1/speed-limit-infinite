@@ -14,7 +14,7 @@ public class EnemyController : Controller {
 	private float deathAnimationTime = 0;
 	protected AIDetection aiDetection;
 	protected int groundLayerMask;
-	private GameObject player;
+	protected GameObject player;
 	
 	// Use this for initialization
 	protected override void Start () {

@@ -21,6 +21,11 @@ public static class GameResources  {
 	public const string KeyLargeExplosionAnimation = "largeexplosion";
 	public const string KeyBombBotAppearAnimation = "appear";
 	public const string KeyUITextBackground = "UITextBackground";
+	public const string KeyPowerUpSingleLaser = "PowerUp Single Laser";
+	public const string KeyPowerUpDualLaser = "PowerUp Dual Laser";
+	public const string KeyPowerUpLargeLaser = "PowerUp Large Laser";
+	public const string KeyPowerUpGravityBoots = "PowerUp AntiGravity Boot";
+	public const string KeyPowerUpInfiniteSpeed = "PowerUp Infinite Speed";
 
 	public const string ObjectClone = "CLONEDOBJECTCHILD";
 	public const string ObjectWasCloned = "CLONEDOBJECT";
@@ -44,6 +49,12 @@ public static class GameResources  {
 		gameObjects.Add(KeySmallExplosion, Resources.Load<GameObject>(@"prefab/Projectiles/" + KeySmallExplosion));
 		gameObjects.Add(KeyLargeExplosion, Resources.Load<GameObject>(@"prefab/Projectiles/" + KeyLargeExplosion));
 		gameObjects.Add(KeyUITextBackground, Resources.Load<GameObject>(@"prefab/UI/" + KeyUITextBackground));
+		gameObjects.Add(KeyPowerUpSingleLaser, Resources.Load<GameObject>(@"prefab/Player Objects/" + KeyPowerUpSingleLaser));
+		gameObjects.Add(KeyPowerUpDualLaser, Resources.Load<GameObject>(@"prefab/Player Objects/" + KeyPowerUpDualLaser));
+		gameObjects.Add(KeyPowerUpLargeLaser, Resources.Load<GameObject>(@"prefab/Player Objects/" + KeyPowerUpLargeLaser));
+		gameObjects.Add(KeyPowerUpGravityBoots, Resources.Load<GameObject>(@"prefab/Player Objects/" + KeyPowerUpGravityBoots));
+		gameObjects.Add(KeyPowerUpInfiniteSpeed, Resources.Load<GameObject>(@"prefab/Player Objects/" + KeyPowerUpInfiniteSpeed));
+
 
 		animationClips.Add(KeySmallExplosionAnimation, Resources.Load<AnimationClip>(@"Animations/Effects/" + KeySmallExplosionAnimation));
 		animationClips.Add(KeyLargeExplosionAnimation, Resources.Load<AnimationClip>(@"Animations/Effects/" + KeyLargeExplosionAnimation));

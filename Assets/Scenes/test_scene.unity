@@ -2399,7 +2399,7 @@ Rigidbody2D:
     type: 2}
   m_PrefabInternal: {fileID: 878778015}
   m_GameObject: {fileID: 857547662}
-  m_Mass: 15
+  m_Mass: 500
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1

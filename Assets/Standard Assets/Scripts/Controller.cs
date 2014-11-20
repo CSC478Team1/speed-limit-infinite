@@ -7,7 +7,7 @@ public class Controller : MonoBehaviour {
 	public static event HealthStatus updateHealth;
 
 	protected int health = 100;
-	private int maxHealth;
+	protected int maxHealth;
 	protected float deathHeight = -15f;  //Y value to determine if Character fell off map
 	protected bool isFacingRight = true; 
 	protected bool canJump = true;

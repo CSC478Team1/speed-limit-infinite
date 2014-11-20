@@ -4,6 +4,7 @@ using System.Collections;
 public class InGameMenu : MonoBehaviour {
 
 	private bool menuCalled = false;
+	private bool debugMenuCalled = false;
 	private float top;
 	private float height;
 	private float left;
@@ -14,6 +15,8 @@ public class InGameMenu : MonoBehaviour {
 	private float buttonWidth;
 	private float buttonLeft;
 	private float buttonTop;
+	private string command = "";
+	private string temp = "";
 
 	public GUIStyle style;
 
@@ -38,6 +41,9 @@ public class InGameMenu : MonoBehaviour {
 			//pause the game and unpause if user hits menu key again
 			GameManager.PauseGameToggle();
 			menuCalled = !menuCalled;
+		}
+		if (Input.GetButtonDown("Debug Menu")){
+			debugMenuCalled = true;
 		}
 	}
 
@@ -77,6 +83,68 @@ public class InGameMenu : MonoBehaviour {
 				GameManager.PauseGameToggle();
 		
 
+		}
+
+		if (debugMenuCalled){
+			bool commandEntered = false;
+			GUI.skin.box = style;
+			Event textEvent = Event.current;
+			if (textEvent.keyCode == KeyCode.Return){
+				command = temp;
+				temp = "";
+				commandEntered = true;
+			} else if (textEvent.keyCode == KeyCode.BackQuote)
+				temp = "";
+			GUI.skin.button.normal.textColor = Color.cyan;
+			GUI.skin.button.hover.textColor = Color.white;
+			GUI.Label(new Rect(0,Screen.height - buttonHeight,200,buttonHeight), "Enter commands: ");
+			GUI.SetNextControlName("TextField");
+			temp = GUI.TextField(new Rect(210, Screen.height - buttonHeight,500,buttonHeight ), temp, 25);
+			GUI.FocusControl("TextField");
+
+			if (commandEntered){
+				switch(command.ToLower()){
+
+				case "looter":
+					GameManager.DisplayMessage("Oh Yeah!");
+					GameManager.AddAllItems(false);
+					break;
+				case "firepower":
+					GameManager.DisplayMessage("Fire the 'laser'");
+					GameManager.AddAllItems(true);
+					break;
+				case "onlyafleshwound":
+					GameManager.SetNewPlayerHealth(int.MaxValue -2, int.MaxValue -2);
+					GameManager.DisplayMessage("Tis but a scratch!");
+					break;
+				case "level1":
+					GameManager.LoadNextLevel("Level1");
+					break;
+				case "level2":
+					GameManager.LoadNextLevel("Level2");
+					break;
+				case "level3":
+					GameManager.LoadNextLevel("Level3");
+					break;
+				case "level4":
+					GameManager.LoadNextLevel("Level4");
+					break;
+				case "level5":
+					GameManager.LoadNextLevel("Level5");
+					break;
+				//case "testlevel":
+					//GameManager.LoadNextLevel("test_scene");
+					//break;
+
+				case "":
+					break;
+				default:
+					GameManager.DisplayMessage("Ah ah ah… you didn’t say the magic word");
+					break;
+				}
+				debugMenuCalled = false;
+				commandEntered = false;
+			}
 		}
 	}
 }

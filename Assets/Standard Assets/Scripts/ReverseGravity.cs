@@ -12,8 +12,7 @@ public class ReverseGravity : MonoBehaviour {
 	private void OnTriggerEnter2D (Collider2D other){
 		try{
 			if (other.tag == "Player"){
-				Vector2 gravity = new Vector2(0, currentGravity.y * -1 - 21f);
-				Physics2D.gravity = gravity;
+				GameManager.SetReverseGravity();
 
 				Transform floorLock = gameObject.transform.Find("Floor Lock").transform;
 				Transform floorLockLocation = gameObject.transform.Find("Lock Location").transform;
@@ -29,8 +28,7 @@ public class ReverseGravity : MonoBehaviour {
 	private void OnTriggerExit2D (Collider2D other){
 		try{
 			if (other.tag == "Player"){
-				Vector2 gravity = new Vector2(0, currentGravity.y);
-				Physics2D.gravity = gravity;
+				GameManager.SetOriginalGravity();
 				FlipSprite(other.gameObject);
 				
 			}

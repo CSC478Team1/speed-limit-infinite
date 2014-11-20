@@ -192,6 +192,13 @@ public class PlayerController : Controller {
 	public void ResetHealth(){
 		SetHealth(startingHealth);
 	}
+	public void ResetHealth(int max, int current){
+		startingHealth = max;
+		maxHealth = max;
+		health = current;
+		SetHealth(current);
+	}
+
 
 
 	
