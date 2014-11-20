@@ -15,7 +15,9 @@ public class MovingPlatform : MonoBehaviour {
 	private bool isStartingPoint = true;
 	private GameObject player;
 	private bool playerIsOn = false;
-
+	private bool isUp = true;
+	float yDistance;
+	//float xDistance;
 
 
 	private void Awake(){
@@ -24,17 +26,15 @@ public class MovingPlatform : MonoBehaviour {
 		player = GameObject.Find("Player1");
 		nextStop = stop;
 
-		/**
-		if (isHorizontal)
-			start.position.y = stop.position.y;
-		else
-			start.position.x = stop.position.x;
-			**/
 	}
 
 	private void Update () {
 		if (!requiresTrigger){
+			yDistance = player.transform.position.y - (gameObject.transform.position.y + .64f);
+			//xDistance =  gameObject.transform.position.x - player.transform.position.x;
 
+			if (isFinished)
+				isUp = !isUp;
 			gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, nextStop.position, speed * Time.deltaTime);
 
 
@@ -67,12 +67,9 @@ public class MovingPlatform : MonoBehaviour {
 						isFinished = false;
 			}
 
-			if (playerIsOn){
-				if(Mathf.Abs(player.transform.position.y - gameObject.transform.position.y) >  .86f){
-					ReleaseChildOfPlatform();
-				}
+			if (playerIsOn && (yDistance >.2f || yDistance < -.2f)){
+				ReleaseChildOfPlatform();
 			}
-	
 			if (isFinished)
 				isStartingPoint = !isStartingPoint;
 		}
@@ -106,10 +103,20 @@ public class MovingPlatform : MonoBehaviour {
 		if (other.gameObject.tag == "Player")
 			MakeChildOfPlatform();
 	}
+
 	private void OnCollisionExit2D(Collision2D other){
-		if (other.gameObject.tag == "Player")
-			ReleaseChildOfPlatform();
+		if (other.gameObject.tag == "Player"){
+			if (isHorizontal)
+				ReleaseChildOfPlatform();
+			else{
+				float yDistance = player.transform.position.y - (gameObject.transform.position.y + .64f);
+				if (yDistance > .15f){
+					ReleaseChildOfPlatform();
+				}
+			}
+	
 	}
+}
 
 	private void MakeChildOfPlatform(){
 		if (gameObject.rigidbody2D != null)
@@ -129,11 +136,18 @@ public class MovingPlatform : MonoBehaviour {
 		playerIsOn = false;
 		player.transform.parent = null;
 	}
+
+
 	public void PlayerTriggeredParentEvent(){
 		MakeChildOfPlatform();
 	}
 	public void PlayerTriggeredDetachParentEvent(){
 		ReleaseChildOfPlatform();
 	}
+	protected IEnumerator Pause(float time){
+		yield return new WaitForSeconds(time);
+
+	}
+
 
 }
