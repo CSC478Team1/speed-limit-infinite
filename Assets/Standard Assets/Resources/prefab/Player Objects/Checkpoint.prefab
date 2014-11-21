@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 61: {fileID: 6100000}
   - 114: {fileID: 11400000}
-  m_Layer: 10
+  m_Layer: 17
   m_Name: Checkpoint
   m_TagString: CheckPoint
   m_Icon: {fileID: -2065832391, guid: 0000000000000000d000000000000000, type: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 49.084301, y: 23.8265953, z: 0}
+  m_LocalPosition: {x: 43.7633057, y: 41.7388763, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -38,8 +38,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1, y: 1.35000002}
-  m_Center: {x: 0, y: .200000003}
+  m_Size: {x: 4.98999977, y: 1.12}
+  m_Center: {x: -.140000001, y: .200000003}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1

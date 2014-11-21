@@ -87,20 +87,25 @@ public class InGameMenu : MonoBehaviour {
 
 		if (debugMenuCalled){
 			bool commandEntered = false;
-			GUI.skin.box = style;
+			GUIStyle style = GUI.skin.GetStyle("Label");
+			style.alignment = TextAnchor.UpperLeft;
+			GUI.skin.button.normal.textColor = Color.cyan;
+			GUI.skin.button.hover.textColor = Color.white;
+			style.fontSize = 22;
+			//GUI.skin.box = style;
+			GUI.Label(new Rect(0,Screen.height - buttonHeight,200,buttonHeight), "Enter commands: ");
+			GUI.SetNextControlName("TextField");
+			temp = GUI.TextField(new Rect(210, Screen.height - (buttonHeight),500f,buttonHeight /2f), temp, 25);
+			GUI.FocusControl("TextField");
+
 			Event textEvent = Event.current;
 			if (textEvent.keyCode == KeyCode.Return){
 				command = temp;
 				temp = "";
 				commandEntered = true;
-			} else if (textEvent.keyCode == KeyCode.BackQuote)
+			} else if (textEvent.keyCode == KeyCode.BackQuote){
 				temp = "";
-			GUI.skin.button.normal.textColor = Color.cyan;
-			GUI.skin.button.hover.textColor = Color.white;
-			GUI.Label(new Rect(0,Screen.height - buttonHeight,200,buttonHeight), "Enter commands: ");
-			GUI.SetNextControlName("TextField");
-			temp = GUI.TextField(new Rect(210, Screen.height - buttonHeight,500,buttonHeight ), temp, 25);
-			GUI.FocusControl("TextField");
+			}
 
 			if (commandEntered){
 				switch(command.ToLower()){
@@ -114,7 +119,7 @@ public class InGameMenu : MonoBehaviour {
 					GameManager.AddAllItems(true);
 					break;
 				case "onlyafleshwound":
-					GameManager.SetNewPlayerHealth(int.MaxValue -2, int.MaxValue -2);
+					GameManager.SetNewPlayerHealth(int.MaxValue -200, int.MaxValue -200);
 					GameManager.DisplayMessage("Tis but a scratch!");
 					break;
 				case "level1":
@@ -132,9 +137,9 @@ public class InGameMenu : MonoBehaviour {
 				case "level5":
 					GameManager.LoadNextLevel("Level5");
 					break;
-				//case "testlevel":
-					//GameManager.LoadNextLevel("test_scene");
-					//break;
+				case "testlevel":
+					GameManager.LoadNextLevel("test_scene");
+					break;
 
 				case "":
 					break;

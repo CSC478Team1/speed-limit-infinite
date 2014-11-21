@@ -13,7 +13,6 @@ GameObject:
   - 212: {fileID: 21200000}
   - 61: {fileID: 6100000}
   - 114: {fileID: 11400000}
-  - 61: {fileID: 6100002}
   m_Layer: 12
   m_Name: BlueLargeLaser
   m_TagString: Untagged
@@ -59,17 +58,6 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_Size: {x: .270000011, y: .189999998}
   m_Center: {x: .0299999993, y: 0}
---- !u!61 &6100002
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 0
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Size: {x: .189999998, y: .159999996}
-  m_Center: {x: .0399999991, y: 0}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3

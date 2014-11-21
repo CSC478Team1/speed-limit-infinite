@@ -10,7 +10,6 @@ public class AIWaypointPathfinding {
 	private Vector2 enemyPosition;
 	private float spriteHeight;
 	private float spriteWidth;
-	private GameObject gameObject;
 	private float waypointRadiusoffset = .85f; // made it a little bigger than actual radius
 	private Vector3 oldMoveValue;
 	private Vector3 newMoveValue;
@@ -20,7 +19,6 @@ public class AIWaypointPathfinding {
 	public AIWaypointPathfinding(GameObject gameObject){
 		this.groundCollisionLayerMask = groundCollisionLayerMask;
 		waypointMask = 1 << LayerMask.NameToLayer("Waypoint") | (1 << LayerMask.NameToLayer("WaypointEdge"));
-		this.gameObject = gameObject;
 		spriteHeight = gameObject.renderer.bounds.size.y;
 		spriteWidth = gameObject.renderer.bounds.size.x;
 		groundCollisionLayerMask = (1 << LayerMask.NameToLayer("Default")) | (1<< LayerMask.NameToLayer("Platform")) | (1 << LayerMask.NameToLayer("Player"));

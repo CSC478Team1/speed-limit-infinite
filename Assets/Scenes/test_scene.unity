@@ -472,6 +472,62 @@ Prefab:
   m_RootGameObject: {fileID: 912561186}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &118494468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 81702f72807e96642aec8865e11fd4e9, type: 2}
+  m_PrefabInternal: {fileID: 1598214228}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 118494470}
+  - 114: {fileID: 118494469}
+  - 61: {fileID: 118494471}
+  m_Layer: 17
+  m_Name: Creature Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 120240766, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &118494469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 81702f72807e96642aec8865e11fd4e9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1598214228}
+  m_GameObject: {fileID: 118494468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fac6a3b1c7dcd94b956d75a56c8a0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySkillLevel: 2
+  spawnDelay: 2
+  numberOfRounds: 4
+--- !u!4 &118494470
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 81702f72807e96642aec8865e11fd4e9, type: 2}
+  m_PrefabInternal: {fileID: 1598214228}
+  m_GameObject: {fileID: 118494468}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.5916519, y: 15.9499998, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 28
+--- !u!61 &118494471
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6100000, guid: 81702f72807e96642aec8865e11fd4e9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1598214228}
+  m_GameObject: {fileID: 118494468}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 4.26999998, y: 3.6099999}
+  m_Center: {x: 0, y: -1.19000006}
 --- !u!1 &121613965
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,7 +663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fakeEnemy: {fileID: 0}
   itemName: Infinite Speed
-  itemID: 3
+  itemID: 5
   textureIcon: {fileID: 2800000, guid: 17958541d7aa90e4ab432a2cb3bcb016, type: 3}
   itemType: 0
   powerUpType: 2
@@ -2376,6 +2432,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87666c5c2859e804fb000eb70a7c1d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHealth: 100
+  sightDistance: 8
+  jumpDistance: 5
 --- !u!95 &857547664
 Animator:
   serializedVersion: 3
@@ -2531,6 +2590,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9be9296e7f9fadf47981f971152d6d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHealth: 100
+  sightDistance: 8
+  jumpDistance: 5
+  fireRate: 2
 --- !u!95 &912561188
 Animator:
   serializedVersion: 3
@@ -2841,6 +2904,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9be9296e7f9fadf47981f971152d6d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHealth: 100
+  sightDistance: 8
+  jumpDistance: 8
+  fireRate: 2
 --- !u!95 &963564592
 Animator:
   serializedVersion: 3
@@ -3250,7 +3317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fakeEnemy: {fileID: 0}
   itemName: Single Laser
-  itemID: 3
+  itemID: 1
   textureIcon: {fileID: 2800000, guid: d065cb0ce6d4aaf47a025878a3513544, type: 3}
   itemType: 0
   powerUpType: 0
@@ -3377,7 +3444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fakeEnemy: {fileID: 0}
   itemName: Anti-Gravity Boots
-  itemID: 1
+  itemID: 4
   textureIcon: {fileID: 2800000, guid: 6b3a45d82a9017b44bce58c83dbca59b, type: 3}
   itemType: 0
   powerUpType: 3
@@ -3870,6 +3937,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9be9296e7f9fadf47981f971152d6d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHealth: 100
+  sightDistance: 8
+  jumpDistance: 8
+  fireRate: .5
 --- !u!95 &1229562462
 Animator:
   serializedVersion: 3
@@ -4141,7 +4212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fakeEnemy: {fileID: 0}
   itemName: Circle Door Key
-  itemID: 999
+  itemID: 100
   textureIcon: {fileID: 2800000, guid: e4c6cf9cd322e924f9420d6475da1ba8, type: 3}
   itemType: 2
   powerUpType: 5
@@ -4993,6 +5064,50 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 668d21a6aee541a47bc1588b44b7b96f, type: 2}
   m_RootGameObject: {fileID: 164364547}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
+--- !u!1001 &1598214228
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 81702f72807e96642aec8865e11fd4e9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -11.5916519
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 81702f72807e96642aec8865e11fd4e9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 15.9499998
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 81702f72807e96642aec8865e11fd4e9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 81702f72807e96642aec8865e11fd4e9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 81702f72807e96642aec8865e11fd4e9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 81702f72807e96642aec8865e11fd4e9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 81702f72807e96642aec8865e11fd4e9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 81702f72807e96642aec8865e11fd4e9, type: 2}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 81702f72807e96642aec8865e11fd4e9, type: 2}
+  m_RootGameObject: {fileID: 118494468}
   m_IsPrefabParent: 0
   m_IsExploded: 1
 --- !u!1 &1636997885

@@ -2,8 +2,11 @@
 using System.Collections;
 
 public class ShootingEnemyController : EnemyController {
+	//declare these public to set individual values inside Unity's Inspector
+	public float fireRate = 2f;
+	//end public Inspector variables
 
-	protected float fireRate = 2f;
+
 	private float nextTimeToFire;
 	private float nextTimeToHandAttack;
 	private float handAttackRate = .1f;
@@ -12,13 +15,10 @@ public class ShootingEnemyController : EnemyController {
 	private float gravity;
 	private float spriteHeight;
 	private float spriteWidth;
-	private float maxJumpHeight = 8f;
 	private bool isAttackingWithHands = false;
-	//private AIBasicPathfinding pathfinder;
 	private AIWaypointPathfinding waypointPathfinder;
 	private Vector3 waypoint;
 	private Vector3 velocity;
-	private Vector3 startPoint;
 	private float lastSquareMagnitude;
 	private bool isMoving = false;
 	private int playerMask;
@@ -31,7 +31,7 @@ public class ShootingEnemyController : EnemyController {
 		speed = 1.3f;
 		//pathfinder = new AIBasicPathfinding(this.gameObject, 3f, groundLayerMask, speed, sightDistance);
 		waypointPathfinder = new AIWaypointPathfinding(this.gameObject);
-		waypoint = startPoint = transform.position;
+		waypoint = transform.position;
 		lastSquareMagnitude = Mathf.Infinity;
 		playerMask = (1 << LayerMask.NameToLayer("Player"));
 		jumpForce = 0;
@@ -63,15 +63,12 @@ public class ShootingEnemyController : EnemyController {
 		if ((moveRate -= Time.deltaTime) <= 0){
 			bool hasMoved = waypointPathfinder.Move(new Vector2 (gameObject.transform.position.x, gameObject.transform.position.y), aiDetection.EnemyPosition(), playerDetected);
 			if (hasMoved){
-				startPoint = waypoint;
 				waypoint = waypointPathfinder.GetNewMoveValue();
 
-				//waypointPathfinder.Test(transform, directionFacing);
-				//anim.SetFloat("HorizontalSpeed", 1f);
 				if (waypointPathfinder.ShouldJump() || Mathf.Abs(waypoint.y - transform.position.y) > spriteHeight*3){
 					if (Mathf.Abs(waypoint.y - transform.position.y) > spriteHeight){
 						float distanceToJump = (waypoint.y - transform.position.y);
-						if (distanceToJump > 0 && distanceToJump < maxJumpHeight)
+						if (distanceToJump > 0 && distanceToJump < jumpDistance)
 							jumpForce = Mathf.Sqrt(2 * (gravity * (distanceToJump + spriteHeight /2)));
 
 
@@ -81,7 +78,7 @@ public class ShootingEnemyController : EnemyController {
 					}
 
 				}
-				//velocity.y = 0f;
+
 				isMoving = true;
 				moveRate = .125f;
 				
@@ -90,7 +87,6 @@ public class ShootingEnemyController : EnemyController {
 
 		if (squareMagnitude > lastSquareMagnitude || transform.position == waypoint){
 			isMoving = false;
-			//anim.SetFloat("HorizontalSpeed", 0f);
 		}
 		lastSquareMagnitude = squareMagnitude;
         
@@ -111,7 +107,7 @@ public class ShootingEnemyController : EnemyController {
 			else if (playerDetected){
 				float distanceToJump = aiDetection.JumpDistance(transform.position);
 				if (distanceToJump > 0 &&  CanJump() && !aiDetection.OnHead()){
-					if (distanceToJump < maxJumpHeight){
+					if (distanceToJump < jumpDistance){
 						jumpForce = Mathf.Sqrt(2 *(gravity * (distanceToJump + spriteHeight /2)));
 						if (!float.IsInfinity(jumpForce) &&  !float.IsNaN(jumpForce)){
 							anim.SetTrigger("Jump");
@@ -132,7 +128,7 @@ public class ShootingEnemyController : EnemyController {
 	}
 	private void PunchAbove(){
 		float distanceToJump = aiDetection.JumpDistance(transform.position);
-		if (distanceToJump < maxJumpHeight){
+		if (distanceToJump < jumpDistance){
 			jumpForce = Mathf.Sqrt(2 * gravity * (distanceToJump + spriteHeight /2));
 			if (!float.IsInfinity(jumpForce) && !float.IsNaN(jumpForce)){
 				gameObject.rigidbody2D.velocity = new Vector2(0, jumpForce);
@@ -159,7 +155,6 @@ public class ShootingEnemyController : EnemyController {
 	private void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == "WaypointEdge"){
 			transform.position = Vector3.Lerp(transform.position,other.transform.position, speed * 14*  Time.deltaTime);
-			//transform.position = other.transform.position;
 		}
 	}
 

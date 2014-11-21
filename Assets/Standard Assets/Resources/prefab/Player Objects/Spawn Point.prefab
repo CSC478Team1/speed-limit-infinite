@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
-  m_Layer: 10
+  m_Layer: 17
   m_Name: Spawn Point
   m_TagString: SpawnPoint
   m_Icon: {fileID: -1003283189, guid: 0000000000000000d000000000000000, type: 0}

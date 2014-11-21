@@ -7,7 +7,6 @@ public class AIDetection {
 	private float jumpDistance;
 	private Vector2 enemyPosition;
 	private bool onHead = false;
-	private bool shouldFire = false;
 	private bool shouldJump = false;
 	private int playerLayerMask;
 	private int boundaryLayerMask;
@@ -34,7 +33,7 @@ public class AIDetection {
 				enemyDetected = false;
 
 		if (enemyDetected && !ShouldFire(transform) && enemyPosition.y > transform.y){
-			RaycastHit2D detectPlatforms = Physics2D.Raycast(transform, Vector2.up, 8f, boundaryLayerMask);
+			RaycastHit2D detectPlatforms = Physics2D.Raycast(transform, Vector2.up, jumpDistance, boundaryLayerMask);
 			if (detectPlatforms.collider != null){
 				if (detectPlatforms.transform.position.y > enemyPosition.y){
 					shouldJump = true;

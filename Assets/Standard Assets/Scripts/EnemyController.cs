@@ -2,15 +2,18 @@
 using System.Collections;
 
 public class EnemyController : Controller {
+	//declare these public to set individual values inside Unity's Inspector
+	public int enemyHealth = 100;
+	public float sightDistance = 8f;
+	public float jumpDistance = 5f;
+	//end public Inspector variables
 
 	protected int playerLayerMask;
 	protected bool playerDetected = false;
 	protected Vector2 directionFacing;
-	protected float sightDistance = 8f;
 	private float timeToWaitForDetection = .05f;
 	private bool locked = false;
 	protected Vector2 targetPosition;
-	protected float jumpDistance = 5f;
 	private float deathAnimationTime = 0;
 	protected AIDetection aiDetection;
 	protected int groundLayerMask;
@@ -23,7 +26,7 @@ public class EnemyController : Controller {
 		groundLayerMask = (1 << LayerMask.NameToLayer("Default")) | (1 << LayerMask.NameToLayer("Platform")) | (1 << LayerMask.NameToLayer("IgnorePlayer")) 
 						| (1 << LayerMask.NameToLayer("PlayerObject")) ;
 
-		player = GameObject.Find("Player1");
+		player = GameManager.GetPlayerObject();
 		deathAnimationTime = GameResources.GetAnimationClip(GameResources.KeySmallExplosionAnimation).length;
 
 		if (isFacingRight)
@@ -32,6 +35,7 @@ public class EnemyController : Controller {
 			directionFacing = new Vector2(-1,0);
 
 		aiDetection = new AIDetection(playerLayerMask, sightDistance, transform, jumpDistance);
+		SetHealth(enemyHealth);
 	}
 
 	protected virtual void Update(){

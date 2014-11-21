@@ -155,7 +155,7 @@ public static class GameManager {
 		}
 	}
 
-	private static GameObject GetPlayerObject(){
+	public static GameObject GetPlayerObject(){
 		GameObject player = GameObject.Find("Player1");
 		if (player == null)
 			player = GameObject.Find("Player1" + GameResources.ObjectWasCloned);

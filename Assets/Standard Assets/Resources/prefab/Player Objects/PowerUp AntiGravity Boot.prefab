@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fakeEnemy: {fileID: 0}
   itemName: Anti-Gravity Boots
-  itemID: 1
+  itemID: 4
   textureIcon: {fileID: 2800000, guid: 6b3a45d82a9017b44bce58c83dbca59b, type: 3}
   itemType: 0
   powerUpType: 3

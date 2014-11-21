@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fakeEnemy: {fileID: 0}
   itemName: Infinite Speed
-  itemID: 3
+  itemID: 5
   textureIcon: {fileID: 2800000, guid: 17958541d7aa90e4ab432a2cb3bcb016, type: 3}
   itemType: 0
   powerUpType: 2

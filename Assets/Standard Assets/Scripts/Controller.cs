@@ -6,8 +6,8 @@ public class Controller : MonoBehaviour {
 	public delegate void HealthStatus(int currentHealth, int maximumHealth);
 	public static event HealthStatus updateHealth;
 
-	protected int health = 100;
-	protected int maxHealth;
+	protected int health;
+	protected int maxHealth = 100;
 	protected float deathHeight = -15f;  //Y value to determine if Character fell off map
 	protected bool isFacingRight = true; 
 	protected bool canJump = true;
@@ -19,7 +19,7 @@ public class Controller : MonoBehaviour {
 	// Use this for initialization
 	protected virtual void Start () {
 		anim = GetComponent<Animator>();
-		maxHealth = health;
+		health = maxHealth;
 	}
 
 	protected virtual void FixedUpdate(){
@@ -60,7 +60,6 @@ public class Controller : MonoBehaviour {
 		transform.localScale = scale;
 	}
 	protected void FireWeapon(GameObject projectileObject, float projectileVelocity){
-
 		if (isFacingRight){
 			Vector2 displacement = new Vector2 (transform.position.x + .5f, transform.position.y);
 			projectileObject = Instantiate(projectileObject, displacement, Quaternion.Euler(new Vector3(0,0,0)))as GameObject;

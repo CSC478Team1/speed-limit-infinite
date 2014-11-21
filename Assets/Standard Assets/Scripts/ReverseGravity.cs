@@ -3,12 +3,6 @@ using System.Collections;
 
 public class ReverseGravity : MonoBehaviour {
 
-	Vector2 currentGravity;
-
-	private void Awake(){
-		currentGravity = Physics2D.gravity;
-	}
-
 	private void OnTriggerEnter2D (Collider2D other){
 		try{
 			if (other.tag == "Player"){

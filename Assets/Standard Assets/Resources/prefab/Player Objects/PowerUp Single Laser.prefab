@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fakeEnemy: {fileID: 0}
   itemName: Single Laser
-  itemID: 3
+  itemID: 1
   textureIcon: {fileID: 2800000, guid: d065cb0ce6d4aaf47a025878a3513544, type: 3}
   itemType: 0
   powerUpType: 0

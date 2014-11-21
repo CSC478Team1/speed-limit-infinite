@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class AIBasicPathfinding  {
 
 	private Vector2 position;
-	private Vector2 enemyPosition;
+	private Vector2 enemyPosition = Vector2.zero;
 	private float distanceToKeep;
 	private int groundCollisionLayerMask;
 	private GameObject gameObject;
@@ -42,7 +42,7 @@ public class AIBasicPathfinding  {
 	public Vector2 Move(Vector2 position, Vector2 enemyPosition){
 		this.position = position;
 		this.enemyPosition = enemyPosition;
-		if (enemyPosition.x != null && (Mathf.Abs(enemyPosition.x - position.x) < sightDistance)){
+		if (enemyPosition != Vector2.zero && (Mathf.Abs(enemyPosition.x - position.x) < sightDistance)){
 			distanceXToPlayer = position.x - enemyPosition.x;
 			distanceYToPlayer = position.y - enemyPosition.y;
 			if (distanceXToPlayer < 0 && (distanceYToPlayer < .25f && distanceYToPlayer > -.25f)){

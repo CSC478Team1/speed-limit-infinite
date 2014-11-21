@@ -22,10 +22,12 @@ public static class ItemDatabase {
 		}
 	}
 	public static void AddItem(Item item){
-		itemsList.Add(item);
-		temporaryItemList.Add(item);
-		if (itemStatusChanged != null)
-			itemStatusChanged(item, false);
+		if (!HasItem(item.ItemID)){
+			itemsList.Add(item);
+			temporaryItemList.Add(item);
+			if (itemStatusChanged != null)
+				itemStatusChanged(item, false);
+		}
 	}
 	public static Item GetItem(int itemID){
 		return (itemsList.Find(item => item.ItemID == itemID));
