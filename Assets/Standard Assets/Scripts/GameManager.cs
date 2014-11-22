@@ -70,6 +70,7 @@ public static class GameManager {
 			Debug.Log(e.Message);
 		}
 	}
+	//helper function of AddAllItems. Only used in providing cheats to player 
 	private static void AddItemByPrefab (GameObject prefab){
 
 		CollectibleItem collectibleTemp = prefab.GetComponent<CollectibleItem>();
@@ -77,6 +78,7 @@ public static class GameManager {
 		ItemDatabase.AddItem(item);
 		AddPowerUpToPlayer(collectibleTemp.powerUpType);
 	}
+	//This is only used by the debug cheat commands only.
 	public static void AddAllItems(bool weaponsOnly){
 		List<Item> itemList = ItemDatabase.GetItemList();
 		for (int i=0; i < itemList.Count; i++){
@@ -116,7 +118,8 @@ public static class GameManager {
 	}
 	public static void LoadMainMenu(){
 		try{
-			//remove all items from player
+			//reset gravity just in case player is in anti-gravity zone
+			//reset health and item database
 			SetOriginalGravity();
 			RemoveItemsFromPlayer(ItemDatabase.GetItemList());
 			GameObject.Find("Player1").GetComponent<PlayerController>().ResetHealth();
@@ -126,7 +129,7 @@ public static class GameManager {
 		}
 		Application.LoadLevel("MainMenu");
 	}
-
+	//Displays power up and consumables to the player for 3 seconds
 	public static void DisplayMessage(string message){
 		try{
 			GameObject.Find("Main Camera").GetComponent<UIText>().DisplayMessage(message, 3f);
@@ -134,6 +137,25 @@ public static class GameManager {
 			Debug.Log(e.Message);
 		}
 	}
+	//displays a window that contains scripted tutorial or character interaction
+	//if game requires action keypress matches action event then it sets the index to -1
+	//so when update is called it displays the 0th string.
+	//returns if the game was already displaying a message to prevent multiple messages
+	public static bool DisplayScriptedMessage(string[] messages){
+		bool isDisplayingMessage = true;
+		try{
+			UIText uiText = GameObject.Find("Main Camera").GetComponent<UIText>();
+			isDisplayingMessage = uiText.IsDisplayingScriptedMessage();
+			if (!isDisplayingMessage){
+				uiText.DisplayScriptedMessages(messages);
+			}
+
+		} catch(Exception e){
+			Debug.Log(e.Message);
+		}
+		return isDisplayingMessage;
+	}
+
 
 	public static void SetReverseGravity(){
 		Physics2D.gravity = upsideDownGravity;
@@ -154,7 +176,9 @@ public static class GameManager {
 				}
 		}
 	}
-
+	//when cloning the player the player's name is altered so future clones cannot happen
+	//game will crash if it cannot find player so this returns the player GameObject if the name
+	//has been altered
 	public static GameObject GetPlayerObject(){
 		GameObject player = GameObject.Find("Player1");
 		if (player == null)

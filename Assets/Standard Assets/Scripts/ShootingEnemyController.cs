@@ -19,8 +19,6 @@ public class ShootingEnemyController : EnemyController {
 	private AIWaypointPathfinding waypointPathfinder;
 	private Vector3 waypoint;
 	private Vector3 velocity;
-	private float lastSquareMagnitude;
-	private bool isMoving = false;
 	private int playerMask;
 
 	protected override void Start(){
@@ -32,7 +30,6 @@ public class ShootingEnemyController : EnemyController {
 		//pathfinder = new AIBasicPathfinding(this.gameObject, 3f, groundLayerMask, speed, sightDistance);
 		waypointPathfinder = new AIWaypointPathfinding(this.gameObject);
 		waypoint = transform.position;
-		lastSquareMagnitude = Mathf.Infinity;
 		playerMask = (1 << LayerMask.NameToLayer("Player"));
 		jumpForce = 0;
 	}
@@ -58,7 +55,6 @@ public class ShootingEnemyController : EnemyController {
     protected override void Update(){
 		base.Update();
 		isAttackingWithHands = false;
-		float squareMagnitude =  (waypoint - transform.position).sqrMagnitude;
 
 		if ((moveRate -= Time.deltaTime) <= 0){
 			bool hasMoved = waypointPathfinder.Move(new Vector2 (gameObject.transform.position.x, gameObject.transform.position.y), aiDetection.EnemyPosition(), playerDetected);
@@ -78,17 +74,11 @@ public class ShootingEnemyController : EnemyController {
 					}
 
 				}
-
-				isMoving = true;
 				moveRate = .125f;
 				
 			} 
         } 
 
-		if (squareMagnitude > lastSquareMagnitude || transform.position == waypoint){
-			isMoving = false;
-		}
-		lastSquareMagnitude = squareMagnitude;
         
         if ((nextTimeToHandAttack -= Time.deltaTime) <= 0 && playerDetected){
 			bool canHit = aiDetection.HandToHandCombat(transform.position, directionFacing);

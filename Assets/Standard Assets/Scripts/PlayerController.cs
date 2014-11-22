@@ -31,7 +31,8 @@ public class PlayerController : Controller {
 		//Get bitmask of Player Layer and perform NOT on it
 		//Anything that is not Player Layer will allow jumping
 		groundLayerMask = ~((1 << LayerMask.NameToLayer("Player")) | (1 << LayerMask.NameToLayer("Enemy")) | (1 << LayerMask.NameToLayer("Trigger")) |
-		                    (1 << LayerMask.NameToLayer("Waypoint")) | (1 << LayerMask.NameToLayer("IgnorePlayer")) | (1 << LayerMask.NameToLayer("IgnoreEnemy")));
+		                    (1 << LayerMask.NameToLayer("Waypoint")) | (1 << LayerMask.NameToLayer("IgnorePlayer")) | (1 << LayerMask.NameToLayer("IgnoreEnemy")) 
+		                    | (1 << LayerMask.NameToLayer("WaypointEdge")));
 
 		try{
 			//load head and ground transforms and apply bitmask to our ignore layer

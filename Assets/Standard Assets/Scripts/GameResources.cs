@@ -21,6 +21,7 @@ public static class GameResources  {
 	public const string KeyLargeExplosionAnimation = "largeexplosion";
 	public const string KeyBombBotAppearAnimation = "appear";
 	public const string KeyUITextBackground = "UITextBackground";
+	public const string KeyUIScriptedTextBackground = "UIScriptedTextBackground";
 	public const string KeyPowerUpSingleLaser = "PowerUp Single Laser";
 	public const string KeyPowerUpDualLaser = "PowerUp Dual Laser";
 	public const string KeyPowerUpLargeLaser = "PowerUp Large Laser";
@@ -30,6 +31,8 @@ public static class GameResources  {
 	public const string KeyEnemySilverRobot = "Enemy Silver";
 	public const string KeyEnemyRustyRobot = "Enemy Rusty";
 	public const string KeyEnemyBomb = "Enemy Explosion Bot";
+	public const string KeyUIHelperArrow = "Help Arrow";
+	public const string KeyUIHelperArrowSmall = "Help Arrow Small";
 
 	public const string ObjectClone = "CLONEDOBJECTCHILD";
 	public const string ObjectWasCloned = "CLONEDOBJECT";
@@ -53,6 +56,7 @@ public static class GameResources  {
 		gameObjects.Add(KeySmallExplosion, Resources.Load<GameObject>(@"prefab/Projectiles/" + KeySmallExplosion));
 		gameObjects.Add(KeyLargeExplosion, Resources.Load<GameObject>(@"prefab/Projectiles/" + KeyLargeExplosion));
 		gameObjects.Add(KeyUITextBackground, Resources.Load<GameObject>(@"prefab/UI/" + KeyUITextBackground));
+		gameObjects.Add(KeyUIScriptedTextBackground, Resources.Load<GameObject>(@"prefab/UI/" + KeyUIScriptedTextBackground));
 		gameObjects.Add(KeyPowerUpSingleLaser, Resources.Load<GameObject>(@"prefab/Player Objects/" + KeyPowerUpSingleLaser));
 		gameObjects.Add(KeyPowerUpDualLaser, Resources.Load<GameObject>(@"prefab/Player Objects/" + KeyPowerUpDualLaser));
 		gameObjects.Add(KeyPowerUpLargeLaser, Resources.Load<GameObject>(@"prefab/Player Objects/" + KeyPowerUpLargeLaser));
@@ -62,6 +66,8 @@ public static class GameResources  {
 		gameObjects.Add(KeyEnemySilverRobot, Resources.Load<GameObject>(@"prefab/Characters/" + KeyEnemySilverRobot));
 		gameObjects.Add(KeyEnemyRustyRobot, Resources.Load<GameObject>(@"prefab/Characters/" + KeyEnemyRustyRobot));
 		gameObjects.Add(KeyEnemyBomb, Resources.Load<GameObject>(@"prefab/Characters/" + KeyEnemyBomb));
+		gameObjects.Add(KeyUIHelperArrow, Resources.Load<GameObject>(@"prefab/UI/" + KeyUIHelperArrow));
+		gameObjects.Add(KeyUIHelperArrowSmall, Resources.Load<GameObject>(@"prefab/UI/" + KeyUIHelperArrowSmall));
 
 
 		animationClips.Add(KeySmallExplosionAnimation, Resources.Load<AnimationClip>(@"Animations/Effects/" + KeySmallExplosionAnimation));

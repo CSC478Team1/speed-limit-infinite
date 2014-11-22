@@ -18,7 +18,7 @@ public class FallingPlatform : MonoBehaviour {
 
 	private void OnTriggerStay2D (Collider2D other){
 		//Player hit switch to drop platform
-		if (other.gameObject.tag == "Player" && gameObject.tag == "Player Object"){
+		if (other.gameObject.tag == "Player" && (gameObject.tag == "Player Object") || (gameObject.tag == "Trigger")){
 			if (Input.GetButton("Action")){
 				if (isUp){
 					fallingPlatform.rigidbody2D.isKinematic = false;

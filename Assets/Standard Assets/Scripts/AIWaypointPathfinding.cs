@@ -17,7 +17,6 @@ public class AIWaypointPathfinding {
 
 
 	public AIWaypointPathfinding(GameObject gameObject){
-		this.groundCollisionLayerMask = groundCollisionLayerMask;
 		waypointMask = 1 << LayerMask.NameToLayer("Waypoint") | (1 << LayerMask.NameToLayer("WaypointEdge"));
 		spriteHeight = gameObject.renderer.bounds.size.y;
 		spriteWidth = gameObject.renderer.bounds.size.x;

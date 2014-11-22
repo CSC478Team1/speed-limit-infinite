@@ -89,8 +89,8 @@ public class InGameMenu : MonoBehaviour {
 			bool commandEntered = false;
 			GUIStyle style = GUI.skin.GetStyle("Label");
 			style.alignment = TextAnchor.UpperLeft;
-			GUI.skin.button.normal.textColor = Color.cyan;
-			GUI.skin.button.hover.textColor = Color.white;
+			//GUI.skin.button.normal.textColor = Color.cyan;
+			//GUI.skin.button.hover.textColor = Color.white;
 			style.fontSize = 22;
 			//GUI.skin.box = style;
 			GUI.Label(new Rect(0,Screen.height - buttonHeight,200,buttonHeight), "Enter commands: ");
