@@ -91,7 +91,7 @@ public class InGameMenu : MonoBehaviour {
 			style.alignment = TextAnchor.UpperLeft;
 			//GUI.skin.button.normal.textColor = Color.cyan;
 			//GUI.skin.button.hover.textColor = Color.white;
-			style.fontSize = 22;
+			style.fontSize = 20;
 			//GUI.skin.box = style;
 			GUI.Label(new Rect(0,Screen.height - buttonHeight,200,buttonHeight), "Enter commands: ");
 			GUI.SetNextControlName("TextField");
