@@ -19,6 +19,7 @@ public class Item {
 	public enum ItemType {
 		PowerUp,
 		Consumable,
+		Armor,
 		LevelItem
 	}
 
@@ -28,6 +29,7 @@ public class Item {
 		InfiniteSpeed,
 		GravityBoots,
 		LargeLaser,
+		TripleLaser,
 		None
 	}
 }

@@ -56,8 +56,8 @@ MonoBehaviour:
   itemName: Door Key
   itemID: 10
   textureIcon: {fileID: 2800000, guid: 015bbbf41154ed345b68ff8ae4d2f2fa, type: 3}
-  itemType: 2
-  powerUpType: 5
+  itemType: 3
+  powerUpType: 6
   isHiddenEnemy: 0
   value: 1
 --- !u!212 &21200000

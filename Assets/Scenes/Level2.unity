@@ -690,8 +690,8 @@ MonoBehaviour:
   itemName: Door Key
   itemID: 200
   textureIcon: {fileID: 2800000, guid: 015bbbf41154ed345b68ff8ae4d2f2fa, type: 3}
-  itemType: 2
-  powerUpType: 5
+  itemType: 3
+  powerUpType: 6
   isHiddenEnemy: 0
   value: 1
 --- !u!61 &61857684
@@ -9876,8 +9876,8 @@ MonoBehaviour:
   itemName: Door Key
   itemID: 250
   textureIcon: {fileID: 2800000, guid: 015bbbf41154ed345b68ff8ae4d2f2fa, type: 3}
-  itemType: 2
-  powerUpType: 5
+  itemType: 3
+  powerUpType: 6
   isHiddenEnemy: 0
   value: 1
 --- !u!61 &858183164
@@ -10486,6 +10486,14 @@ Prefab:
       propertyPath: itemID
       value: 250
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 92c2fafa72953a6458788e54fe4f489b, type: 2}
+      propertyPath: itemType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 92c2fafa72953a6458788e54fe4f489b, type: 2}
+      propertyPath: powerUpType
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 92c2fafa72953a6458788e54fe4f489b, type: 2}
   m_RootGameObject: {fileID: 858183162}
@@ -10822,6 +10830,14 @@ Prefab:
     - target: {fileID: 11400000, guid: 92c2fafa72953a6458788e54fe4f489b, type: 2}
       propertyPath: itemID
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 92c2fafa72953a6458788e54fe4f489b, type: 2}
+      propertyPath: itemType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 92c2fafa72953a6458788e54fe4f489b, type: 2}
+      propertyPath: powerUpType
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 92c2fafa72953a6458788e54fe4f489b, type: 2}

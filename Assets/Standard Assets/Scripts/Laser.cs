@@ -4,7 +4,6 @@ using System.Collections;
 public class Laser : MonoBehaviour {
 
 	public int damageValue;
-
 	
 	//Left screen so destroy it
 	private void OnBecameInvisible() {
@@ -29,7 +28,11 @@ public class Laser : MonoBehaviour {
 			}
 				
 		}
-		else if ((other.tag != "Player Object") && gameObject != null)
+		else if ((other.tag != "Player Object") && gameObject != null){
+			if (other.tag == "Box"){
+				other.rigidbody2D.AddForce(new Vector2(gameObject.rigidbody2D.velocity.x * 3 + gameObject.rigidbody2D.mass, 0));
+			}
 			Destroy(gameObject);
+		}
 	}
 }

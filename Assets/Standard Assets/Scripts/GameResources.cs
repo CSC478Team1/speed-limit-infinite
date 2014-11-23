@@ -8,6 +8,7 @@ public static class GameResources  {
 	public const string KeyBlueSingleLaser = "BlueSingleLaser";
 	public const string KeyBlueDualLaser = "BlueDualLaser";
 	public const string KeyBlueLargeLaser = "BlueLargeLaser";
+	public const string KeyBlueLargeTripleLaser = "BlueLargeTripleLaser";
 	public const string KeyGreenSmallLaser ="GreenSmallLaser";
 	public const string KeyGreenSingleLaser = "GreenSingleLaser";
 	public const string KeyHealthBar = "HealthBar";
@@ -27,6 +28,7 @@ public static class GameResources  {
 	public const string KeyPowerUpLargeLaser = "PowerUp Large Laser";
 	public const string KeyPowerUpGravityBoots = "PowerUp AntiGravity Boot";
 	public const string KeyPowerUpInfiniteSpeed = "PowerUp Infinite Speed";
+	public const string KeyPowerUpTripleLaser = "PowerUp Triple Laser";
 	public const string KeyEnemyDarkRobot = "Enemy Dark";
 	public const string KeyEnemySilverRobot = "Enemy Silver";
 	public const string KeyEnemyRustyRobot = "Enemy Rusty";
@@ -46,6 +48,7 @@ public static class GameResources  {
 		gameObjects.Add(KeyBlueSingleLaser, Resources.Load<GameObject>(@"prefab/Projectiles/" + KeyBlueSingleLaser));
 		gameObjects.Add(KeyBlueDualLaser, Resources.Load<GameObject>(@"prefab/Projectiles/" + KeyBlueDualLaser));
 		gameObjects.Add(KeyBlueLargeLaser, Resources.Load<GameObject>(@"prefab/Projectiles/" +KeyBlueLargeLaser));
+		gameObjects.Add(KeyBlueLargeTripleLaser, Resources.Load<GameObject>(@"prefab/Projectiles/" + KeyBlueLargeTripleLaser));
 		gameObjects.Add(KeyGreenSmallLaser, Resources.Load<GameObject>(@"prefab/Projectiles/" + KeyGreenSmallLaser));
 		gameObjects.Add(KeyGreenSingleLaser, Resources.Load<GameObject>(@"prefab/Projectiles/" +KeyGreenSingleLaser));
 		gameObjects.Add(KeyHealthBar, Resources.Load<GameObject>(@"prefab/UI/" + KeyHealthBar));
@@ -62,6 +65,7 @@ public static class GameResources  {
 		gameObjects.Add(KeyPowerUpLargeLaser, Resources.Load<GameObject>(@"prefab/Player Objects/" + KeyPowerUpLargeLaser));
 		gameObjects.Add(KeyPowerUpGravityBoots, Resources.Load<GameObject>(@"prefab/Player Objects/" + KeyPowerUpGravityBoots));
 		gameObjects.Add(KeyPowerUpInfiniteSpeed, Resources.Load<GameObject>(@"prefab/Player Objects/" + KeyPowerUpInfiniteSpeed));
+		gameObjects.Add(KeyPowerUpTripleLaser, Resources.Load<GameObject>(@"prefab/Player Objects/" + KeyPowerUpTripleLaser));
 		gameObjects.Add(KeyEnemyDarkRobot, Resources.Load<GameObject>(@"prefab/Characters/" + KeyEnemyDarkRobot));
 		gameObjects.Add(KeyEnemySilverRobot, Resources.Load<GameObject>(@"prefab/Characters/" + KeyEnemySilverRobot));
 		gameObjects.Add(KeyEnemyRustyRobot, Resources.Load<GameObject>(@"prefab/Characters/" + KeyEnemyRustyRobot));

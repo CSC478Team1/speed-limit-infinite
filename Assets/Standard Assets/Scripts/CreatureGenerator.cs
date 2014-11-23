@@ -40,8 +40,8 @@ public class CreatureGenerator : MonoBehaviour {
 		if (startGenerator && !isDepleted){
 			if ((spawnDelay -= Time.deltaTime) <= 0){
 				int index = Random.Range(0, enemySkillLevel);
-
-				Instantiate(enemies[index], transform.position, transform.rotation);
+				float randomX = Random.Range(-2f, 2f);
+				Instantiate(enemies[index], new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z), transform.rotation);
 
 				if (--numberOfRounds < 1)
 					isDepleted = true;

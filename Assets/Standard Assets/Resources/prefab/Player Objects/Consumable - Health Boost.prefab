@@ -114,7 +114,7 @@ MonoBehaviour:
   itemID: 777
   textureIcon: {fileID: 0}
   itemType: 1
-  powerUpType: 5
+  powerUpType: 6
   isHiddenEnemy: 0
   value: 50
 --- !u!212 &21200000

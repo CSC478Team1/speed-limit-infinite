@@ -27,13 +27,16 @@ public class CollectibleItem : MonoBehaviour {
 				if (powerUpType != Item.PowerUpType.None)
 					GameManager.AddPowerUpToPlayer(powerUpType);
 
-				if (itemType != Item.ItemType.Consumable){
+				if (itemType != Item.ItemType.Consumable && itemType != Item.ItemType.Armor){
 					GameManager.DisplayMessage("You've just obtained: " + itemName);
 					ItemDatabase.AddItem(item);
 				}
 				else if (itemType == Item.ItemType.Consumable){
 					GameManager.DisplayMessage(itemName);
 					GameManager.AddHealthToPlayer(value);
+				} else if (itemType == Item.ItemType.Armor){
+					GameManager.DisplayMessage(itemName);
+					GameManager.SetNewPlayerHealth(value,value);
 				}
 
 				//play sound or something and disappear

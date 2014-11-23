@@ -137,6 +137,9 @@ public class InGameMenu : MonoBehaviour {
 				case "level5":
 					GameManager.LoadNextLevel("Level5");
 					break;
+				case "credits":
+					GameManager.LoadNextLevel("EndGame");
+					break;
 				case "testlevel":
 					GameManager.LoadNextLevel("test_scene");
 					break;

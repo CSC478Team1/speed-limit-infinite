@@ -12,6 +12,7 @@ public class PlayerController : Controller {
 	private Transform spawnpoint;
 	private int startingHealth = 100;
 
+
 	//save powerup information from scene to scene
 	//declare static to retain data between scenes
 	private static bool infiniteSpeed = false;
@@ -19,6 +20,8 @@ public class PlayerController : Controller {
 	private static bool canShootDualLaser = false;
 	private static bool hasGravityBoots = false;
 	private static bool canShootLargeLaser = false;
+	private static bool canShootTripleLaser = false;
+
 
 	
 	// Use this for initialization
@@ -126,7 +129,10 @@ public class PlayerController : Controller {
 			speed = initialSpeed;
 
 		if (Input.GetButtonDown("Fire1")){
-			if (canShootLargeLaser){
+			if (canShootTripleLaser){
+				anim.SetTrigger("Shoot Dual");
+			}
+			else if (canShootLargeLaser){
 				anim.SetTrigger("Shoot Single");
 			} else if (canShootDualLaser){
 				anim.SetTrigger("Shoot Dual");
@@ -154,7 +160,9 @@ public class PlayerController : Controller {
 		}
 	}
 	private void ShootLaser(){
-		if (canShootLargeLaser)
+		if (canShootTripleLaser)
+			FireWeapon(GameResources.GetGameObject(GameResources.KeyBlueLargeTripleLaser), 20f);
+		else if (canShootLargeLaser)
 			FireWeapon(GameResources.GetGameObject(GameResources.KeyBlueLargeLaser), 9f);
 		else if (canShootDualLaser)
 			FireWeapon(GameResources.GetGameObject(GameResources.KeyBlueDualLaser), 14f);
@@ -185,7 +193,9 @@ public class PlayerController : Controller {
 		case Item.PowerUpType.LargeLaser:
 			canShootLargeLaser = value;
 			break;
-		
+		case Item.PowerUpType.TripleLaser:
+			canShootTripleLaser = value;
+			break;
 		}
 	}
 	public void SetCheckpoint(Transform checkpointTransform){

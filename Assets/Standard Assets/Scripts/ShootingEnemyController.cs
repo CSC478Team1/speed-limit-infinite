@@ -35,82 +35,83 @@ public class ShootingEnemyController : EnemyController {
 	}
 	protected override void FixedUpdate(){
 		base.FixedUpdate();
+		if (!isDead){
+			if (CanJump() && (jumpRate -= Time.fixedDeltaTime) <=0){
 
-		if (CanJump() && (jumpRate -= Time.fixedDeltaTime) <=0){
+				if (jumpForce != float.MaxValue){
+					if(!float.IsNaN(jumpForce)){
+						rigidbody2D.velocity = new Vector2(0, jumpForce);
+					}
 
-			if (jumpForce != float.MaxValue){
-				if(!float.IsNaN(jumpForce)){
-					rigidbody2D.velocity = new Vector2(0, jumpForce);
-				}
+					jumpForce = float.MaxValue;
+	            }
+				jumpRate = .125f;
+	        }
+			rigidbody2D.velocity = new Vector2((waypoint.x - transform.position.x) * speed, rigidbody2D.velocity.y);
 
-				jumpForce = float.MaxValue;
-            }
-			jumpRate = .125f;
-        }
-		rigidbody2D.velocity = new Vector2((waypoint.x - transform.position.x) * speed, rigidbody2D.velocity.y);
-
-        anim.SetFloat("HorizontalSpeed", Mathf.Abs(rigidbody2D.velocity.x));
+	        anim.SetFloat("HorizontalSpeed", Mathf.Abs(rigidbody2D.velocity.x));
+			}
         
     }
     protected override void Update(){
 		base.Update();
-		isAttackingWithHands = false;
+		if (!isDead){
+			isAttackingWithHands = false;
+				if ((moveRate -= Time.deltaTime) <= 0){
+					bool hasMoved = waypointPathfinder.Move(new Vector2 (gameObject.transform.position.x, gameObject.transform.position.y), aiDetection.EnemyPosition(), playerDetected);
+					if (hasMoved){
+						waypoint = waypointPathfinder.GetNewMoveValue();
 
-		if ((moveRate -= Time.deltaTime) <= 0){
-			bool hasMoved = waypointPathfinder.Move(new Vector2 (gameObject.transform.position.x, gameObject.transform.position.y), aiDetection.EnemyPosition(), playerDetected);
-			if (hasMoved){
-				waypoint = waypointPathfinder.GetNewMoveValue();
-
-				if (waypointPathfinder.ShouldJump() || Mathf.Abs(waypoint.y - transform.position.y) > spriteHeight*3){
-					if (Mathf.Abs(waypoint.y - transform.position.y) > spriteHeight){
-						float distanceToJump = (waypoint.y - transform.position.y);
-						if (distanceToJump > 0 && distanceToJump < jumpDistance)
-							jumpForce = Mathf.Sqrt(2 * (gravity * (distanceToJump + spriteHeight /2)));
+						if (waypointPathfinder.ShouldJump() || Mathf.Abs(waypoint.y - transform.position.y) > spriteHeight*3){
+							if (Mathf.Abs(waypoint.y - transform.position.y) > spriteHeight){
+								float distanceToJump = (waypoint.y - transform.position.y);
+								if (distanceToJump > 0 && distanceToJump < jumpDistance)
+									jumpForce = Mathf.Sqrt(2 * (gravity * (distanceToJump + spriteHeight /2)));
 
 
-					} else{
-						float distanceToJump = Mathf.Abs(waypoint.x - transform.position.x);
-						jumpForce = Mathf.Sqrt(2 * (gravity * (distanceToJump + spriteWidth/2)));     
-					}
+							} else{
+								float distanceToJump = Mathf.Abs(waypoint.x - transform.position.x);
+								jumpForce = Mathf.Sqrt(2 * (gravity * (distanceToJump + spriteWidth/2)));     
+							}
 
-				}
-				moveRate = .125f;
-				
-			} 
-        } 
-
-        
-        if ((nextTimeToHandAttack -= Time.deltaTime) <= 0 && playerDetected){
-			bool canHit = aiDetection.HandToHandCombat(transform.position, directionFacing);
-
-			if (canHit && CanJump()&& aiDetection.OnHead()){
-				PunchAbove();
-			} else if (canHit && CanJump()){
-				Kick();
-			}
-			nextTimeToHandAttack = handAttackRate;
-		} 
-
-		if ((nextTimeToFire -= Time.deltaTime) <= 0){
-			if(playerDetected && aiDetection.ShouldFire(transform.position))
-				FireTimedWeapon();
-			else if (playerDetected){
-				float distanceToJump = aiDetection.JumpDistance(transform.position);
-				if (distanceToJump > 0 &&  CanJump() && !aiDetection.OnHead()){
-					if (distanceToJump < jumpDistance){
-						jumpForce = Mathf.Sqrt(2 *(gravity * (distanceToJump + spriteHeight /2)));
-						if (!float.IsInfinity(jumpForce) &&  !float.IsNaN(jumpForce)){
-							anim.SetTrigger("Jump");
-							gameObject.rigidbody2D.velocity = new Vector2(0, jumpForce); 
 						}
-					}
-				}
-				if (distanceToJump > 0 && CanJump()&&  aiDetection.OnHead()){
-					PunchAbove();
-				} 
-			} 
-		}
+						moveRate = .125f;
+						
+					} 
+		        } 
 
+		        
+		        if ((nextTimeToHandAttack -= Time.deltaTime) <= 0 && playerDetected){
+					bool canHit = aiDetection.HandToHandCombat(transform.position, directionFacing);
+
+					if (canHit && CanJump()&& aiDetection.OnHead()){
+						PunchAbove();
+					} else if (canHit && CanJump()){
+						Kick();
+					}
+					nextTimeToHandAttack = handAttackRate;
+				} 
+
+				if ((nextTimeToFire -= Time.deltaTime) <= 0){
+					if(playerDetected && aiDetection.ShouldFire(transform.position))
+						FireTimedWeapon();
+					else if (playerDetected){
+						float distanceToJump = aiDetection.JumpDistance(transform.position);
+						if (distanceToJump > 0 &&  CanJump() && !aiDetection.OnHead()){
+							if (distanceToJump < jumpDistance){
+								jumpForce = Mathf.Sqrt(2 *(gravity * (distanceToJump + spriteHeight /2)));
+								if (!float.IsInfinity(jumpForce) &&  !float.IsNaN(jumpForce)){
+									anim.SetTrigger("Jump");
+									gameObject.rigidbody2D.velocity = new Vector2(0, jumpForce); 
+								}
+							}
+						}
+						if (distanceToJump > 0 && CanJump()&&  aiDetection.OnHead()){
+							PunchAbove();
+						} 
+					} 
+				}
+		}
 	}
 	private void Kick(){
 		anim.SetTrigger("Kick");

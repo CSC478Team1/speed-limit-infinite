@@ -114,8 +114,9 @@ MonoBehaviour:
   itemID: 0
   textureIcon: {fileID: 0}
   itemType: 0
-  powerUpType: 5
+  powerUpType: 6
   isHiddenEnemy: 1
+  value: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

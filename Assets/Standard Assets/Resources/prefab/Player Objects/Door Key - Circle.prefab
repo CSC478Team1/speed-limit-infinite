@@ -56,8 +56,8 @@ MonoBehaviour:
   itemName: Circle Door Key
   itemID: 100
   textureIcon: {fileID: 2800000, guid: e4c6cf9cd322e924f9420d6475da1ba8, type: 3}
-  itemType: 2
-  powerUpType: 5
+  itemType: 3
+  powerUpType: 6
   isHiddenEnemy: 0
   value: 1
 --- !u!212 &21200000

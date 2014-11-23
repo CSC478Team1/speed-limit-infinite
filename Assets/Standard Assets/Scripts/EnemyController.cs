@@ -40,16 +40,18 @@ public class EnemyController : Controller {
 
 	protected virtual void Update(){
 		// move enemy here
-		if ((timeToWaitForDetection -= Time.deltaTime)<=0){
-			playerDetected = aiDetection.EnemyIsNear(transform.position,player.transform.position);
-			float distance = player.transform.position.x - transform.position.x;
-			float xDirection = distance >= 0 ? 1f : -1f;
-			if (xDirection != directionFacing.x && Mathf.Abs(distance) > .3f ){
-					MirrorSprite();
-					directionFacing = -directionFacing;
-				}
-			targetPosition = aiDetection.EnemyPosition();
-			timeToWaitForDetection = .05f;
+		if (!isDead){
+			if ((timeToWaitForDetection -= Time.deltaTime)<=0){
+				playerDetected = aiDetection.EnemyIsNear(transform.position,player.transform.position);
+				float distance = player.transform.position.x - transform.position.x;
+				float xDirection = distance >= 0 ? 1f : -1f;
+				if (xDirection != directionFacing.x && Mathf.Abs(distance) > .3f ){
+						MirrorSprite();
+						directionFacing = -directionFacing;
+					}
+				targetPosition = aiDetection.EnemyPosition();
+				timeToWaitForDetection = .05f;
+			}
 		}
 	}
 				
@@ -59,6 +61,7 @@ public class EnemyController : Controller {
 		if(isDead && !locked){
 			locked = true;
 			sightDistance = 0f;
+			gameObject.layer = LayerMask.NameToLayer("IgnorePlayer");
 			GameObject explosion = Instantiate(GameResources.GetGameObject(GameResources.KeySmallExplosion), transform.position, Quaternion.identity) as GameObject;
 			if (explosion != null){
 				//bind position of gameobject to explosion
@@ -73,7 +76,9 @@ public class EnemyController : Controller {
 
 		}
 	}
-	
+	public int GetCurrentHealth(){
+		return health;
+	}
 	private void Destroy(bool destroyCurrent, GameObject [] destroyObjects){
 		for (int i = 0; i < destroyObjects.Length; i++){
 			if (destroyObjects[i] != null)

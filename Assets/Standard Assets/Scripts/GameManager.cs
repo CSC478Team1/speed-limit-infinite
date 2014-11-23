@@ -86,7 +86,7 @@ public static class GameManager {
 				if (!weaponsOnly)
 					ItemDatabase.RemoveItem(itemList[i]);
 				else if (itemList[i].ItemPowerUpType == Item.PowerUpType.DualLaser || itemList[i].ItemPowerUpType == Item.PowerUpType.LargeLaser ||
-			         itemList[i].ItemPowerUpType == Item.PowerUpType.Laser){
+			         itemList[i].ItemPowerUpType == Item.PowerUpType.Laser || itemList[i].ItemPowerUpType == Item.PowerUpType.TripleLaser){
 
 					ItemDatabase.RemoveItem(itemList[i]);
 				}
@@ -98,7 +98,7 @@ public static class GameManager {
 				if (!weaponsOnly)
 					ItemDatabase.RemoveItem(tempList[i]);
 			else if (tempList[i].ItemPowerUpType == Item.PowerUpType.DualLaser || tempList[i].ItemPowerUpType == Item.PowerUpType.LargeLaser ||
-			         tempList[i].ItemPowerUpType == Item.PowerUpType.Laser){
+			         tempList[i].ItemPowerUpType == Item.PowerUpType.Laser || tempList[i].ItemPowerUpType == Item.PowerUpType.TripleLaser){
 				
 				ItemDatabase.RemoveItem(tempList[i]);
 			}
@@ -106,6 +106,7 @@ public static class GameManager {
 		AddItemByPrefab(GameResources.GetGameObject(GameResources.KeyPowerUpSingleLaser));
 		AddItemByPrefab(GameResources.GetGameObject(GameResources.KeyPowerUpDualLaser));
 		AddItemByPrefab(GameResources.GetGameObject(GameResources.KeyPowerUpLargeLaser));
+		AddItemByPrefab(GameResources.GetGameObject(GameResources.KeyPowerUpTripleLaser));
 		if (!weaponsOnly){
 			AddItemByPrefab(GameResources.GetGameObject(GameResources.KeyPowerUpGravityBoots));
 			AddItemByPrefab(GameResources.GetGameObject(GameResources.KeyPowerUpInfiniteSpeed));
@@ -122,7 +123,9 @@ public static class GameManager {
 			//reset health and item database
 			SetOriginalGravity();
 			RemoveItemsFromPlayer(ItemDatabase.GetItemList());
-			GameObject.Find("Player1").GetComponent<PlayerController>().ResetHealth();
+			GameObject player = GameObject.Find("Player1");
+			if (player != null)
+				player.GetComponent<PlayerController>().ResetHealth();
 			ItemDatabase.ClearItemDatabase();
 		}catch(Exception e){
 			Debug.Log(e.Message);
@@ -155,8 +158,24 @@ public static class GameManager {
 		}
 		return isDisplayingMessage;
 	}
-
-
+	//works similar to scripted message except it does not require user to press a button
+	//mainly used for brief dialog interactions
+	//returns true if it is displaying a message, false if something else is using the window
+	public static bool DisplayScriptedTimedMessage(float time, params string[] messages ){
+		bool isDisplayingMessage = true;
+		try{
+			UIText uiText = GameObject.Find("Main Camera").GetComponent<UIText>();
+			isDisplayingMessage = uiText.IsDisplayingScriptedMessage();
+			if (!isDisplayingMessage){
+				uiText.DisplayScriptedTimedMessages(messages, time);
+			}
+			
+		} catch(Exception e){
+			Debug.Log(e.Message);
+		}
+		return isDisplayingMessage;
+	}
+	
 	public static void SetReverseGravity(){
 		Physics2D.gravity = upsideDownGravity;
 	}

@@ -14,6 +14,8 @@ public class UIText : MonoBehaviour {
 	private Texture2D displayScriptedMessageTexture;
 	private float timer;
 	private float originalTimer = 5f;
+	private float scriptedTimer;
+	private bool isScriptedDialog = false;
 
 	private void Start(){
 		displayMessageTexture = GameResources.GetGameObject(GameResources.KeyUITextBackground).guiTexture.texture as Texture2D;
@@ -37,6 +39,15 @@ public class UIText : MonoBehaviour {
 		this.messages = messages;
 		displayScriptedMessage = true;
 		textCalled = false;
+		isScriptedDialog = false;
+	}
+	public void DisplayScriptedTimedMessages(string[] messages, float time){
+		timer = time;
+		scriptedTimer = time;
+		currentIndex = 0;
+		this.messages = messages;
+		displayScriptedMessage = true;
+		isScriptedDialog = true;
 	}
 	public bool IsDisplayingScriptedMessage(){
 		return displayScriptedMessage;
@@ -75,13 +86,22 @@ public class UIText : MonoBehaviour {
 				GUI.Label(new Rect(drawleft, drawTop+10f, drawWidth, drawHeight - 10f),messages[currentIndex], style);
 
 				//set initial call on a short timer to prevent action button from skipping first element!
-				if (!textCalled)
-					textCalled = ((timer -= Time.deltaTime) >= 0) ? false: true;
-				else{
-					style.alignment = TextAnchor.LowerRight;
-					style.fontSize = 18;
-					GUI.Label(new Rect(drawleft, drawTop+1f, drawWidth, drawHeight - 10f),"Press the Action button to continue", style);
-                }
+				if (!isScriptedDialog){
+					if (!textCalled)
+						textCalled = ((timer -= Time.deltaTime) >= 0) ? false: true;
+					else{
+						style.alignment = TextAnchor.LowerRight;
+						style.fontSize = 18;
+						GUI.Label(new Rect(drawleft, drawTop+1f, drawWidth, drawHeight - 10f),"Press the Action button to continue", style);
+	                }
+				} else{   //scripted gameplay dialog does not require an action button, it has a timer
+					if ((timer-= Time.deltaTime) <=0){
+						currentIndex++;
+						timer = scriptedTimer;
+					}
+				}
+
+
 
 			}else
 				displayScriptedMessage = false;
