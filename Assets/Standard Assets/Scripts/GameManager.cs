@@ -204,5 +204,12 @@ public static class GameManager {
 			player = GameObject.Find("Player1" + GameResources.ObjectWasCloned);
 		return player;
 	}
+	public static void PlayerHasDied(){
+		GameObject.Find("Main Camera").GetComponent<CameraScript>().EnableDeathSequence();
+
+	}
+	public static void EnableCameraFadeOut(){
+		GameObject.Find("Main Camera").GetComponent<CameraScript>().EneableFadeOut();
+	}
 	
 }

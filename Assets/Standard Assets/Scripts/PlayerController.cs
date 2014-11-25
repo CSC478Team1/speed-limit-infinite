@@ -98,6 +98,7 @@ public class PlayerController : Controller {
 			canJump = Physics2D.OverlapCircle(groundCheck.position, .05f ,groundLayerMask);
 				
 		}else {
+			GameManager.PlayerHasDied();
 			Respawn();
 		}
 	}

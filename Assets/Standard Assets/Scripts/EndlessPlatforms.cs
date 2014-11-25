@@ -37,14 +37,15 @@ public class EndlessPlatforms : MonoBehaviour {
 				playOnce = true;
 				GameManager.DisplayScriptedTimedMessage(18f, "You're stuck in this loop forever now. You collected some nice things. Maybe I'll send a rusty bot to fetch them from your corpse!"); 
 			}
-			else if (velocity > 60 && velocity < 70)
+			else if (velocity > 120 && velocity < 140)
 				GameManager.DisplayScriptedTimedMessage(14f, "I knew those things didn't work!");
-			else if (velocity > 80 && velocity < 100)
+			else if (velocity > 150 && velocity < 190)
 				GameManager.DisplayScriptedTimedMessage(12f, "Run you fool! Haha!");
-			else if (velocity > 100 && velocity < 110)
+			else if (velocity > 210 && velocity < 230)
 				GameManager.DisplayScriptedTimedMessage(12f, "You're going to crash the game and ruin it for everyone!");
-			else if (velocity > 170 && velocity < 200){
-				GameManager.DisplayScriptedTimedMessage(12f, "STOP! NOOOOO!");
+			else if (velocity > 350 && velocity < 420){
+				GameManager.DisplayScriptedTimedMessage(3f, "STOP! NOOOOO!");
+				GameManager.EnableCameraFadeOut();
 				isInTrap = false;
 				backgroundScrollerCamera.ResetScrollingSpeed();
 				other.rigidbody2D.velocity= new Vector2(0,0);

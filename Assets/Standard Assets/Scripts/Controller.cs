@@ -27,11 +27,8 @@ public class Controller : MonoBehaviour {
 			//player died send back to spawn point 
 			if (gameObject.tag == "Player"){
 				isDead = true;
-				//fix this later if we implement lives
 			}
 			else if (gameObject.tag == "Enemy"){
-				rigidbody2D.isKinematic = true;
-				rigidbody2D.collider2D.enabled = false;
 				Destroy(gameObject);  // add death call later
 			}
 		}

@@ -85,7 +85,7 @@ public class HUD : MonoBehaviour {
 		GUI.DrawTexture(new Rect(left,top,healthBarRemainingWidth,healthBarHeight), healthBar, ScaleMode.StretchToFill, true, 1.0f);
 
 		float position = left;
-		GUI.DrawTexture(new Rect(textLeft, powerUpTop, textWidth, textHeight), powerUpText , ScaleMode.StretchToFill, true, 1.0f);
+		GUI.DrawTexture(new Rect(textLeft -10f, powerUpTop, textWidth +10f, textHeight), powerUpText , ScaleMode.StretchToFill, true, 1.0f);
 
 		
 		GUI.DrawTexture(new Rect(left,powerUpTop,healthBarBackgroundWidth,healthBarHeight), powerUpBackground, ScaleMode.StretchToFill, true, 1.0f);
