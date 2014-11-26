@@ -43,7 +43,7 @@ public class EndlessPlatforms : MonoBehaviour {
 				GameManager.DisplayScriptedTimedMessage(12f, "Run you fool! Haha!");
 			else if (velocity > 210 && velocity < 230)
 				GameManager.DisplayScriptedTimedMessage(12f, "You're going to crash the game and ruin it for everyone!");
-			else if (velocity > 350 && velocity < 420){
+			else if (velocity > 300 && velocity < 420){
 				GameManager.DisplayScriptedTimedMessage(3f, "STOP! NOOOOO!");
 				GameManager.EnableCameraFadeOut();
 				isInTrap = false;

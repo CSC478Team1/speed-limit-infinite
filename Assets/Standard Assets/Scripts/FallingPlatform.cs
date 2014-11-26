@@ -36,6 +36,7 @@ public class FallingPlatform : MonoBehaviour {
 		}
 		if (!isUp && fallingPlatform.rigidbody2D.velocity.sqrMagnitude == 0 && !disabled){
 			fallingPlatform.tag="Untagged";
+			fallingPlatform.layer = LayerMask.NameToLayer("Default");
 			gameObject.tag ="Untagged";
 			fell = true;
 			if (other.tag == "Enemy")

@@ -95,7 +95,9 @@ public class PlayerController : Controller {
 				raycastStuckInPlatformCheck.collider.isTrigger = true;
 
 			//prevent multiple jumps & power jumps
-			canJump = Physics2D.OverlapCircle(groundCheck.position, .05f ,groundLayerMask);
+			canJump = Physics2D.OverlapCircle(groundCheck.position, .14f ,groundLayerMask);
+			if (canJump && raycastStuckInPlatformCheck.collider != null)
+				canJump = false;
 				
 		}else {
 			GameManager.PlayerHasDied();

@@ -57,6 +57,10 @@ public class Controller : MonoBehaviour {
 		transform.localScale = scale;
 	}
 	protected void FireWeapon(GameObject projectileObject, float projectileVelocity){
+		AudioSource source = projectileObject.GetComponent<AudioSource>();
+		if (source != null)
+			SoundManager.PlaySound(source.audio.clip, projectileObject.transform);
+
 		if (isFacingRight){
 			Vector2 displacement = new Vector2 (transform.position.x + .5f, transform.position.y);
 			projectileObject = Instantiate(projectileObject, displacement, Quaternion.Euler(new Vector3(0,0,0)))as GameObject;
@@ -68,6 +72,7 @@ public class Controller : MonoBehaviour {
 			projectileObject.tag = gameObject.tag + "Projectile";
 			projectileObject.rigidbody2D.velocity = new Vector2 (-projectileVelocity, 0);
 		}
+
 
 	}
 

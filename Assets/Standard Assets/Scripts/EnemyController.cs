@@ -67,6 +67,9 @@ public class EnemyController : Controller {
 				//bind position of gameobject to explosion
 				explosion.transform.parent = gameObject.transform;
 				Animator tempAnimator = explosion.GetComponent<Animator>();
+				AudioSource source = explosion.GetComponent<AudioSource>();
+				if (source != null)
+					SoundManager.PlaySound(source.audio.clip, explosion.transform);
 				tempAnimator.SetTrigger("Explode");
 				//gameObject.rigidbody2D.isKinematic = true;
 				//gameObject.renderer.renderer.collider2D.isTrigger = true;

@@ -74,6 +74,9 @@ public class BombEnemyController : EnemyController {
 	private void Detonate(){
 		GameObject detonationObject = Instantiate(GameResources.GetGameObject(GameResources.KeyLargeExplosion), transform.position, Quaternion.identity) as GameObject;
 		detonationObject.transform.parent = gameObject.transform;
+		AudioSource source = detonationObject.GetComponent<AudioSource>();
+		if (source != null)
+			SoundManager.PlaySound(source.audio.clip, detonationObject.transform);
 		float detonationTime = GameResources.GetAnimationClip(GameResources.KeyLargeExplosionAnimation).length;
 		Animator tempAnimator = detonationObject.GetComponent<Animator>();
 		tempAnimator.SetTrigger("Explode");

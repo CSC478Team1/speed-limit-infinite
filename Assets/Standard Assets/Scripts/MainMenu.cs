@@ -3,8 +3,8 @@ using System.Collections;
 
 public class MainMenu : MonoBehaviour {
 
-	public float left;
-	public float top;
+	private float left;
+	private float top;
 	private float logoWidth;
 	private float logoHeight;
 
