@@ -3,6 +3,9 @@ using System.Collections;
 
 public class InGameMenu : MonoBehaviour {
 
+	public delegate void VolumeChanged(bool isMusic, float volume);
+	public static event VolumeChanged volumeHasChanged;
+
 	private bool menuCalled = false;
 	private bool debugMenuCalled = false;
 	private float top;
@@ -18,6 +21,11 @@ public class InGameMenu : MonoBehaviour {
 	private string command = "";
 	private string temp = "";
 
+	private float toggleLeft = 0f;
+	private float toggleWidth = 0f;
+	private float toggleTextWidth = 0f;
+
+
 	public GUIStyle style;
 
 	private void Start(){
@@ -28,9 +36,14 @@ public class InGameMenu : MonoBehaviour {
 		top = (Screen.height - height) / 2f;
 
 		buttonHeight = height / 8f;
-		buttonStart = top + (buttonHeight * 1.5f);
+		buttonStart = top + 30f;
 		buttonWidth = width - (Screen.width / 16f);
 		buttonLeft = left + ((width - buttonWidth)/ 2f);
+
+		toggleLeft = left + 10f;
+		toggleTextWidth = Screen.width / 8.7521f;
+		toggleWidth = (width - 20f) - toggleTextWidth;
+
 
 		//style = new GUIStyle(GUI.skin.box);
 	}
@@ -52,9 +65,26 @@ public class InGameMenu : MonoBehaviour {
 			GUI.skin.box = style;
 			GUI.skin.button.normal.textColor = Color.cyan;
 			GUI.skin.button.hover.textColor = Color.white;
-
+			GUIStyle labelStyle = GUI.skin.GetStyle("Label");
 			buttonTop = buttonStart;
 			GUI.Box(new Rect(left,top,width,height), "Game Paused");
+			labelStyle.alignment = TextAnchor.UpperLeft;
+			labelStyle.normal.background = null;
+			labelStyle.fontSize = 12;
+			GUI.Label(new Rect(toggleLeft ,buttonTop,toggleTextWidth,25f), "Music Volume ", labelStyle);
+			float volume = SoundManager.MusicVolume;
+			volume =  GUI.HorizontalSlider(new Rect(toggleLeft + toggleTextWidth, buttonTop +5f, toggleWidth, 20f), volume, 0.0F, 1.0F);
+			if (volume != SoundManager.MusicVolume){
+				SoundManager.MusicVolume = volume;
+				volumeHasChanged(true, volume);
+			}
+			buttonTop += 30f;
+
+			GUI.Label(new Rect(toggleLeft ,buttonTop, toggleTextWidth,25f), "SFX Volume ", labelStyle);
+			SoundManager.SoundVolume = GUI.HorizontalSlider(new Rect(toggleLeft + toggleTextWidth, buttonTop+5f, toggleWidth, 20f), SoundManager.SoundVolume, 0.0F, 1.0F);
+
+
+			buttonTop += 45f;
 
 			if (GUI.Button(new Rect(buttonLeft,buttonTop,buttonWidth,buttonHeight), "Continue Game")){
 				menuCalled = false;

@@ -100,7 +100,7 @@ AudioSource:
   m_GameObject: {fileID: 41018257}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: a9b4f5821af474146876ead3bf5650bb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9e9b4271793f42d42b293adfb00e564b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -326,6 +326,10 @@ Prefab:
       propertyPath: m_PlayOnAwake
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8200000, guid: 9fe5a7d99af79c04f91713794aeb920a, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9e9b4271793f42d42b293adfb00e564b, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fe5a7d99af79c04f91713794aeb920a, type: 2}
   m_RootGameObject: {fileID: 41018257}

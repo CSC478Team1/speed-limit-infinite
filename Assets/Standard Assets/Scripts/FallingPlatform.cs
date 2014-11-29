@@ -31,10 +31,10 @@ public class FallingPlatform : MonoBehaviour {
 
 		}
 
-		if(other.gameObject.tag == "Enemy" && gameObject.tag == "Platform" && !fell){
+		if(other.gameObject.tag == "Enemy" && gameObject.tag == "Platform" && !fell && !fallingPlatform.rigidbody2D.isKinematic){
 			Destroy(other.gameObject); // enemy was smashed change to death sequence
 		}
-		if (!isUp && fallingPlatform.rigidbody2D.velocity.sqrMagnitude == 0 && !disabled){
+		if (!isUp && fallingPlatform.rigidbody2D.velocity.sqrMagnitude == 0 && !disabled && !fallingPlatform.rigidbody2D.isKinematic){
 			fallingPlatform.tag="Untagged";
 			fallingPlatform.layer = LayerMask.NameToLayer("Default");
 			gameObject.tag ="Untagged";

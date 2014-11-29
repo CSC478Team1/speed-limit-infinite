@@ -13,7 +13,7 @@ public class InGameHelper : MonoBehaviour {
 	public int numberOfTimeToDisplay = 1;
 	private bool deleteAfterUse = false;
 	private new Light light;
-	private float strobeEffectStep = .01f;
+	private float strobeEffectStep = .001f;
 	private bool isDisplayingMessage = false;
 	//end public Inspector variables
 	
@@ -42,40 +42,43 @@ public class InGameHelper : MonoBehaviour {
 			light.intensity += strobeEffectStep;
 		}
 	}
-	private void OnTriggerEnter2D(Collider2D other){
+	private void TriggerCheck(Collider2D other){
 		if (triggerRequiresKeyPress){
 			if (triggerAction == TriggerKeypresses.None || Input.GetButtonDown(triggerAction.ToString()))
 				triggerRequiresKeyPress = false;
 			if (triggerCausesRemoval)
 				deleteAfterUse = true;
 		}
-
-		if (other.tag == "Player" && !triggerRequiresKeyPress){
-
+		
+		if ((other.tag == triggerTagThatCausesRemoval || other.tag == "Player") && !triggerRequiresKeyPress){
+			
 			//story and gameplay are both text popups, Interactive hint gives a player an idea of what to do mainly with an arrow.
 			//the arrow prefab can also be used if more scripting is needed
 			if (helpType == HelpType.InteractiveHint){
 				//display arrow
-
+				
 			}
 			if (helpType == HelpType.Gameplay){
 				isDisplayingMessage = GameManager.DisplayScriptedMessage(textToDisplay);
 			}
-
+			
 			if (numberOfTimeToDisplay > 0 && !isDisplayingMessage)
 				numberOfTimeToDisplay--;
-
+			
 			triggerRequiresKeyPress = true;
 			if (numberOfTimeToDisplay == 0)
 				Destroy(gameObject);
 			if (deleteAfterUse)
 				Destroy(gameObject);
-
-
+			
+			
 		}
+	}
+	private void OnTriggerEnter2D(Collider2D other){
+		TriggerCheck(other);
 
 	}
 	private void OnTriggerStay2D(Collider2D other){
-		OnTriggerEnter2D(other);
+		TriggerCheck(other);
 	}
 }

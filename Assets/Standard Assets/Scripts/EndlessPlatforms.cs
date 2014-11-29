@@ -19,15 +19,17 @@ public class EndlessPlatforms : MonoBehaviour {
 	
 	// Update is called once per frame
 	private void Update () {
-		if (isInTrap)
-			backgroundScrollerCamera.SetScrollingSpeed(Mathf.Abs(player.rigidbody2D.velocity.x) / 5000f, .003f);
+		if (isInTrap){
+			if (Mathf.Abs(player.rigidbody2D.velocity.x) / 5000f > .001f)
+				backgroundScrollerCamera.SetScrollingSpeed(Mathf.Abs(player.rigidbody2D.velocity.x) / 5000f, .003f);
+		}
 	
 	}
 	private void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == "Player"){
 			isInTrap = true;
 
-			if (other.transform.position.x> sideA.transform.position.x - sideB.transform.position.x + sideA.transform.position.x)
+			if (other.transform.position.x > sideB.transform.position.x)
 				other.transform.position = sideA.transform.position;
 			else
 				other.transform.position = sideB.transform.position;
@@ -38,13 +40,13 @@ public class EndlessPlatforms : MonoBehaviour {
 				GameManager.DisplayScriptedTimedMessage(18f, "You're stuck in this loop forever now. You collected some nice things. Maybe I'll send a rusty bot to fetch them from your corpse!"); 
 			}
 			else if (velocity > 120 && velocity < 140)
-				GameManager.DisplayScriptedTimedMessage(14f, "I knew those things didn't work!");
+				GameManager.DisplayScriptedTimedMessage(10f, "I knew those things didn't work!");
 			else if (velocity > 150 && velocity < 190)
-				GameManager.DisplayScriptedTimedMessage(12f, "Run you fool! Haha!");
+				GameManager.DisplayScriptedTimedMessage(10f, "Run you fool! Haha!");
 			else if (velocity > 210 && velocity < 230)
-				GameManager.DisplayScriptedTimedMessage(12f, "You're going to crash the game and ruin it for everyone!");
-			else if (velocity > 300 && velocity < 420){
-				GameManager.DisplayScriptedTimedMessage(3f, "STOP! NOOOOO!");
+				GameManager.DisplayScriptedTimedMessage(10f, "You're going to crash the game and ruin it for everyone!");
+			else if (velocity > 250 && velocity < 900){
+				GameManager.DisplayScriptedTimedMessage(6f, "STOP! NOOOOO!");
 				GameManager.EnableCameraFadeOut();
 				isInTrap = false;
 				backgroundScrollerCamera.ResetScrollingSpeed();

@@ -59,7 +59,7 @@ public class Controller : MonoBehaviour {
 	protected void FireWeapon(GameObject projectileObject, float projectileVelocity){
 		AudioSource source = projectileObject.GetComponent<AudioSource>();
 		if (source != null)
-			SoundManager.PlaySound(source.audio.clip, projectileObject.transform);
+			SoundManager.PlaySoundAtCamera(source.audio.clip);
 
 		if (isFacingRight){
 			Vector2 displacement = new Vector2 (transform.position.x + .5f, transform.position.y);

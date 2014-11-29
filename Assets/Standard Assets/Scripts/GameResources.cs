@@ -18,9 +18,6 @@ public static class GameResources  {
 	public const string KeyHUDPowerUpBackground = "PowerUpBackground";
 	public const string KeySmallExplosion = "SmallExplosion";
 	public const string KeyLargeExplosion = "LargeExplosion";
-	public const string KeySmallExplosionAnimation = "smallexplosion";
-	public const string KeyLargeExplosionAnimation = "largeexplosion";
-	public const string KeyBombBotAppearAnimation = "appear";
 	public const string KeyUITextBackground = "UITextBackground";
 	public const string KeyUIScriptedTextBackground = "UIScriptedTextBackground";
 	public const string KeyPowerUpSingleLaser = "PowerUp Single Laser";
@@ -36,6 +33,13 @@ public static class GameResources  {
 	public const string KeyUIHelperArrow = "Help Arrow";
 	public const string KeyUIHelperArrowSmall = "Help Arrow Small";
 
+	public const string KeySmallExplosionAnimation = "smallexplosion";
+	public const string KeyLargeExplosionAnimation = "largeexplosion";
+	public const string KeyBombBotAppearAnimation = "appear";
+
+	public const string KeyAudioPlayerSmallJump = "bodyimpact_jack_01";
+	//public const string KeyAudioPlayerBigJump = "rlaunch";
+
 	public const string ObjectClone = "CLONEDOBJECTCHILD";
 	public const string ObjectWasCloned = "CLONEDOBJECT";
 
@@ -43,6 +47,7 @@ public static class GameResources  {
 	
 	private static Dictionary <string, GameObject> gameObjects = new Dictionary<string, GameObject>();
 	private static Dictionary <string, AnimationClip> animationClips = new Dictionary<string, AnimationClip>();
+	private static Dictionary <string, AudioClip> audioClips = new Dictionary<string, AudioClip>();
 
 	static GameResources(){
 		gameObjects.Add(KeyBlueSingleLaser, Resources.Load<GameObject>(@"prefab/Projectiles/" + KeyBlueSingleLaser));
@@ -77,6 +82,9 @@ public static class GameResources  {
 		animationClips.Add(KeySmallExplosionAnimation, Resources.Load<AnimationClip>(@"Animations/Effects/" + KeySmallExplosionAnimation));
 		animationClips.Add(KeyLargeExplosionAnimation, Resources.Load<AnimationClip>(@"Animations/Effects/" + KeyLargeExplosionAnimation));
 		animationClips.Add(KeyBombBotAppearAnimation, Resources.Load<AnimationClip>(@"Animations/ExplodingBot/" + KeyBombBotAppearAnimation));
+
+		audioClips.Add(KeyAudioPlayerSmallJump, Resources.Load<AudioClip>(@"Sound/Effects/" + KeyAudioPlayerSmallJump));
+		//audioClips.Add(KeyAudioPlayerBigJump, Resources.Load<AudioClip>(@"Sound/Effects/" + KeyAudioPlayerBigJump));
 	}
 
 	public static GameObject GetGameObject(string key){
@@ -84,5 +92,8 @@ public static class GameResources  {
 	}
 	public static AnimationClip GetAnimationClip(string key){
 		return animationClips[key];
+	}
+	public static AudioClip GetAudioClip(string key){
+		return audioClips[key];
 	}
 }

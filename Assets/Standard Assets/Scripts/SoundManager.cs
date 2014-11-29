@@ -7,8 +7,8 @@ public static class SoundManager{
 	public static float MusicVolume {get; set;} 
 
 	static SoundManager(){
-		SoundVolume = .9f;
-		MusicVolume = .7f;
+		SoundVolume = .6f;
+		MusicVolume = .4f;
 	}
 
 	public static void PlaySound(AudioClip clip, Transform atPosition){

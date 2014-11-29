@@ -100,7 +100,8 @@ public class PlayerController : Controller {
 				canJump = false;
 				
 		}else {
-			GameManager.PlayerHasDied();
+			if (!gameObject.name.Contains(GameResources.ObjectClone))
+				GameManager.PlayerHasDied();
 			Respawn();
 		}
 	}
@@ -116,10 +117,13 @@ public class PlayerController : Controller {
 			jumpForce = (headCheck.position.y < groundCheck.position.y) ? jumpForce *-1 : initialJumpforce;
 				
 			//add force to jump only in Y axis
-			if (Input.GetButton("Boost"))
+			if (Input.GetButton("Boost")){
+				SoundManager.PlaySoundAtCamera(GameResources.GetAudioClip(GameResources.KeyAudioPlayerSmallJump));
 				rigidbody2D.AddForce (new Vector2 (0, jumpForce * 1.5f));
-			else
+			} else {
+				SoundManager.PlaySoundAtCamera(GameResources.GetAudioClip(GameResources.KeyAudioPlayerSmallJump));
 				rigidbody2D.AddForce (new Vector2 (0, jumpForce));
+			}
 
 			anim.SetTrigger("Jumping");
 			canJump = false;
