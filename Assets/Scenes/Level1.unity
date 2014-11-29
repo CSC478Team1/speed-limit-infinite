@@ -14167,7 +14167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   helpType: 1
   textToDisplay:
-  - controls that will help you throughout the game. The arrow keys move your player
+  - Controls that will help you throughout the game. The arrow keys move your player
     horizontally. To jump press spacebar. To power jump press shift and spacebar at
     the same time. To interact with menus or switches use the action key by pressing
     'x'. If you have weapons, control will fire them. The plus or minus keys zoom
@@ -61193,7 +61193,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 68af9e8e108f69e4ea8c0b394ef49504, type: 2}
       propertyPath: textToDisplay.Array.data[0]
-      value: controls that will help you throughout the game. The arrow keys move
+      value: Controls that will help you throughout the game. The arrow keys move
         your player horizontally. To jump press spacebar. To power jump press shift
         and spacebar at the same time. To interact with menus or switches use the
         action key by pressing 'x'. If you have weapons, control will fire them. The
