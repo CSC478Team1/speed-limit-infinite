@@ -114,7 +114,7 @@ public class PlayerController : Controller {
 		if (Input.GetButtonDown("Jump") && canJump){
 
 			//I'm playing around with upside down jump forces
-			jumpForce = (headCheck.position.y < groundCheck.position.y) ? jumpForce *-1 : initialJumpforce;
+			jumpForce = (headCheck.position.y < groundCheck.position.y) ? initialJumpforce *-1 : initialJumpforce;
 				
 			//add force to jump only in Y axis
 			if (Input.GetButton("Boost")){

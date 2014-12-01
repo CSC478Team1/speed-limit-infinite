@@ -24,7 +24,7 @@ public class AIDetection {
 							| (1 << LayerMask.NameToLayer("PlayerObject")) ;
 	}
 	public bool EnemyIsNear(Vector3 transform, Vector3 enemy){
-		bool enemyDetected = Physics2D.OverlapCircle(transform, 15f, playerLayerMask);
+		bool enemyDetected = Physics2D.OverlapCircle(transform, sightDistance, playerLayerMask);
 		enemyPosition = enemy;
 
 		RaycastHit2D boundaryDetection = Physics2D.Linecast(transform,enemyPosition,wallLayerMask);
