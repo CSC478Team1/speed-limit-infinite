@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 100
-  sightDistance: 8
+  sightDistance: 24
   jumpDistance: 8
   fireRate: 2
 --- !u!212 &21200000

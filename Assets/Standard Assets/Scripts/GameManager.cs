@@ -115,6 +115,9 @@ public static class GameManager {
 	public static void LoadNextLevel(string level){
 		SetOriginalGravity();
 		ItemDatabase.ClearTemporaryItems();
+		GameObject player = GetPlayerObject();
+		if (player != null)
+			player.GetComponent<PlayerController>().ResetHealth();
 		Application.LoadLevel(level);
 	}
 	public static void LoadMainMenu(){
@@ -123,7 +126,7 @@ public static class GameManager {
 			//reset health and item database
 			SetOriginalGravity();
 			RemoveItemsFromPlayer(ItemDatabase.GetItemList());
-			GameObject player = GameObject.Find("Player1");
+			GameObject player = GetPlayerObject();
 			if (player != null)
 				player.GetComponent<PlayerController>().ResetHealth();
 			ItemDatabase.ClearItemDatabase();

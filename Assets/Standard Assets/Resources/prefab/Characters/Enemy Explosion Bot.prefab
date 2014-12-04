@@ -84,6 +84,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87666c5c2859e804fb000eb70a7c1d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHealth: 100
+  sightDistance: 24
+  jumpDistance: 5
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

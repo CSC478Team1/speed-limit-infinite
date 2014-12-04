@@ -156,6 +156,7 @@ public class PlayerController : Controller {
 			if(gameObject.name.Contains(GameResources.ObjectClone))
 				Destroy(gameObject);
 			else{
+				gameObject.rigidbody2D.velocity = Vector2.zero;
 				if (spawnpoint != null)
 					transform.position = spawnpoint.position;
 
