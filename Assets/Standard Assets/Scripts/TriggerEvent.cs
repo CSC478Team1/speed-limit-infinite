@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// General Trigger event class. Can be used for doors or activating various objects. 
+/// </summary>
 public class TriggerEvent : MonoBehaviour {
 	public int requiresItemID = int.MinValue;
 	public bool removeItemAfterUse = false;
@@ -20,6 +23,12 @@ public class TriggerEvent : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Trigger event zone entered. Door keys are evaluated.
+	/// (Requirement 1.5.1.1) Triggers - key unlocks door
+	/// (Requirement 1.5.1.2) Triggers - Key doesn't unlock doors it shouldn't
+	/// </summary>
+	/// <param name="other">Other.</param>
 	private void OnTriggerEnter2D (Collider2D other){
 		if (other.gameObject.tag == "Box")
 			Destroy (other.gameObject); // change this for pushable scripting

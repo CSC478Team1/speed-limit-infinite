@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Static Sound Manager class. Used to play audio and retain volume levels.
+/// </summary>
+
 public static class SoundManager{
 
 	public static float SoundVolume {get; set;} 

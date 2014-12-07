@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Moving platform. Transition platform between points and attach player to it to avoid physic related issues.
+/// </summary>
+
 public class MovingPlatform : MonoBehaviour {
 
 	public float speed = 2f;
@@ -17,9 +21,10 @@ public class MovingPlatform : MonoBehaviour {
 	private bool playerIsOn = false;
 	private bool isUp = true;
 	float yDistance;
-	//float xDistance;
 
-
+	/// <summary>
+	/// Initialize variables
+	/// </summary>
 	private void Awake(){
 		start = gameObject.transform.root.FindChild("Start").transform;  
 		stop = gameObject.transform.root.FindChild("Stop").transform; 
@@ -28,6 +33,10 @@ public class MovingPlatform : MonoBehaviour {
 
 	}
 
+	/// <summary>
+	/// Update is called once per frame. Move the platform between two points.
+	/// (Requirement 1.4.5) Platforms - Movable platforms move
+	/// </summary>
 	private void Update () {
 		if (!requiresTrigger){
 			yDistance = player.transform.position.y - (gameObject.transform.position.y + .64f);
@@ -66,7 +75,7 @@ public class MovingPlatform : MonoBehaviour {
 					} else
 						isFinished = false;
 			}
-
+			// This is used as a failsafe to make sure the player is detached from the platform
 			if (playerIsOn && (yDistance >.2f || yDistance < -.2f)){
 				ReleaseChildOfPlatform();
 			}
@@ -76,8 +85,10 @@ public class MovingPlatform : MonoBehaviour {
 
 	}
 	
-	//trigger events don't happen on the platform
-	//use objects to activate platforms
+	/// <summary>
+	/// Used only if moving platform needs something to exit its trigger area to start. Triggers do not happen on the platform itself.
+	/// </summary>
+	/// <param name="other">Other collider</param>
 	private void OnTriggerExit2D (Collider2D other){
 		try{
 			if (requiresTrigger && other.tag == triggerTag && UseOnExit){
@@ -88,6 +99,10 @@ public class MovingPlatform : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Used only if moving platform needs something to enter its trigger area to start. Triggers do not happen on the platform itself.
+	/// </summary>
+	/// <param name="other">Other collider</param>
 	private void OnTriggerEnter2D (Collider2D other){
 		try{
 			if (requiresTrigger && other.tag == triggerTag && !UseOnExit){
@@ -99,11 +114,19 @@ public class MovingPlatform : MonoBehaviour {
 
 	}
 
+	/// <summary>
+	/// Collisions happen on the platform. If it is the player then make player a child of the platform to reduce physics issues when moving platforms with rigidbodies.
+	/// </summary>
+	/// <param name="other">Other collision object</param>
 	private void OnCollisionEnter2D(Collision2D other){
 		if (other.gameObject.tag == "Player")
 			MakeChildOfPlatform();
 	}
 
+	/// <summary>
+	/// Collisions happen on the platform. If the player is leaving the collsion zone then detach the player from the platform.
+	/// </summary>
+	/// <param name="other">Other collision object</param>
 	private void OnCollisionExit2D(Collision2D other){
 		if (other.gameObject.tag == "Player"){
 			if (isHorizontal)
@@ -115,9 +138,13 @@ public class MovingPlatform : MonoBehaviour {
 				}
 			}
 	
+		}
 	}
-}
 
+	/// <summary>
+	/// Makes the player a child of the platform object. This prevents physics engine from throwing player off of platform.
+	/// (Requirement 1.4.5.1) Platforms - Player stays on moving platforms
+	/// </summary>
 	private void MakeChildOfPlatform(){
 		//if (gameObject.rigidbody2D != null)
 			//Destroy(gameObject.rigidbody2D);
@@ -129,18 +156,26 @@ public class MovingPlatform : MonoBehaviour {
 			}
 
 		}
-
-		//player.transform.parent = gameObject.transform.FindChild("/Moving Platform/Platform").gameObject.transform ;
 	}
+
+	/// <summary>
+	/// Releases the player from the platform.
+	/// </summary>
 	private void ReleaseChildOfPlatform(){
 		playerIsOn = false;
 		player.transform.parent = null;
 	}
 
-
+	/// <summary>
+	/// External trigger event that can make the player a child of the platform.
+	/// </summary>
 	public void PlayerTriggeredParentEvent(){
 		MakeChildOfPlatform();
 	}
+
+	/// <summary>
+	/// External trigger event that can detach the player from the platform.
+	/// </summary>
 	public void PlayerTriggeredDetachParentEvent(){
 		ReleaseChildOfPlatform();
 	}

@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Simple tutorial style help system. Used to give hints or suggestions on how to play the game.
+/// </summary>
 public class InGameHelper : MonoBehaviour {
 	//declare public for Unity's Inspector
 	public HelpType helpType = HelpType.Story; 
@@ -13,7 +16,7 @@ public class InGameHelper : MonoBehaviour {
 	public int numberOfTimeToDisplay = 1;
 	private bool deleteAfterUse = false;
 	private new Light light;
-	private float strobeEffectStep = .001f;
+	private float strobeEffectStep = .01f;
 	private bool isDisplayingMessage = false;
 	//end public Inspector variables
 	
@@ -29,11 +32,18 @@ public class InGameHelper : MonoBehaviour {
 		None
 	}
 
+	/// <summary>
+	/// Initialize values.
+	/// </summary>
 	private void Start(){
 		if (gameObject.GetComponent<Light>() != null){	
 			light = gameObject.GetComponent<Light>();
 		}
 	}
+
+	/// <summary>
+	/// Update called once per frame. If attached component has a light, cause light source to strobe.
+	/// </summary>
 	private void Update(){
 		if (light != null){
 			if ((light.intensity > .5f && strobeEffectStep > 0) || (light.intensity < .001f && strobeEffectStep < 0)) 
@@ -42,6 +52,12 @@ public class InGameHelper : MonoBehaviour {
 			light.intensity += strobeEffectStep;
 		}
 	}
+
+	/// <summary>
+	/// Check trigger collsion zone for either a keypress or a specific tag. If trigger is a one time display remove it. If number of times to display is positive then 
+	/// decrement it until it reaches 0 and then destroy it. If number of times to display is less than 0 and the trigger doesn't cause removal it will display indefinitely.
+	/// </summary>
+	/// <param name="other">Other colliding object</param>
 	private void TriggerCheck(Collider2D other){
 		if (triggerRequiresKeyPress){
 			if (triggerAction == TriggerKeypresses.None || Input.GetButtonDown(triggerAction.ToString()))
@@ -74,10 +90,20 @@ public class InGameHelper : MonoBehaviour {
 			
 		}
 	}
+
+	/// <summary>
+	/// Calls TriggerCheck each time object enters collision zone.
+	/// </summary>
+	/// <param name="other">Other colliding object.</param>
 	private void OnTriggerEnter2D(Collider2D other){
 		TriggerCheck(other);
 
 	}
+
+	/// <summary>
+	/// Calls TriggerCheck each time an object stays in collision zone.
+	/// </summary>
+	/// <param name="other">Other colliding object</param>
 	private void OnTriggerStay2D(Collider2D other){
 		TriggerCheck(other);
 	}

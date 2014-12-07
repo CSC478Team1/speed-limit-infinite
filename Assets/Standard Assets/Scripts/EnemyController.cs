@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// Enemy controller class inherits from Controller class. AI Detection and death sequences mainly happen here.
+/// </summary>
 public class EnemyController : Controller {
 	//declare these public to set individual values inside Unity's Inspector
 	public int enemyHealth = 100;
@@ -19,7 +21,9 @@ public class EnemyController : Controller {
 	protected int groundLayerMask;
 	protected GameObject player;
 	
-	// Use this for initialization
+	/// <summary>
+	/// Initialize values for animator based on selected Animator Controller and set health. Player and ground bitmasks are initialized here.
+	/// </summary>
 	protected override void Start () {
 		base.Start();	
 		playerLayerMask = (1 << LayerMask.NameToLayer("Player")) | (1 << LayerMask.NameToLayer("Default"));
@@ -34,10 +38,13 @@ public class EnemyController : Controller {
 		else
 			directionFacing = new Vector2(-1,0);
 
-		aiDetection = new AIDetection(playerLayerMask, sightDistance, transform, jumpDistance);
+		aiDetection = new AIDetection((1 << LayerMask.NameToLayer("Player")), sightDistance, jumpDistance);
 		SetHealth(enemyHealth);
 	}
 
+	/// <summary>
+	/// Update is called once per frame. Check if player is near and if needed Mirror the sprite to face player.
+	/// </summary>
 	protected virtual void Update(){
 		// move enemy here
 		if (!isDead){
@@ -55,7 +62,9 @@ public class EnemyController : Controller {
 		}
 	}
 				
-	// Update is called once per frame
+	/// <summary>
+	/// FixedUpdate is called every fixed frame. Load death prefab if object is dead.
+	/// </summary>
 	protected override void FixedUpdate () {
 		base.FixedUpdate();
 		if(isDead && !locked){
@@ -82,6 +91,11 @@ public class EnemyController : Controller {
 	public int GetCurrentHealth(){
 		return health;
 	}
+	/// <summary>
+	/// If destroyCurrent is true, current game object is destroyed along with any other instantiated game objects.
+	/// </summary>
+	/// <param name="destroyCurrent">If set to <c>true</c> destroy current game object.</param>
+	/// <param name="destroyObjects">Game object array to destroy</param>
 	private void Destroy(bool destroyCurrent, GameObject [] destroyObjects){
 		for (int i = 0; i < destroyObjects.Length; i++){
 			if (destroyObjects[i] != null)
@@ -89,6 +103,12 @@ public class EnemyController : Controller {
 		}
 	}
 
+	/// <summary>
+	/// Pause the destroying of Game Object long enough to play animation sequence and then destroy everything.
+	/// </summary>
+	/// <param name="time">Time needed to play animation</param>
+	/// <param name="destroy">If set to <c>true</c> destroy current game object</param>
+	/// <param name="destroyObjects">Variable length argument of game objects to destroy. Current game object should be last object destroyed if it is to be destroyed.</param>
 	protected IEnumerator Pause(float time, bool destroy, params GameObject[] destroyObjects){
 		yield return new WaitForSeconds(time);
 		if (destroy)

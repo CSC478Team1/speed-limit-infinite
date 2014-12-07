@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Falling platform. Script is attached to a platform and a switch. If the platform lands on an enemy when falling, it destroys the enemy.
+/// </summary>
 public class FallingPlatform : MonoBehaviour {
 
 	private bool isUp = true;
@@ -10,12 +13,21 @@ public class FallingPlatform : MonoBehaviour {
 	private bool fell = false;
 	private bool disabled = false;
 
+
+	/// <summary>
+	/// Initialize the value for the switch and the platform
+	/// </summary>
 	private void Awake(){
 		wallSwitch = GameObject.Find("Switch") as GameObject;
 		fallingPlatform = GameObject.Find("FPlatform") as GameObject;
 		anim = wallSwitch.GetComponent<Animator>();
 	}
 
+	/// <summary>
+	/// Determine if player hit switch and if so change platform to a non-kinematic object. If the falling platform lands on an enemy, destroy the enemy.
+	/// (Requirement 1.5.1.2.1) Triggers - Button activates some sort of action
+	/// </summary>
+	/// <param name="other">Other.</param>
 	private void OnTriggerStay2D (Collider2D other){
 		//Player hit switch to drop platform
 		if (other.gameObject.tag == "Player" && (gameObject.tag == "Player Object") || (gameObject.tag == "Trigger")){

@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+/// <summary>
+/// Static class of various game resources. Unity requires Resources.Load game objects during runtime if they are not publicly declared in the Inspector.
+/// Game objects are instead loaded into a dictionary loaded when needed given a provided key.
+/// </summary>
 public static class GameResources  {
 	//Can only load dynamically from resources folder other option is manually from Unity Inspector with public variables
 	//use this class to load prefabs or important game data
@@ -49,6 +53,9 @@ public static class GameResources  {
 	private static Dictionary <string, AnimationClip> animationClips = new Dictionary<string, AnimationClip>();
 	private static Dictionary <string, AudioClip> audioClips = new Dictionary<string, AudioClip>();
 
+	/// <summary>
+	/// Initializes the <see cref="GameResources"/> class.
+	/// </summary>
 	static GameResources(){
 		gameObjects.Add(KeyBlueSingleLaser, Resources.Load<GameObject>(@"prefab/Projectiles/" + KeyBlueSingleLaser));
 		gameObjects.Add(KeyBlueDualLaser, Resources.Load<GameObject>(@"prefab/Projectiles/" + KeyBlueDualLaser));
@@ -86,13 +93,29 @@ public static class GameResources  {
 		audioClips.Add(KeyAudioPlayerSmallJump, Resources.Load<AudioClip>(@"Sound/Effects/" + KeyAudioPlayerSmallJump));
 		//audioClips.Add(KeyAudioPlayerBigJump, Resources.Load<AudioClip>(@"Sound/Effects/" + KeyAudioPlayerBigJump));
 	}
-
+	/// <summary>
+	/// Returns the game object matching the key
+	/// </summary>
+	/// <returns>The game object.</returns>
+	/// <param name="key">Key value.</param>
 	public static GameObject GetGameObject(string key){
 		return gameObjects[key];
 	}
+
+	/// <summary>
+	/// Returns the animation clip matching the key
+	/// </summary>
+	/// <returns>The game object.</returns>
+	/// <param name="key">Key value.</param>
 	public static AnimationClip GetAnimationClip(string key){
 		return animationClips[key];
 	}
+
+	/// <summary>
+	/// Returns the audio clip matching the key
+	/// </summary>
+	/// <returns>The game object.</returns>
+	/// <param name="key">Key value.</param>
 	public static AudioClip GetAudioClip(string key){
 		return audioClips[key];
 	}

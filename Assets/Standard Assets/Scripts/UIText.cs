@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Displays a brief message on the screen.
+/// </summary>
 public class UIText : MonoBehaviour {
 
 	private bool displayMessage = false;
@@ -17,22 +20,38 @@ public class UIText : MonoBehaviour {
 	private float scriptedTimer;
 	private bool isScriptedDialog = false;
 
+	/// <summary>
+	/// Initializes textures
+	/// </summary>
 	private void Start(){
 		displayMessageTexture = GameResources.GetGameObject(GameResources.KeyUITextBackground).guiTexture.texture as Texture2D;
 		displayScriptedMessageTexture = GameResources.GetGameObject(GameResources.KeyUIScriptedTextBackground).guiTexture.texture as Texture2D;
 	}
 
+	/// <summary>
+	/// Update is called once per frame. Cycle through scripted dialog if it exists.
+	/// </summary>
 	private void Update(){
 		if (Input.GetButtonDown("Action") && textCalled){
 			currentIndex++;
 	      }
     }
+
+	/// <summary>
+	/// Displays a timed message
+	/// </summary>
+	/// <param name="message">Message.</param>
+	/// <param name="timeToDisplay">Time to display.</param>
     public void DisplayMessage(string message, float timeToDisplay){
 		this.message = message;
 		this.timeToDisplay = timeToDisplay;
 		displayMessage = true;
 	}
 
+	/// <summary>
+	/// Displays a scripted message that requires action button to be pressed.
+	/// </summary>
+	/// <param name="messages">Messages to display</param>
 	public void DisplayScriptedMessages(string[] messages){
 		timer = originalTimer;
 		currentIndex = 0;
@@ -41,6 +60,12 @@ public class UIText : MonoBehaviour {
 		textCalled = false;
 		isScriptedDialog = false;
 	}
+
+	/// <summary>
+	/// Displays a  set of scripted timed messages.
+	/// </summary>
+	/// <param name="messages">Messages to display</param>
+	/// <param name="time">Time to show messages.</param>
 	public void DisplayScriptedTimedMessages(string[] messages, float time){
 		timer = time;
 		scriptedTimer = time;
@@ -49,9 +74,18 @@ public class UIText : MonoBehaviour {
 		displayScriptedMessage = true;
 		isScriptedDialog = true;
 	}
+
+	/// <summary>
+	/// Determines whether a message is being displayed.
+	/// </summary>
+	/// <returns><c>true</c> if a message is being displayed. Otherwise, <c>false</c>.</returns>
 	public bool IsDisplayingScriptedMessage(){
 		return displayScriptedMessage;
 	}
+
+	/// <summary>
+	/// Render GUI elements on the screen.
+	/// </summary>
 	private void OnGUI(){
 		if (displayMessage){
 			GUIStyle style = GUI.skin.GetStyle("Label");

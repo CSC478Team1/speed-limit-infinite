@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Main menu. Scrolls through a random lighting effect and displays a couple of options to the player.
+/// </summary>
+
 public class MainMenu : MonoBehaviour {
 
 	private float left;
@@ -20,7 +24,9 @@ public class MainMenu : MonoBehaviour {
 	private float delay = 3f;
 	private float startDelay = 3f;
 
-	// Use this for initialization
+	/// <summary>
+	/// Initialize the varibles and scale values based on screen resolution.
+	/// </summary>
 	private void Start () {
 		buttonTop = Screen.height / 1.52f;
 		buttonWidth = Screen.width / 2.286f;
@@ -36,7 +42,11 @@ public class MainMenu : MonoBehaviour {
 		light = GetComponentInChildren<Light>();
 	
 	}
-	
+
+	/// <summary>
+	/// Draw the UI objects on the screen and alternate background light colors.
+	/// (Requirement 5.1) Game Play - Player can use menu to start game
+	/// </summary>
 	private void OnGUI(){
 		GUI.skin.button.normal.textColor = Color.cyan;
 		GUI.skin.button.hover.textColor = Color.white;

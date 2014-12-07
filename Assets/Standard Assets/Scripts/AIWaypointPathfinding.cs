@@ -2,6 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// AI waypoint pathfinding using raycasts to detect waypoints. Only checks next path and does not check all paths.
+/// </summary>
+
 public class AIWaypointPathfinding {
 
 	private int groundCollisionLayerMask;
@@ -10,12 +14,15 @@ public class AIWaypointPathfinding {
 	private Vector2 enemyPosition;
 	private float spriteHeight;
 	private float spriteWidth;
-	private float waypointRadiusoffset = .85f; // made it a little bigger than actual radius
+	private float waypointRadiusoffset = .85f; // made it a little bigger than actual radius so raycast doesn't terminate in outer edges
 	private Vector3 oldMoveValue;
 	private Vector3 newMoveValue;
 	private bool shouldJump = false;
 
-
+	/// <summary>
+	/// Initializes a new instance of the <see cref="AIWaypointPathfinding"/> class.
+	/// </summary>
+	/// <param name="gameObject">Game object reference of current game object</param>
 	public AIWaypointPathfinding(GameObject gameObject){
 		waypointMask = 1 << LayerMask.NameToLayer("Waypoint") | (1 << LayerMask.NameToLayer("WaypointEdge"));
 		spriteHeight = gameObject.renderer.bounds.size.y;
@@ -23,6 +30,13 @@ public class AIWaypointPathfinding {
 		groundCollisionLayerMask = (1 << LayerMask.NameToLayer("Default")) | (1<< LayerMask.NameToLayer("Platform")) | (1 << LayerMask.NameToLayer("Player"));
 	}
 
+	/// <summary>
+	/// Determine if the current position is the ideal location or if the character should move
+	/// </summary>
+	/// <returns><c>true</c>, if a move is required <c>false</c> if current position is ideal location</returns>
+	/// <param name="position">Current Vector2 location of character</param>
+	/// <param name="enemyPosition">Vector2 location of the Player</param>
+	/// <param name="playerDetected">If set to <c>true</c> player detected.</param>
 	public bool Move(Vector2 position, Vector2 enemyPosition, bool playerDetected){
 		Vector3 move = Vector3.zero;
 		this.position = position;
@@ -51,6 +65,12 @@ public class AIWaypointPathfinding {
 		return (move != Vector3.zero);
 	}
 
+	/// <summary>
+	/// Checks if character can move only in X axis to reach player
+	/// </summary>
+	/// <returns>Preferred Vector3 location to move to</returns>
+	/// <param name="start">Origin Vector3 location of character</param>
+	/// <param name="lookRight">If set to <c>true</c> look right.</param>
 	private Vector3 MoveXAxis(Vector3 start, bool lookRight){
 		Vector3 move = newMoveValue;
 		if (CanMove()){
@@ -68,6 +88,13 @@ public class AIWaypointPathfinding {
 		}
 		return move;
 	}
+
+	/// <summary>
+	/// Checks if the character can move in Y Axis to reach the player
+	/// </summary>
+	/// <returns>Preferred Vector3 location to move to</returns>
+	/// <param name="start">Origin Vector3 location of character</param>
+	/// <param name="lookRight">If set to <c>true</c> look right.</param>
 	private Vector3 MoveYAxis (Vector3 start, bool lookRight){
 		Vector3 move = MoveXAxis(start, lookRight);
 		//move = DeterminePath(move, MoveXAxis(!lookRight);
@@ -113,6 +140,11 @@ public class AIWaypointPathfinding {
 		}
 		return move;
 	}
+	/// <summary>
+	/// Checks for ceiling. Adds cost to path if ceiling is hit.
+	/// </summary>
+	/// <returns>Obstacle cost if it exists. Returns 0 if no obstacle</returns>
+	/// <param name="path">The Vector3 location of the path to test</param>
 	//check to see if the player is reachable for this waypoint if not add a high cost to move them along
 	private float CheckForCeiling(Vector3 path){
 		Vector2 direction = enemyPosition.y > position.y ? Vector2.up : -Vector2.up;
@@ -124,6 +156,12 @@ public class AIWaypointPathfinding {
         }
 		return 0f;
 	}
+	/// <summary>
+	/// Determines the path to take based on total cost.
+	/// </summary>
+	/// <returns>The suggested path to reach enemy.</returns>
+	/// <param name="pathOne">First path to consider</param>
+	/// <param name="pathTwo">Second path to consider</param>
  	private Vector3 DeterminePath(Vector3 pathOne, Vector3 pathTwo){
 		Vector3 move;
 		float pathOnePoints = 0;
@@ -140,29 +178,39 @@ public class AIWaypointPathfinding {
 
 		pathOnePoints = pathOneYPos + pathOneXPos + characterCostOneX + characterCostOneY +  CheckForCeiling(pathOne);
 		pathTwoPoints = pathTwoYPos + pathTwoXPos + characterCostTwoX + characterCostTwoY +  CheckForCeiling(pathTwo);
-		
-		//Debug.Log(enemyPosition.ToString() +   "enemy - " + pathTwoPoints.ToString() + " path 2 " + pathTwo.ToString() +  "  path 1 " + pathOnePoints.ToString() + "   " + pathOne.ToString());
+
 		move = pathOnePoints < pathTwoPoints ? pathOne : pathTwo;
-		//Debug.Log(move.ToString());
         return move;
 	}
+
+	/// <summary>
+	/// Checks path to determine if a jump is required to reach the enemy
+	/// </summary>
+	/// <param name="pointA">Starting location</param>
+	/// <param name="pointB">Enemy location</param>
 	private void CheckForJump(Vector3 pointA, Vector3 pointB){
 		float direction = pointA.x < pointB.x ? 1f : -1f;
 		Vector2 nextLocation = new Vector2(pointA.x + (spriteWidth*direction), pointA.y);
 		RaycastHit2D raycastCheckForGap = Physics2D.Raycast(nextLocation, -Vector2.up, .6f, groundCollisionLayerMask);
 		shouldJump = raycastCheckForGap.collider == null;
 	}
+
 	public bool ShouldJump(){
 		return shouldJump;
 	}
 	public Vector3 GetNewMoveValue(){
-		//Debug.Log(newMoveValue.ToString());
 		return newMoveValue;
 	}
+
+	/// <summary>
+	/// Determines whether this character can move or if it is falling or currently jumping.
+	/// </summary>
+	/// <returns><c>true</c> if this character can move; otherwise, <c>false</c>.</returns>
 	private bool CanMove(){
 		return (Physics2D.OverlapCircle(position, .5f, groundCollisionLayerMask ));
 	}
-
+	/**
+	 * testing total waypoint detection with the intention of bulding a path to reach player
 	public void Test(Transform transform, Vector2 directionFacing){
 		RaycastHit2D [] hits;
 		Vector3 path = transform.position;
@@ -174,4 +222,5 @@ public class AIWaypointPathfinding {
 		}
 		Debug.Log("my path " +  path.ToString());
 	}
+	**/
 }

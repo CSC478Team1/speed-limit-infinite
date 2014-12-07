@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InGameMenu : MonoBehaviour {
+/// <summary>
+/// In game menu. Contains game options, sound options, and handles the debug menu.
+/// </summary>
 
+public class InGameMenu : MonoBehaviour {
+	// event that sets the volume if the sliders are adjusted.
 	public delegate void VolumeChanged(bool isMusic, float volume);
 	public static event VolumeChanged volumeHasChanged;
 
@@ -28,6 +32,9 @@ public class InGameMenu : MonoBehaviour {
 
 	public GUIStyle style;
 
+	/// <summary>
+	/// Initialize variables. Adjusts values to screen resolution.
+	/// </summary>
 	private void Start(){
 
 		height = Screen.height / 1.92f;
@@ -43,12 +50,11 @@ public class InGameMenu : MonoBehaviour {
 		toggleLeft = left + 10f;
 		toggleTextWidth = Screen.width / 8.7521f;
 		toggleWidth = (width - 20f) - toggleTextWidth;
-
-
-		//style = new GUIStyle(GUI.skin.box);
 	}
 	
-	// Update is called once per frame
+	/// <summary>
+	/// Update is called once per frame. Used to check for keypress for either menu.
+	/// </summary>
 	private void Update () {
 		if (Input.GetButtonDown("Menu")){
 			//pause the game and unpause if user hits menu key again
@@ -60,6 +66,11 @@ public class InGameMenu : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Draws in game menu or debug menu if either one have been called.
+	/// (Requirement 4.1) UI - Menu bar
+	/// (Requirement 5.2) Game Play - Player can get to menu at any point in game
+	/// </summary>
 	private void OnGUI(){
 		if (menuCalled){
 			GUI.skin.box = style;
@@ -170,9 +181,9 @@ public class InGameMenu : MonoBehaviour {
 				case "credits":
 					GameManager.LoadNextLevel("EndGame");
 					break;
-				case "testlevel":
-					GameManager.LoadNextLevel("test_scene");
-					break;
+				//case "testlevel":
+				//	GameManager.LoadNextLevel("test_scene");
+				//	break;
 
 				case "":
 					break;

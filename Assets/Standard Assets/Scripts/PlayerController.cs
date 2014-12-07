@@ -1,7 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// Player controller. Inherits from Controller. Used to perform various user interactions in the game.
+/// </summary>
 public class PlayerController : Controller {
+
+	//save powerup information from scene to scene
+	//declare static to retain data between scenes
+	private static bool infiniteSpeed = false;
+	private static bool canShootLaser = false;
+	private static bool canShootDualLaser = false;
+	private static bool hasGravityBoots = false;
+	private static bool canShootLargeLaser = false;
+	private static bool canShootTripleLaser = false;
 	
 	private float initialSpeed = 8f;
 	private int ignoreLayerBitmask;  //ignoring this layer temprorarily for platforms
@@ -13,18 +24,9 @@ public class PlayerController : Controller {
 	private int startingHealth = 100;
 
 
-	//save powerup information from scene to scene
-	//declare static to retain data between scenes
-	private static bool infiniteSpeed = false;
-	private static bool canShootLaser = false;
-	private static bool canShootDualLaser = false;
-	private static bool hasGravityBoots = false;
-	private static bool canShootLargeLaser = false;
-	private static bool canShootTripleLaser = false;
-
-
-	
-	// Use this for initialization
+	/// <summary>
+	/// Initialize values for PlayerController
+	/// </summary>
 	protected override void Start (){
 		base.Start();
 
@@ -49,13 +51,21 @@ public class PlayerController : Controller {
 			if (tempGameObject != null)
 				spawnpoint = tempGameObject.transform;
 
+
+
 		}catch (UnityException e){
 			Debug.Log(e.Message);
 		}
 	}
 
-	//FixedUpdate can be called variable amount of times per frame
-	//Physics is generally suggested here
+	/// <summary>
+	/// Called every Fixed Frame. Perform most of the Physics related calls here.
+	/// (Requirement 1.4.1) Platforms - Player can stand on
+	/// (Requirement 1.4.3) Platforms - Can't jump through (or can jump through)
+	/// (Requirement 2.1.1) Player Action - Move Forward
+	/// (Requirement 2.1.2) Player Action - Move Backwards
+	/// (Requirement 2.1.4) Player Action - Dies
+	/// </summary>
 	protected override void FixedUpdate(){
 		base.FixedUpdate();
 		if (!isDead){
@@ -106,8 +116,10 @@ public class PlayerController : Controller {
 		}
 	}
 	
-	// Update is called once per frame
-	// Player Input should always be called within Update
+	/// <summary>
+	/// Update is called once per frame. Player Input is handled here.
+	/// (Requirement 2.1.3) Player Action - Jump
+	/// </summary>
 	protected void Update () {
 		//base.Update();
 		//maps to player's controls
@@ -118,10 +130,12 @@ public class PlayerController : Controller {
 				
 			//add force to jump only in Y axis
 			if (Input.GetButton("Boost")){
-				SoundManager.PlaySoundAtCamera(GameResources.GetAudioClip(GameResources.KeyAudioPlayerSmallJump));
+				if (!isClone)
+					SoundManager.PlaySoundAtCamera(GameResources.GetAudioClip(GameResources.KeyAudioPlayerSmallJump));
 				rigidbody2D.AddForce (new Vector2 (0, jumpForce * 1.5f));
 			} else {
-				SoundManager.PlaySoundAtCamera(GameResources.GetAudioClip(GameResources.KeyAudioPlayerSmallJump));
+				if (!isClone)
+					SoundManager.PlaySoundAtCamera(GameResources.GetAudioClip(GameResources.KeyAudioPlayerSmallJump));
 				rigidbody2D.AddForce (new Vector2 (0, jumpForce));
 			}
 
@@ -147,9 +161,12 @@ public class PlayerController : Controller {
 				anim.SetTrigger("Shoot Single");
 			}
 		}
-
-
 	}
+
+	/// <summary>
+	/// Respawns Player to last transform position
+	/// (Requirement 2.1.5) Player Actions - Resets
+	/// </summary>
 	private void Respawn(){
 		try{
 			//prevent clones from respawning with player
@@ -167,6 +184,10 @@ public class PlayerController : Controller {
 			Debug.Log(e.Message);
 		}
 	}
+
+	/// <summary>
+	/// Shoots a laser.
+	/// </summary>
 	private void ShootLaser(){
 		if (canShootTripleLaser)
 			FireWeapon(GameResources.GetGameObject(GameResources.KeyBlueLargeTripleLaser), 20f);
@@ -177,12 +198,28 @@ public class PlayerController : Controller {
 		else if (canShootLaser)
 			FireWeapon(GameResources.GetGameObject(GameResources.KeyBlueSingleLaser), 14f);
 	}
+
+	/// <summary>
+	/// Adds a power up.
+	/// </summary>
+	/// <param name="powerUP">Power Up to add.</param>
 	public void AddPowerUp(Item.PowerUpType powerUP){
 		SetPowerUp(powerUP, true);
 	}
+
+	/// <summary>
+	/// Removes a power up.
+	/// </summary>
+	/// <param name="powerUP">Power Up to remove.</param>
 	public void RemovePowerUp(Item.PowerUpType powerUP){
 		SetPowerUp(powerUP, false);
 	}
+
+	/// <summary>
+	/// Can remove or add power up
+	/// </summary>
+	/// <param name="powerUP">Power Up to perform action on.</param>
+	/// <param name="value">If set to <c>true</c> it adds power up otherwise it removes it.</param>
 	private void SetPowerUp (Item.PowerUpType powerUP, bool value){
 		switch (powerUP){
 
@@ -206,17 +243,37 @@ public class PlayerController : Controller {
 			break;
 		}
 	}
+
+	/// <summary>
+	/// Sets next Respawn location to transform location
+	/// </summary>
+	/// <param name="checkpointTransform">Checkpoint transform.</param>
 	public void SetCheckpoint(Transform checkpointTransform){
 		spawnpoint = checkpointTransform;
 	}
+
+	/// <summary>
+	/// Resets the health.
+	/// </summary>
 	public void ResetHealth(){
 		SetHealth(startingHealth);
 	}
+	/// <summary>
+	/// Resets the health.
+	/// </summary>
+	/// <param name="max">Maximum health</param>
+	/// <param name="current">Current health</param>
 	public void ResetHealth(int max, int current){
 		startingHealth = max;
 		maxHealth = max;
 		health = current;
 		SetHealth(current);
+	}
+	/// <summary>
+	/// Resets the speed. Only called sometimes after Infinite Speed power up is obtained
+	/// </summary>
+	public void ResetSpeed(){
+		speed = initialSpeed;
 	}
 
 

@@ -1,25 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Script for various items displayed throughout the game. Fake enemies also use this script to initialize.
+/// </summary>
 public class CollectibleItem : MonoBehaviour {
 
-	//only using this for enemies
+	//only GameObject using this for enemies
 	public GameObject fakeEnemy;
-	//Leaving this public for now for the Inspector
+	//public values are initialized and set in Unity's Inspector
 	public string itemName;
 	public int itemID;
 	public Texture2D textureIcon;
 	public Item.ItemType itemType;
 	public Item.PowerUpType powerUpType;
-	private Item item;
 	public bool isHiddenEnemy;
-	public int value = 1; // use this for health or item counts
+	public int value = 1; // use this for health value or item counts
+	//end public Inspector values
 
-	//initialize item to be collected
+	private Item item;
+	
+	/// <summary>
+	/// Initialize values of the item as an Item if object isn't a fake enemy
+	/// </summary>
 	private void Awake(){
 		if(!isHiddenEnemy)
 			item = new Item(itemName, itemID, textureIcon, itemType, powerUpType);
 	}
+
+	/// <summary>
+	/// Object has entered trigger collision zone. Check if colliding object is player and if current object isn't an enemy then give item to player.
+	/// If current object is an object initialize the enemy whenever anything enters its collision trigger zone.
+	/// </summary>
+	/// <param name="other">Other colliding object</param>
 	private void OnTriggerEnter2D (Collider2D other){
 		//tag can be enemy on fake collectible items, but switch it to Player Objects
 		if (other.tag == "Player" && !isHiddenEnemy){
@@ -39,7 +52,7 @@ public class CollectibleItem : MonoBehaviour {
 					GameManager.SetNewPlayerHealth(value,value);
 				}
 
-				//play sound or something and disappear
+				//Destroy object once it has been given to the player
 				Destroy(gameObject);
 			} catch (UnityException e){
 				Debug.Log(e.Message);

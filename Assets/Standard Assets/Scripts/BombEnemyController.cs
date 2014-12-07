@@ -1,7 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Bomb enemy controller.Character cannot shoot and contains own AI Navigation 
+/// </summary>
+
 public class BombEnemyController : EnemyController {
+
+	//hack to prevent audio from stacking itself up and increasing volume way too loudly
+	private static float audioDelayTimer = .3f;
+	private static bool audioLocked = false;
 
 	private float enemyHeight;
 	private float enemyWidth;
@@ -10,7 +18,11 @@ public class BombEnemyController : EnemyController {
 	private float appearTime = 0f;
 	private bool isLocked = false;
 
-	// Use this for initialization
+
+
+	/// <summary>
+	/// Initializes instance and sets speed, appear animation speeds, boundary bitmask, and enemy sprite sizes
+	/// </summary>
 	protected override void Start () {
 		base.Start();
 
@@ -23,7 +35,9 @@ public class BombEnemyController : EnemyController {
 		appearTime = GameResources.GetAnimationClip(GameResources.KeyBombBotAppearAnimation).length;
 
 	}
-
+	/// <summary>
+	/// Called once per frame. Game behaviour is suggested here.
+	/// </summary>
 	protected override void Update(){
 		base.Update();
 		
@@ -53,30 +67,54 @@ public class BombEnemyController : EnemyController {
 		 else if (isDead || !playerDetected)
 			anim.SetFloat("Speed", 0);
 
+		if (audioLocked){
+			if ((audioDelayTimer -= Time.deltaTime) <= 0){
+				audioDelayTimer = .3f;
+				audioLocked = false;
+			}
+		}
+
 
 	}
+	/// <summary>
+	/// Determines if character can move
+	/// </summary>
+	/// <returns><c>true</c> if this character can move; otherwise, <c>false</c>.</returns>
 	private bool CanMove(){
 		return (Physics2D.OverlapCircle(transform.position, .5f, edgeBitmask));
 	}
+
+	/// <summary>
+	/// Move this character.
+	/// (Requirement 3.1.1) AI Actions - Moves forward
+	/// (Requirement 3.1.2) AI Actions - Moves backwards
+	/// </summary>
 	private void Move(){
 		if (CanMove()){
 			if (directionFacing.x > 0){
-				//transform.position += transform.right*speed*Time.deltaTime;
 				rigidbody2D.velocity = new Vector2(Vector2.right.x * speed, 0);
 			}
 			else{
 				rigidbody2D.velocity = new Vector2(-Vector2.right.x * speed, 0);
-				//transform.position += -transform.right*speed*Time.deltaTime;
 			}
 			anim.SetFloat("Speed", 1);
 		}
 	}
+
+	/// <summary>
+	/// Initializes the detonation sequence
+	/// </summary>
 	private void Detonate(){
+		
 		GameObject detonationObject = Instantiate(GameResources.GetGameObject(GameResources.KeyLargeExplosion), transform.position, Quaternion.identity) as GameObject;
 		detonationObject.transform.parent = gameObject.transform;
 		AudioSource source = detonationObject.GetComponent<AudioSource>();
-		if (source != null)
-			SoundManager.PlaySound(source.audio.clip, detonationObject.transform);
+		if (source != null){
+			if (!audioLocked){
+				audioLocked = true;
+				SoundManager.PlaySound(source.audio.clip, detonationObject.transform);
+			}
+		}
 		float detonationTime = GameResources.GetAnimationClip(GameResources.KeyLargeExplosionAnimation).length;
 		Animator tempAnimator = detonationObject.GetComponent<Animator>();
 		tempAnimator.SetTrigger("Explode");

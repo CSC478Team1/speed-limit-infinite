@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Creature generator. Generates random enemies based on skill and time delay.
+/// </summary>
+
 public class CreatureGenerator : MonoBehaviour {
 
 	// generate enemies based on skill level 1-4
@@ -13,7 +17,10 @@ public class CreatureGenerator : MonoBehaviour {
 	private bool startGenerator = false;
 	private bool isDepleted = false;
 	private GameObject[] enemies;
-	// Use this for initialization
+	
+	/// <summary>
+	/// Initializes variables. Load enemies array based on chosen skill level.
+	/// </summary>
 	private void Start () {
 		originalDelay = spawnDelay;
 		if (enemySkillLevel > 4)
@@ -35,7 +42,9 @@ public class CreatureGenerator : MonoBehaviour {
 	
 	}
 	
-	// Update is called once per frame
+	/// <summary>
+	/// Update is called once per frame. startGenerator must be true before generating code can start. Generating enemies is handled here. Once the number of rounds is less than 1 the Game Object is destroyed.
+	/// </summary>
 	private void Update () {
 		if (startGenerator && !isDepleted){
 			if ((spawnDelay -= Time.deltaTime) <= 0){
@@ -52,6 +61,10 @@ public class CreatureGenerator : MonoBehaviour {
 	
 	}
 
+	/// <summary>
+	/// Trigger Event that looks for the Player tag. Sets startGenerator to true, enabling the generator in Update()
+	/// </summary>
+	/// <param name="other">Other colliding object</param>
 	private void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Player")
 			startGenerator = true;

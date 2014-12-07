@@ -2,6 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// Displays and scales various elements on the heads-up display.
+/// </summary>
+
 public class HUD : MonoBehaviour {
 
 	private static int health = 100;
@@ -28,6 +32,9 @@ public class HUD : MonoBehaviour {
 	private static List<Texture> levelItemTextures = new List<Texture>();
 	private static List<Texture> powerUpTextures = new List<Texture>();
 
+	/// <summary>
+	/// Initialize values. Scale the various text and menus / icons based on current screen resoution.
+	/// </summary>
 	private void Start(){
 		left = (Screen.width / 1.3f) ;
 		top = Screen.height / 48f;
@@ -46,19 +53,37 @@ public class HUD : MonoBehaviour {
 		textLeft = left - (textWidth + 1.5f);
 	}
 
+	/// <summary>
+	/// Attaches to the Controller's UpdateHealth event and ItemDatabase's ItemStatusChanged events.
+	/// </summary>
 	private void OnEnable(){
 		Controller.updateHealth += UpdateHealth;
 		ItemDatabase.itemStatusChanged += ItemStatusChanged;
 	}
 
+	/// <summary>
+	/// Detaches from the Controller's UpdateHealth event and ItemDatabase's ItemStatusChanged events.
+	/// </summary>
 	private void OnDisable(){
 		Controller.updateHealth -= UpdateHealth;
 		ItemDatabase.itemStatusChanged -= ItemStatusChanged;
 	}
+
+	/// <summary>
+	/// Updates health varaibles.
+	/// </summary>
+	/// <param name="currentHealth">Current health.</param>
+	/// <param name="maximumHealth">Maximum health.</param>
 	private void UpdateHealth(int currentHealth, int maximumHealth){
 		health = currentHealth;
 		maxHealth = maximumHealth;
 	}
+
+	/// <summary>
+	/// Updates the current items texture lists.
+	/// </summary>
+	/// <param name="item">Item to update</param>
+	/// <param name="isRemoved">If set to <c>true</c> item is to be removed.</param>
 	private void ItemStatusChanged(Item item, bool isRemoved){
 		//we shouldn't need to remove power ups right now
 		if (item.ItemObjectType == Item.ItemType.PowerUp && item.ItemPowerUpType != Item.PowerUpType.None){
@@ -73,6 +98,13 @@ public class HUD : MonoBehaviour {
 				levelItemTextures.Add(item.ItemIcon);
 		}
 	}
+
+	/// <summary>
+	/// Draws everything the power ups, items, and health on the screen.
+	/// (Requirement 4.2) UI - Displays player health
+	/// (Requirement 4.3) UI - Displays player has key
+	/// (Requirement 4.4) UI - Displays power-ups
+	/// </summary>
 	private void OnGUI(){
 
 		if (health < 0)
