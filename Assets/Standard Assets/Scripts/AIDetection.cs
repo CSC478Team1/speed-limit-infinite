@@ -63,7 +63,7 @@ public class AIDetection {
 	/// <summary>
 	/// Gets stored enemy position
 	/// </summary>
-	/// <returns>Position of stored Vector3 location of enemy</returns>
+	/// <returns>Position of stored Vector2 location of enemy</returns>
 	public Vector2 EnemyPosition(){
 		return enemyPosition;
 	}
@@ -120,7 +120,7 @@ public class AIDetection {
 	/// <summary>
 	/// Distance needed to Jump
 	/// </summary>
-	/// <returns>Returns the distance needed to reach the enemy in the Y direction</returns>
+	/// <returns>Returns the distance needed to reach the enemy in the Y direction. Returns float.MinValue if it shouldn't jump.</returns>
 	/// <param name="transform">Transform.position of the current character</param>
 	public float JumpDistance(Vector3 transform){
 		if (shouldJump){

@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12, y: .479999989, z: 0}
+  m_LocalPosition: {x: -10.3369036, y: .947571278, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400000}
@@ -104,7 +104,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!58 &5800000
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -128,39 +128,30 @@ PolygonCollider2D:
   m_Poly:
     m_Paths:
     - - {x: .159999996, y: -.319999993}
-      - {x: .189999998, y: -.310000002}
-      - {x: .200000003, y: -.159999996}
+      - {x: .205608368, y: -.141498923}
       - {x: .209999993, y: -.140000001}
-      - {x: .209999993, y: -.0299999993}
-      - {x: .180000007, y: -.00999999978}
-      - {x: .200000003, y: .129999995}
-      - {x: .150000006, y: .280000001}
+      - {x: .178074837, y: .24935019}
       - {x: .0799999982, y: .319999993}
       - {x: -.0500000007, y: .319999993}
       - {x: -.189999998, y: .200000003}
-      - {x: -.209999993, y: .100000001}
       - {x: -.209999993, y: -.0700000003}
-      - {x: -.129999995, y: -.150000006}
+      - {x: -.180551529, y: .201809287}
       - {x: -.200000003, y: -.319999993}
-      - {x: -.0199999996, y: -.319999993}
-      - {x: .00999999978, y: -.230000004}
-      - {x: .0299999993, y: -.310000002}
-      - {x: .0599999987, y: -.319999993}
-    - - {x: -.0900000036, y: 0}
-      - {x: -.0900000036, y: -.0199999996}
-      - {x: -.100000001, y: -.0299999993}
-      - {x: -.0900000036, y: -.0299999993}
+    - - {x: -.186320305, y: .019810617}
+      - {x: -.189052582, y: -.0234156251}
+      - {x: -.190173149, y: -.025901258}
+      - {x: -.191102982, y: -.0272674561}
 --- !u!61 &6100000
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Size: {x: .330000013, y: .610000014}
-  m_Center: {x: 0, y: 0}
+  m_IsTrigger: 1
+  m_Size: {x: .389999986, y: .579999983}
+  m_Center: {x: 0, y: -.349999994}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3

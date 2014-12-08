@@ -10,7 +10,12 @@ public class TriggerEvent : MonoBehaviour {
 	public string requiredItemName;
 	private AudioClip successClip;
 	private AudioClip failureClip;
+	private bool audioPlaying = false;
+	private float audioTime = 0f;
 
+	/// <summary>
+	/// Initialize variables. Load sound resources if they exist.
+	/// </summary>
 	private void Start(){
 		AudioSource [] sources = gameObject.GetComponentsInChildren<AudioSource>();
 		if (sources.Length > 0){
@@ -20,6 +25,15 @@ public class TriggerEvent : MonoBehaviour {
 				else if (sources[i].name.ToLower() == "failure")
 					failureClip = sources[i].audio.clip;
 			}
+		}
+	}
+	/// <summary>
+	/// Update is called once per frame. Prevent multiple audio instances by putting a time limit on audio.
+	/// </summary>
+	private void Update(){
+		if (audioPlaying){
+			if ((audioTime -= Time.deltaTime) <= 0)
+				audioPlaying = false;
 		}
 	}
 
@@ -43,8 +57,11 @@ public class TriggerEvent : MonoBehaviour {
 					}
 					Destroy(gameObject); // destroy the door for now
 				}else{
-					if (failureClip != null)
+					if (failureClip != null && !audioPlaying){
+						audioPlaying = true;
+						audioTime = failureClip.length;
 						SoundManager.PlaySound(failureClip, transform);
+					}
 					GameManager.DisplayMessage("You need " + requiredItemName + " to proceed");
 				}
 	}

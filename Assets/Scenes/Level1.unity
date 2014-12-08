@@ -14181,7 +14181,7 @@ MonoBehaviour:
   triggerTagThatCausesRemoval: Player
   triggerRequiresKeyPress: 0
   triggerAction: 0
-  numberOfTimeToDisplay: -1
+  numberOfTimeToDisplay: 1
 --- !u!108 &342525727
 Light:
   m_ObjectHideFlags: 0
@@ -20377,7 +20377,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 0c1bfacd49b176e418adcf7eee27f03c, type: 2}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0c1bfacd49b176e418adcf7eee27f03c, type: 2}
@@ -61224,6 +61224,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 68af9e8e108f69e4ea8c0b394ef49504, type: 2}
+      propertyPath: numberOfTimeToDisplay
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 68af9e8e108f69e4ea8c0b394ef49504, type: 2}
   m_RootGameObject: {fileID: 342525724}
@@ -78379,11 +78383,11 @@ BoxCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 488785082}
   m_GameObject: {fileID: 1763458983}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Size: {x: .330000013, y: .610000014}
-  m_Center: {x: 0, y: 0}
+  m_IsTrigger: 1
+  m_Size: {x: .389999986, y: .579999983}
+  m_Center: {x: 0, y: -.349999994}
 --- !u!50 &1763458989
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -78399,7 +78403,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!212 &1763458990
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -78451,8 +78455,8 @@ PolygonCollider2D:
       - {x: -.129999995, y: -.150000006}
       - {x: -.200000003, y: -.319999993}
       - {x: -.0199999996, y: -.319999993}
-      - {x: .00999999978, y: -.230000004}
-      - {x: .0299999993, y: -.310000002}
+      - {x: .071764946, y: -.322648108}
+      - {x: .029999733, y: -.320294261}
       - {x: .0599999987, y: -.319999993}
     - - {x: -.0900000036, y: 0}
       - {x: -.0900000036, y: -.0199999996}
