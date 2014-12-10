@@ -33,6 +33,8 @@ public class Controller : MonoBehaviour {
 
 	/// <summary>
 	/// Check Game Object's Y position if position is below set deathHeight then declare object dead and Destroy object it is an enemy.
+	/// (Requirement 2.1.4.2) Player Actions - Dies from falling
+	/// (Requirement 3.3.2) AI Actions - Dies When falls below level
 	/// </summary>
 	protected virtual void FixedUpdate(){
 		if (transform.position.y <= deathHeight) {
@@ -41,7 +43,7 @@ public class Controller : MonoBehaviour {
 				isDead = true;
 			}
 			else if (gameObject.tag == "Enemy"){
-				Destroy(gameObject);  // add death call later
+				Destroy(gameObject);  //delete object to keep it from endlessly falling
 			}
 		}
 	}

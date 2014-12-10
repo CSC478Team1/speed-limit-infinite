@@ -64,7 +64,7 @@ public class PlayerController : Controller {
 	/// (Requirement 1.4.3) Platforms - Can't jump through (or can jump through)
 	/// (Requirement 2.1.1) Player Action - Move Forward
 	/// (Requirement 2.1.2) Player Action - Move Backwards
-	/// (Requirement 2.1.4) Player Action - Dies
+	/// (Requirement 2.1.4.1) Player Action - Dies From AI Shots
 	/// </summary>
 	protected override void FixedUpdate(){
 		base.FixedUpdate();
@@ -165,7 +165,7 @@ public class PlayerController : Controller {
 
 	/// <summary>
 	/// Respawns Player to last transform position
-	/// (Requirement 2.1.5) Player Actions - Resets
+	/// (Requirement 2.1.5.2) Player Actions - Resets to last check point
 	/// </summary>
 	private void Respawn(){
 		try{

@@ -11,6 +11,7 @@ public class Laser : MonoBehaviour {
 
 	/// <summary>
 	/// If laser has left the screen then delete the game object.
+	/// (Requirement 2.2.2.4) Shoot - Bullet disappears after impact or off screen
 	/// </summary>
 	private void OnBecameInvisible() {
 		Destroy (gameObject);
@@ -20,7 +21,9 @@ public class Laser : MonoBehaviour {
 	/// Checks the various colliding objects the laser shot can encounter. Enemies should decrease health, boxes should add force.
 	/// (Requirement 1.3.4) Blocks - Blocks interact with bullet
 	/// (Requirement 2.2.2.2) Player Actions - Bullet impacts
-	/// (Requirement 2.2.2.3) Player Actions - Bullet damages
+	/// (Requirement 2.2.2.3.1) Shoot - Bullet damages - Hurts AI
+	/// (Requirement 2.2.2.3.2) Shoot - Bullet damages - Moves blocks
+	/// (Requirement 2.2.2.4) Shoot - Bullet disappears after impact or off screen
 	/// </summary>
 	/// <param name="other">Other collidng object</param>
 	private void OnTriggerEnter2D (Collider2D other){

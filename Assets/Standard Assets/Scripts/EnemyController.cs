@@ -64,6 +64,7 @@ public class EnemyController : Controller {
 				
 	/// <summary>
 	/// FixedUpdate is called every fixed frame. Load death prefab if object is dead.
+	/// (Requirement 3.3.3) AI Actions - Dies - When shot by player
 	/// </summary>
 	protected override void FixedUpdate () {
 		base.FixedUpdate();

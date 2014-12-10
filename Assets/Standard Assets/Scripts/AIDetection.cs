@@ -2,7 +2,7 @@
 using System.Collections;
 
 ///<summary> 
-/// AIDetection is used for general enemy detection and determining if the enemy is within its sight distance to strike
+/// AIDetection is used for general player detection and determining if the player is within its sight distance to strike
 /// in various ways.
 /// </summary>
 public class AIDetection {
@@ -20,8 +20,8 @@ public class AIDetection {
 	/// Initializes a new instance of the <see cref="AIDetection"/> class.
 	/// </summary>
 	/// <param name="playerLayerMask">Player layer bitmask. Should only be that of the Player layer</param>
-	/// <param name="sightDistance">Distance the enemy uses to detect player.</param>
-	/// <param name="jumpDistance">Distance character is allowed to jump to reach enemy</param>
+	/// <param name="sightDistance">Distance this character uses to detect player.</param>
+	/// <param name="jumpDistance">Distance this character is allowed to jump to reach the player</param>
 	public AIDetection(int playerLayerMask, float sightDistance,  float jumpDistance){
 		this.sightDistance = sightDistance;
 		this.jumpDistance = jumpDistance;
@@ -33,11 +33,11 @@ public class AIDetection {
 	}
 
 	/// <summary>
-	/// Detects if the enemy ("Player1") is near character
+	/// Detects if the player is near this character
 	/// </summary>
-	/// <returns><c>true</c>, if enemy is in range, <c>false</c> if enemy is out of range</returns>
+	/// <returns><c>true</c>, if player is in range, <c>false</c> if player is out of range</returns>
 	/// <param name="transform">Current character transform</param>
-	/// <param name="enemy">Enemies Vector3 transform.position</param>
+	/// <param name="enemy">Player Vector3 transform.position</param>
 	public bool EnemyIsNear(Vector3 transform, Vector3 enemy){
 		bool enemyDetected = Physics2D.OverlapCircle(transform, sightDistance, playerLayerMask);
 		enemyPosition = enemy;
@@ -61,9 +61,9 @@ public class AIDetection {
 	}
 
 	/// <summary>
-	/// Gets stored enemy position
+	/// Gets stored player position
 	/// </summary>
-	/// <returns>Position of stored Vector2 location of enemy</returns>
+	/// <returns>Position of stored Vector2 location of the player</returns>
 	public Vector2 EnemyPosition(){
 		return enemyPosition;
 	}
@@ -72,7 +72,7 @@ public class AIDetection {
 	/// Raycasts from location at an angle using CircleCasts
 	/// </summary>
 	/// <returns><c>true</c>, if player was hit with raycast with no obstacles, <c>false</c> if boundary is in the way or player not hit with raycast</returns>
-	/// <param name="transform">Current character transform.</param>
+	/// <param name="transform">This character's transform.</param>
 	/// <param name="angle">Vector3 angle to cast raycast.</param>
 	private bool GenerateRaycast(Vector3 transform,  Vector3 angle){
 		RaycastHit2D playerDetection = Physics2D.CircleCast(transform, .15f , angle, sightDistance ,playerLayerMask);
@@ -89,9 +89,9 @@ public class AIDetection {
 	}
 
 	/// <summary>
-	/// Determine if Character can use special moves for an enemy that is really close
+	/// Determine if this character can use special moves on the player if they're really close
 	/// </summary>
-	/// <returns><c>true</c>, If enemy is within distance of being struck with hands or feet, <c>false</c> if player is out of range of melee combat.</returns>
+	/// <returns><c>true</c>, If player is within distance of being struck with hands or feet, <c>false</c> if player is out of range of melee combat.</returns>
 	/// <param name="transform">Transform.position of the current character.</param>
 	/// <param name="directionFacing">Current direction character is facing.</param>
 	public bool HandToHandCombat(Vector3 transform, Vector2 directionFacing){
@@ -120,7 +120,7 @@ public class AIDetection {
 	/// <summary>
 	/// Distance needed to Jump
 	/// </summary>
-	/// <returns>Returns the distance needed to reach the enemy in the Y direction. Returns float.MinValue if it shouldn't jump.</returns>
+	/// <returns>Returns the distance needed to reach the player in the Y direction. Returns float.MinValue if it shouldn't jump.</returns>
 	/// <param name="transform">Transform.position of the current character</param>
 	public float JumpDistance(Vector3 transform){
 		if (shouldJump){
@@ -130,9 +130,9 @@ public class AIDetection {
 	}
 
 	/// <summary>
-	/// Determines if target is currently in shooting range
+	/// Determines if the player is currently in shooting range
 	/// </summary>
-	/// <returns><c>true</c>, if character has a shot, <c>false</c> otherwise.</returns>
+	/// <returns><c>true</c>, if this character has a shot, <c>false</c> otherwise.</returns>
 	/// <param name="transform">Transform.position of the current character</param>
 	public bool ShouldFire(Vector3 transform){
 		bool fire = false;
@@ -143,7 +143,7 @@ public class AIDetection {
 		return fire;
 	}
 	/// <summary>
-	/// Returns the bool value if the player is on characters head or near it. A jump punch is preferred in this range
+	/// Returns the bool value if the player is on this characters head or near it. A jump punch is preferred in this range
 	/// </summary>
 	public bool OnHead(){
 		return onHead;

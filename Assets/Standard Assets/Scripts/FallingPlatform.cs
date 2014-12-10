@@ -26,6 +26,7 @@ public class FallingPlatform : MonoBehaviour {
 	/// <summary>
 	/// Determine if player hit switch and if so change platform to a non-kinematic object. If the falling platform lands on an enemy, destroy the enemy.
 	/// (Requirement 1.5.1.2.1) Triggers - Button activates some sort of action
+	/// (Requirement 3.3.1) AI Actions - Dies - When crushed by platforms
 	/// </summary>
 	/// <param name="other">Other.</param>
 	private void OnTriggerStay2D (Collider2D other){

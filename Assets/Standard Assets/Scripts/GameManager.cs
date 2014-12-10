@@ -28,6 +28,7 @@ public static class GameManager {
 	}
 	/// <summary>
 	/// Restarts the level. Removes temporary items and resets any possible changes
+	/// (Requirement 2.1.5.1) Player Actions - Resets to level start
 	/// </summary>
 	public static void RestartLevel(){
 		//remove only temporary items

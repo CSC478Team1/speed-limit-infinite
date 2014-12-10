@@ -39,8 +39,9 @@ public class TriggerEvent : MonoBehaviour {
 
 	/// <summary>
 	/// Trigger event zone entered. Door keys are evaluated.
-	/// (Requirement 1.5.1.1) Triggers - key unlocks door
-	/// (Requirement 1.5.1.2) Triggers - Key doesn't unlock doors it shouldn't
+	/// (Requirement 1.5.1.1.1) Triggers - Key unlocks door
+	/// (Requirement 1.5.1.1.2) Triggers - Key doesn't unlock doors it shouldn't
+	/// (Requirement 1.5.1.1.3) Triggers - (Key) Removed from inventory after door is opened.
 	/// </summary>
 	/// <param name="other">Other.</param>
 	private void OnTriggerEnter2D (Collider2D other){

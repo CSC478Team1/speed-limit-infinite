@@ -34,7 +34,7 @@ public class AIWaypointPathfinding {
 	/// Determine if the current position is the ideal location or if the character should move
 	/// </summary>
 	/// <returns><c>true</c>, if a move is required <c>false</c> if current position is ideal location</returns>
-	/// <param name="position">Current Vector2 location of character</param>
+	/// <param name="position">Current Vector2 location of this character</param>
 	/// <param name="enemyPosition">Vector2 location of the Player</param>
 	/// <param name="playerDetected">If set to <c>true</c> player detected.</param>
 	public bool Move(Vector2 position, Vector2 enemyPosition, bool playerDetected){
@@ -159,7 +159,7 @@ public class AIWaypointPathfinding {
 	/// <summary>
 	/// Determines the path to take based on total cost.
 	/// </summary>
-	/// <returns>The suggested path to reach enemy.</returns>
+	/// <returns>The suggested path to reach the player.</returns>
 	/// <param name="pathOne">First path to consider</param>
 	/// <param name="pathTwo">Second path to consider</param>
  	private Vector3 DeterminePath(Vector3 pathOne, Vector3 pathTwo){
@@ -184,10 +184,10 @@ public class AIWaypointPathfinding {
 	}
 
 	/// <summary>
-	/// Checks path to determine if a jump is required to reach the enemy
+	/// Checks path to determine if a jump is required to reach the player
 	/// </summary>
 	/// <param name="pointA">Starting location</param>
-	/// <param name="pointB">Enemy location</param>
+	/// <param name="pointB">Player location</param>
 	private void CheckForJump(Vector3 pointA, Vector3 pointB){
 		float direction = pointA.x < pointB.x ? 1f : -1f;
 		Vector2 nextLocation = new Vector2(pointA.x + (spriteWidth*direction), pointA.y);

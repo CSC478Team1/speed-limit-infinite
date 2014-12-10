@@ -68,7 +68,7 @@ public class InGameMenu : MonoBehaviour {
 
 	/// <summary>
 	/// Draws in game menu or debug menu if either one have been called.
-	/// (Requirement 4.1) UI - Menu bar
+	/// (Requirement 4.1.1 - 4.1.4) UI - Menu - Adjust Controls, Adjust Volumes, Restart Level, Quit
 	/// (Requirement 5.2) Game Play - Player can get to menu at any point in game
 	/// </summary>
 	private void OnGUI(){
